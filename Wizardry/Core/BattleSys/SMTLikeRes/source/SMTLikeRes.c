@@ -24,17 +24,12 @@ FUTURE TODO
 - add pictures to appear on res/nul/weak/absr attack
 */
 
-
+struct RaceStruct Race[0xFF];
 
 f32 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if(defender->unit.pCharacterData->_u23 != 0xFF) //race exist
     {
-        if(&Race[defender->unit.pCharacterData->_u23] == NULL) //sanity check we dont access non existing data
-        {
-            return 1;
-        }
-
         u8 i;
 
         //bc i block it from running useless code it shouldnt be all that bad
