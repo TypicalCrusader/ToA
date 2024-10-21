@@ -1,0 +1,9 @@
+#ifndef RACE_EDITOR
+#define RACE_EDITOR
+
+#define raceeditor(RaceName, RaceDesc, uRaceRes, uRaceNul, uRaceAbsorb, uRaceWeak ) "SHORT (RaceName) (RaceDesc); WORD (uRaceRes) (uRaceNul) (uRaceAbsorb) (uRaceWeak)"
+
+//Human
+raceeditor(HumanName, HumanDesc, 0x0103FFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF)
+
+#endif

@@ -1,0 +1,62 @@
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+#include "Extensions/ProcDefinitions.txt"
+
+#include "include/Configs/configs.h"
+#include "include/Configs/CustomDefinitions.event"
+#include "include/macros.event"
+#include "include/Definitions.event"
+
+ORG FreeSpaceKernel_Magic
+    /* "CSKILLSYS_K-09x" */
+    BYTE 0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+
+ORG FreeSpaceKernel_Reloc
+    #include "Data/Reloc.event"
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
+ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
+
+ORG FreeSpaceDEMO
+    /*
+        AKA 0x1000000 - 0xFFFFFFF free space 
+    */
+
+
+    /**
+     * Put vanilla text data to the user space
+     */
+    #include "Contents/Texts/RepointText/RepointText.event"
+    #include "Contents/Texts/RepointText/RepointTextData.event"
+    /* <!>
+     * Tool helpers should installed after repointing
+     */
+    #include "Tools/Tool Helpers.txt"
+    /*
+        Try to put all Tables in this space 
+    */
+    #include "GameData/GameData.event"
+MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax)
+ASSERT (FreeSpaceDEMOMax - CURRENTOFFSET)
+
+ORG FreeSpaceKernelData
+    #include "Data/Data.event"
+    #include "Contents/Contents.event"
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
+ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
+
+ORG FreeSpaceKernelText
+    /*
+        THIS IS THE USABLE 0xB2A604 FREESPACE AKA THE EARLY FREESPACE 
+
+        SINCE WE WANT OUR ENGINE HACKS TO BE FAST AS FUCK THIS IS THE PLACE TO PLACE THEM
+
+        ALL REMAINING GAME DATA IN ALL HONESTLY CAN BE STORED ON 0x1000000 (DEMO) FREESPACE
+    */
+
+    /**
+     * .text section for kernel.
+     * This part of code is put at in-BL range space
+     */
+    #include "Wizardry/Wizardry.event"
+MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)
+ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
