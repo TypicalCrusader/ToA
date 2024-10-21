@@ -18,6 +18,6 @@ struct RaceStruct {
 
 extern struct RaceStruct Race[0xFF];
 
-f32 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender);
+s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender);
 
 #endif // SMT_LIKE_RES_H

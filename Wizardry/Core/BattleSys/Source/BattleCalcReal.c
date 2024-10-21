@@ -78,8 +78,30 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 #endif
 	}
 
-	//smt res
-	attacker->battleAttack = Battle_SMTLikeRes(attacker, defender) * attacker->battleAttack;
+	s8 SMTRes = Battle_SMTLikeRes(attacker, defender);
+
+	switch (SMTRes)
+	{
+	case -1:
+		attacker->battleAttack = -1 * attacker->battleAttack;
+
+		break;
+	case 0:
+		attacker->battleAttack = 0;
+
+		break;
+	case 1:
+		break;
+	case 2:		
+		attacker->battleAttack =  Div(attacker->battleAttack , 2 );
+		break;
+	//ignore error in this case as it WILL NEVER have anything else than those values
+	case 15:
+		attacker->battleAttack =  Div(15 * attacker->battleAttack , 10);
+		break;
+	default:
+		break;
+	}
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSpecialWeaponStats);

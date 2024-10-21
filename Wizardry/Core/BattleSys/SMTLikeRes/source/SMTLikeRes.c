@@ -26,7 +26,7 @@ FUTURE TODO
 
 struct RaceStruct Race[0xFF];
 
-f32 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
+s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if(defender->unit.pCharacterData->_u23 != 0xFF) //race exist
     {
@@ -41,7 +41,7 @@ f32 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
             {
                 if(Race[defender->unit.pCharacterData->_u23].uRaceRes[i] == attacker->weaponType )
                 {
-                    return 0.5; 
+                    return 2; 
                 }               
             }      
             if(Race[defender->unit.pCharacterData->_u23].uRaceNull[i] != 0xFF )
@@ -62,7 +62,7 @@ f32 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
             {
                 if(Race[defender->unit.pCharacterData->_u23].uRaceWeak[i] == attacker->weaponType )
                 {
-                    return 1.5;
+                    return 15; 
                 }               
             }                                
         }

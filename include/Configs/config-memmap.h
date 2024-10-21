@@ -38,7 +38,7 @@
 #define FreeSpaceKernel_Reloc (FreeSpaceKernel_Magic + 0x10)
 #define FreeSpaceRelocSize 0x400
 
-#define FreeSpaceDEMOMax    0xFFFFFF
+#define FreeSpaceDEMOMax    0xFFFFFFF
 
 #define FreeSpaceKernelData (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
 
