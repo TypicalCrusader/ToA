@@ -11,7 +11,7 @@ main features
 - values in Res, Null, Weak, Absorb are equal to weapon type value 0xFF = unused
 - hooks to real battle calc and it kinda overrides it
 - affinity can increase certain weapon types power
-- returns f32 as it uses the value to calc final damage I KNOW THIS IS BAD FOR PERFORMANCE BUT PLEASE tELL ME HOW TO HANDLE THIS SHIT OTHERWISE
+- returns s8 as it uses the value to calc final damage 
 
 OUTPUT
 - no race stuff = 1.0

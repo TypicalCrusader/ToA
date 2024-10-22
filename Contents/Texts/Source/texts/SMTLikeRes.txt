@@ -2,3 +2,67 @@
 Human[X]
 ## HumanDesc
 Human[X]
+## AscendedName
+Ascemded[X]
+## AscendedDesc
+Humans who drank Elder Dragon[NL]
+Blood.[X]
+## DawnTribeName
+Dawn Dragon[X]
+## DawnTribeDesc
+Dragon hailing from Dawn tribe[NL]
+Blessed by the Benevolence[X]
+## DuskTribeName
+Dusk Dragon[X]
+## DuskTribeDesc
+Dragon hailing from Dusk Tribe[NL]
+Blessed by the Shadows[NL]
+Pariahs in most of Aurus.[X]
+## ThunderTribeName
+Thunder Dragon[X]
+## ThunderTribeDesc
+Dragon hailing from Thunder Tribe[NL]
+Blessed by elemental[NL] 
+powers of thunder[X]
+## FireTribeName
+Fire Dragon[X]
+## FireTribeDesc
+Dragon hailing from Fire Tribe[NL]
+Blessed by elemental[NL] 
+powers of Fire[X]
+## WindTribeName
+Wind Dragon[X]
+## WindTribeDesc
+Dragon hailing from Wind Tribe[NL]
+Blessed by elemental[NL] 
+powers of Winds[X]
+## EarthTribeName
+Earth Dragon[X]
+## EarthTribeDesc
+Dragon hailing from Earth Tribe[NL]
+Blessed by elemental[NL] 
+powers of Rock and Stone[X]
+## HomonculliName 
+Homonculli[X]
+## HomonculliDesc
+Artifical being made from[NL]
+fragments of one soul, much[NL]
+weaker than original being[X]
+## ElderDuskName
+Elder Dragon of Dusk[X]
+## ElderDuskDesc
+Ancient dragon holding powers[NL]
+of Dusk, isnt bound by flow of time,[NL]
+nor by singular form[X]
+## ElderDawnName
+Elder Dragon of Dawn[X]
+## ElderDawnDesc
+Ancient dragon holding powers[NL]
+of Dawn, isnt bound by flow of time,[NL]
+nor by singular form[X]
+## MalevolenceName
+Malevolence[X]
+## MalevolenceDesc
+Being elder than most, One of 2[NL]
+Gods wooing for domination over[NL]
+continent of Aurus[X]

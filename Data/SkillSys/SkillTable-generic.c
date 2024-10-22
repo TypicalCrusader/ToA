@@ -8,18 +8,6 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 #if (defined(SID_SpdBonus) && COMMON_SKILL_VALID(SID_SpdBonus))
 			[0] = SID_SpdBonus,
 #endif
-
-#if (defined(SID_PosReturn) && COMMON_SKILL_VALID(SID_PosReturn))
-			[1] = SID_PosReturn,
-#endif
-
-#if (defined(SID_DoubleLion) && COMMON_SKILL_VALID(SID_DoubleLion))
-			[2] = SID_DoubleLion,
-#endif
-
-#if (defined(SID_Desperation) && COMMON_SKILL_VALID(SID_Desperation))
-			[3] = SID_Desperation,
-#endif
 		},
 	},
 	[CHARACTER_EPHRAIM] = {
