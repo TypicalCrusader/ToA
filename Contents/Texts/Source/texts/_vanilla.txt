@@ -1,3 +1,21 @@
+#0x2bf
+^{Armored Lord}[X]
+
+#0x2c0
+^{Great Lord}[X]
+
+#0x2e3
+Mage Lord[X]
+
+#0x30b
+Armored Great Lord[X]
+
+#0x30c
+Light Great Lord[X]
+
+#0x32e
+Mage Lord[X]
+
 #0x578
 Skills[X]
 

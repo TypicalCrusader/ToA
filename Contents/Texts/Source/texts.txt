@@ -38,4 +38,7 @@ W.I.P.[X]
 #include texts/CombatArt_Bow.txt
 #include texts/kernel_tutorial.txt
 #include texts/SMTLikeRes.txt
+#include texts/ClassText.txt
+#include texts/CharText.txt
+#include texts/ChapterText.txt
 #include texts/misc.txt

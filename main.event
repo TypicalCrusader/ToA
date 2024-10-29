@@ -35,7 +35,7 @@ ORG FreeSpaceDEMO
         Try to put all Tables in this space 
     */
     #include "GameData/GameData.event"
-MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax)
+MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax - FreeSpaceDEMO)
 ASSERT (FreeSpaceDEMOMax - CURRENTOFFSET)
 
 ORG FreeSpaceKernelData
