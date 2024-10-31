@@ -1,3 +1,9 @@
+#0x24d
+Imperial[X]
+
+#0x24e
+Echean[X]
+
 #0x2bf
 ^{Armored Lord}[X]
 
@@ -6,6 +12,24 @@
 
 #0x2e3
 Mage Lord[X]
+
+#0x254
+Brigand[X]
+
+#0x255
+Drosian[X]
+
+#0x256
+Dragon[X]
+
+#0x266
+Rebel[X]
+
+#0x267
+Penbarian[X]
+
+#0x264
+Cultist[X]
 
 #0x30b
 Armored Great Lord[X]

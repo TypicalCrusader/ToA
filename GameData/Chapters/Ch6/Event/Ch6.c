@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "event-rework.h"
 #include "constants/skills.h"
+#include "constants/TOA_characters.h"
 
 
 //todo edit this
@@ -149,6 +150,38 @@ const struct ROMChapterData Ch6Chapter = {
  * Main events
 */
 //player units
+static const struct UnitDefinition Ch6_August_Light[] = {
+	{
+		.charIndex = CHARACTER_EIRIKA,
+		.classIndex = CLASS_EIRIKA_LORD,
+		.allegiance = FACTION_ID_BLUE,
+		.autolevel = false,
+		.level = 1,
+		.xPosition = 16,
+		.yPosition = 29,
+		.redaCount = 1,
+		.redas = REDA_Eirika,
+		.items = {
+		},
+	},
+};
+static const struct UnitDefinition Ch6_August_Heavy[] = {
+	{
+		.charIndex = CHARACTER_EPHRAIM,
+		.classIndex = CLASS_EPHRAIM_LORD,
+		.allegiance = FACTION_ID_BLUE,
+		.autolevel = false,
+		.level = 1,
+		.xPosition = 16,
+		.yPosition = 29,
+		.redaCount = 1,
+		.redas = REDA_Eirika,
+		.items = {
+		},
+	},	
+};
+
+
 static const struct UnitDefinition Ch6_UnitDef_Canon_Normal[] = {
 };
 static const struct UnitDefinition Ch6_UnitDef_Canon_Hard[] = {
@@ -247,10 +280,6 @@ LABEL(7)
 
 
 LABEL(3)
-
-
-	//ASMC(PrologueCallBack)
-
 	// PREP
 	CALL(EventScr_08591FD8)
 
