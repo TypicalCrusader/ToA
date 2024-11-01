@@ -40,6 +40,24 @@ Light Great Lord[X]
 #0x32e
 Mage Lord[X]
 
+#0x367
+^{Unsealed Tyrfang}[X]
+
+#0x375
+^{Tyrfang of Revolution}[X]
+
+#0x403
+^{Sealed Tyrfang}[X]
+
+#0x417
+PLACEHOLDER[X]
+
+#0x425
+PLACEHOLDER[X]
+
+#0x4ab
+PLACEHOLDER[X]
+
 #0x578
 Skills[X]
 

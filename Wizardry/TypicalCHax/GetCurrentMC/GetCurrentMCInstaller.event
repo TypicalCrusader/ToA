@@ -1,0 +1,2 @@
+POIN GetCurrentMCFunc
+#include "src/GetCurrentMC.lyn.event"

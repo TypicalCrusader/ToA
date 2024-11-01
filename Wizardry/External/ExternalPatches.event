@@ -17,3 +17,8 @@
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "ConvoyExpa/ConvoyExpa.event"
 #endif
+
+#include "SplitPathWindowRework/Installer.event"
+
+//TODO find why narrowfont bamboozles make???
+//#include "NarrowFont/Narrowfontinstaller.event"

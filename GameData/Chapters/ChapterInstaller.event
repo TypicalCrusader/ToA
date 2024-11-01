@@ -1,0 +1,5 @@
+{
+    //prologue
+    EventPointerTable(24, ThisEvent)
+    #include "Ch6/Event/Ch6.lyn.event"
+}

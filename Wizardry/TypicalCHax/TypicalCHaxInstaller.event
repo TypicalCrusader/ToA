@@ -1,0 +1,3 @@
+#include "CourtApproval/CourtApprovalInstaller.event"
+#include "GetCurrentMC/GetCurrentMCInstaller.event"
+#include "RandomReinforcements/RandomReinforcementsInstaller.event"

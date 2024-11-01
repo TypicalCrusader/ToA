@@ -35,6 +35,10 @@ ORG FreeSpaceDEMO
         Try to put all Tables in this space 
     */
     #include "GameData/GameData.event"
+    /*
+        for events i need this
+    */
+    #define FreeSpaceEvents CURRENTOFFSET
 MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax - FreeSpaceDEMO)
 ASSERT (FreeSpaceDEMOMax - CURRENTOFFSET)
 
@@ -60,3 +64,9 @@ ORG FreeSpaceKernelText
     #include "Wizardry/Wizardry.event"
 MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)
 ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
+
+//kinda cursed BUT i want all events to be in post BL freespace
+ORG FreeSpaceEvents
+   #include "GameData/Chapters/ChapterInstaller.event"
+MESSAGE FreeSpace___EVNT___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax - FreeSpaceDEMO)
+ASSERT (FreeSpaceDEMOMax - CURRENTOFFSET)  

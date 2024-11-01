@@ -1,12 +1,14 @@
+#pragma once
 #ifndef GUARD_CONSTANTS_TOA_CHARACTERS_H
 #define GUARD_CONSTANTS_TOA_CHARACTERS_H
 
 enum {
-    CHARACTER_NONE         = 0x00,
+    //CHARACTER_NONE         = 0x00,
 
     // Player Characters
     CHARACTER_PLAY_AUGUST_HEAVY     = 0x01, //August - Heavy
     CHARACTER_PLAY_CYRIC            = 0x02, //Cyric
+/*    
     CHARACTER_GILLIAM      = 0x03,
     CHARACTER_FRANZ        = 0x04,
     CHARACTER_MOULDER      = 0x05,
@@ -18,9 +20,9 @@ enum {
     CHARACTER_INNES        = 0x0B,
     CHARACTER_LUTE         = 0x0C,
     CHARACTER_NATASHA      = 0x0D,
-    CHARACTER_CORMAG       = 0x0E,
+    CHARACTER_CORMAG       = 0x0E, */
     CHARACTER_PLAY_AUGUST_LIGHT      = 0x0F, //August - Light
-    CHARACTER_FORDE        = 0x10,
+/*    CHARACTER_FORDE        = 0x10,
     CHARACTER_KYLE         = 0x11,
     CHARACTER_AMELIA       = 0x12,
     CHARACTER_ARTUR        = 0x13,
@@ -47,12 +49,12 @@ enum {
     CHARACTER_CAELLACH_CC  = 0x29,
     CHARACTER_FADO_CC      = 0x2A,
     CHARACTER_ISMAIRE_CC   = 0x2B,
-    CHARACTER_HAYDEN_CC    = 0x2C, 
+    CHARACTER_HAYDEN_CC    = 0x2C, */
 
     //FREE 2D-2F - ENEMY 2-15 - REUSE FOR PLAYABLE, WHY THE FUCK THERE ARE ENEMIES IN BWL SPACE???????????
 
     // Summoned Characters
-    CHARACTER_SUMMON_LYON  = 0x3B,
+/*    CHARACTER_SUMMON_LYON  = 0x3B,
     CHARACTER_SUMMON_KNOLL = 0x3E,
     CHARACTER_SUMMON_EWAN  = 0x3F,
 
@@ -60,10 +62,10 @@ enum {
     CHARACTER_LYON         = 0x40,   
     CHARACTER_MORVA        = 0x41,
     CHARACTER_ORSON_CH5X   = 0x42,
-    CHARACTER_VALTER       = 0x43,
+    CHARACTER_VALTER       = 0x43, */
     CHARACTER_LORGIS       = 0x44, // Lorgis
     CHARACTER_ASCALON      = 0x45, // Ascalon - END OF BWL
-    CHARACTER_BREGUET      = 0x46, 
+/*    CHARACTER_BREGUET      = 0x46, 
     CHARACTER_BONE         = 0x47,
     CHARACTER_BAZBA        = 0x48,
     CHARACTER_ENTOUMBED_CH4 = 0x49,
@@ -100,7 +102,7 @@ enum {
     CHARACTER_ZONTA        = 0x6A,
     CHARACTER_VIGARDE      = 0x6B,
     CHARACTER_LYON_FINAL   = 0x6C,
-    CHARACTER_ORSON        = 0x6D,
+    CHARACTER_ORSON        = 0x6D, */
     //Cult soldiers
     CHARACTER_CULT_SOLDIER_RANGE_M  = 0x6E,
     CHARACTER_CULT_SOLDIER_RANGE_F  = 0x6F,
@@ -188,8 +190,8 @@ enum {
     CHARACTER_BRIG_SOLDIER_DRAGN_M  = 0xB9,         
     //BA - IMPR_SOLDIER_HEAVY_M
     //Dragons
-    CHARACTER_DRAG_SOLDIER_EDRAG_M  = 0xBB,
-    CHARACTER_DRAG_SOLDIER_EDRAG_F  = 0xBC,
+    CHARACTER_DRAG_SOLDIER_TDRAG_M  = 0xBB,
+    CHARACTER_DRAG_SOLDIER_TDRAG_F  = 0xBC,
     CHARACTER_DRAG_SOLDIER_EDRAG_M  = 0xBD,
     CHARACTER_DRAG_SOLDIER_EDRAG_F  = 0xBF, 
     CHARACTER_BOSS_FINAL_INNATH     = 0xBE,
@@ -257,17 +259,10 @@ enum {
     //FREE 0xf1- 0XF3
     //18 char ids free
 
-    CHARACTER_CITIZEN      = 0xFC,
+/*    CHARACTER_CITIZEN      = 0xFC,
     CHARACTER_ARENA_OPPONENT = 0xFD,
     CHARACTER_WALL         = 0xFE,
-    CHARACTER_SNAG         = 0xFF,
-};
-
-enum event_autoload_pid_idx {
-    CHARACTER_EVT_LEADER = 0,
-    CHARACTER_EVT_ACTIVE = -1,
-    CHARACTER_EVT_SLOTB = -2,
-    CHARACTER_EVT_SLOT2 = -3,
+    CHARACTER_SNAG         = 0xFF, */
 };
 
 #endif // GUARD_CONSTANTS_TOA_CHARACTERS_H

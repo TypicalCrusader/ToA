@@ -1,8 +1,4 @@
-#include "common-chax.h"
-#include "skill-system.h"
-#include "event-rework.h"
-#include "constants/skills.h"
-#include "constants/TOA_characters.h"
+#include "Ch6.h"
 
 
 //todo edit this
@@ -19,8 +15,8 @@ const struct ROMChapterData Ch6Chapter = {
 	},
 	.initialFogLevel = 0,
 	.hasPrepScreen = FALSE,
-	.chapTitleId = 0x167,
-	.chapTitleIdInHectorStory = 0x167,
+	.chapTitleId = 0x0,
+	.chapTitleIdInHectorStory = 0x0,
 	.initialPosX = 13,
 	.initialPosY = 25,
 	.initialWeather = WEATHER_FINE,
@@ -116,10 +112,10 @@ const struct ROMChapterData Ch6Chapter = {
 		[0] = 1060,
 		[1] = 1060,
 	},
-	.chapTitleTextId = 409,
-	.chapTitleTextIdInHectorStory = 409,
-	.mapEventDataId = 7,
-	.gmapEventId = 1,
+	.chapTitleTextId = 167,
+	.chapTitleTextIdInHectorStory = 167,
+	.mapEventDataId = 24,
+	.gmapEventId = 8,
 	.divinationTextIdBeginning = 0,
 	.divinationTextIdInEliwoodStory = 0,
 	.divinationTextIdInHectorStory = 0,
@@ -134,14 +130,14 @@ const struct ROMChapterData Ch6Chapter = {
 	.merchantPosYInHectorStory = 0,
 	.victorySongEnemyThreshold = 1,
 	.fadeToBlack = FALSE,
-	.statusObjectiveTextId = 0x1BE,
-	.goalWindowTextId = 414,
+	.statusObjectiveTextId = 0x19c,
+	.goalWindowTextId = 0x1b0,
 	.goalWindowDataType = GOAL_TYPE_DEFENSE,
-	.goalWindowEndTurnNumber = 0,
-	.protectCharacterIndex = CHARACTER_MYRRH,
+	.goalWindowEndTurnNumber = 12,
+	.protectCharacterIndex = CHARACTER_BOSS_ASKON_EMPEROR,
 	.destPosX = 255,
 	.destPosY = 0,
-	.unk91 = 29,
+	.unk91 = 0,
 	.unk92 = 0,
 	.unk93 = 0,
 };
@@ -152,30 +148,30 @@ const struct ROMChapterData Ch6Chapter = {
 //player units
 static const struct UnitDefinition Ch6_August_Light[] = {
 	{
-		.charIndex = CHARACTER_EIRIKA,
+		.charIndex = CHARACTER_PLAY_AUGUST_LIGHT,
 		.classIndex = CLASS_EIRIKA_LORD,
 		.allegiance = FACTION_ID_BLUE,
 		.autolevel = false,
 		.level = 1,
 		.xPosition = 16,
 		.yPosition = 29,
-		.redaCount = 1,
-		.redas = REDA_Eirika,
+		.redaCount = 0,
+		.redas = NULL,
 		.items = {
 		},
 	},
 };
 static const struct UnitDefinition Ch6_August_Heavy[] = {
 	{
-		.charIndex = CHARACTER_EPHRAIM,
+		.charIndex = CHARACTER_PLAY_AUGUST_HEAVY,
 		.classIndex = CLASS_EPHRAIM_LORD,
 		.allegiance = FACTION_ID_BLUE,
 		.autolevel = false,
 		.level = 1,
 		.xPosition = 16,
 		.yPosition = 29,
-		.redaCount = 1,
-		.redas = REDA_Eirika,
+		.redaCount = 0,
+		.redas = NULL,
 		.items = {
 		},
 	},	
@@ -191,8 +187,6 @@ static const struct UnitDefinition Ch6_UnitDef_NonCanon_Normal[] = {
 static const struct UnitDefinition Ch6_UnitDef_NonCanon_Hard[] = {
 };
 static const struct UnitDefinition Ch6_UnitDef_Lunatic[] = {
-};
-static const struct UnitDefinition Ch6_UnitDef_Enemy1[] = {
 };
 //allies
 static const struct UnitDefinition Ch6_UnitDef_Ally_Canon_Normal[] = {
@@ -225,8 +219,16 @@ static const struct UnitDefinition Ch6_UnitDef_Enemy_Lunatic[] = {
 };
 
 static const EventScr Ch6_EventScr_Beginning[] = {
+	//spawn MC
+	ASMC(GetCurrentMC())
+	SVAL(EVT_SLOT_2, 1)
+	BEQ(10,EVT_SLOT_1,EVT_SLOT_2)
+		LOAD1(0X1, Ch6_August_Light)
+		ENUT
+
+LABEL(11)
 	//check on which path are you
-	CHECK_EVENTID(EVFLAG_EXTRA_UNIT(27))//EVFLAG 130
+	CHECK_EVENTID(EVFLAG_PATH_SELECT)//EVFLAG 130
 	BEQ(0, EVT_SLOT_C, EVT_SLOT_0) //IF 0 THEN CANON PATH, IF 1 THEN COMPLICIT PATH
 		CHECK_TUTORIAL //CHECK IF IN NORMAL
 		BNE(5, EVT_SLOT_C, EVT_SLOT_0)
@@ -234,10 +236,8 @@ static const EventScr Ch6_EventScr_Beginning[] = {
 			BNE(6, EVT_SLOT_C, EVT_SLOT_0)
 				GOTO(7)
 LABEL(4)
-	
-
-	Text_BG(0xA,Ch6_NonCanon_BegScene) 
-
+	//Text_BG(0xA,Ch6_NonCanon_BegScene) 
+	GOTO(3)
 
 LABEL(0)
 	CHECK_TUTORIAL //CHECK IF IN NORMAL
@@ -246,7 +246,8 @@ LABEL(0)
 		BNE(2, EVT_SLOT_C, EVT_SLOT_0)
 			GOTO(3)
 LABEL(8)
-	Text_BG(0xA,Ch6_Canon_BegScene) 
+	//Text_BG(0xA,Ch6_Canon_BegScene) 
+	GOTO(3)
 
 LABEL(1)
 	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Normal)
@@ -278,8 +279,13 @@ LABEL(7)
 	ENUN
 	GOTO(8)
 
+LABEL(10)
+	LOAD1(0X1, Ch6_August_Heavy)
+	ENUT
+	GOTO(11)
 
 LABEL(3)
+
 	// PREP
 	CALL(EventScr_08591FD8)
 
@@ -290,6 +296,21 @@ LABEL(3)
 static const EventScr Ch6_EventScr_Ending[] = {
 
 LABEL(101)
+	CHECK_EVENTID(EVFLAG_EMPEROR_DEAD)
+	BNE(201, EVT_SLOT_C, EVT_SLOT_0)
+		CHECK_EVENTID(EVFLAG_EMPEROR_AND_EMPRESS_DEAD)
+		BNE(202, EVT_SLOT_C, EVT_SLOT_0)
+
+LABEL(202)
+	//text
+
+LABEL(201)
+	//text
+	ASMC(GetCurrentMC())
+	PROM(gEventSlots[0x1],CLASS_NONE,ITEM_NONE)
+LABEL(203)
+
+LABEL(200)
 	MNC2(1)
 	ENDA
 };
@@ -297,11 +318,59 @@ LABEL(101)
 /**
  * Misc events
  */
-static const EventListScr Ch6_EventScr_Talk_EirikaSeth[] = {
-	//ConvoEvent(0xB32)
+static const EventScr Ch6_RandoReinforcements[] = {
+	ASMC(SelectNextReinforcements())
+	GOTO(gEventSlots[0x1])
+
+	LABEL(1000)
+
+	LABEL(1001)
+
+	LABEL(1003)
+
+	LABEL(1004)
+
+	LABEL(1005)
+	ENDA
 };
 
-static const EventListScr Ch6_RandoReinforcements[] = {
+
+static const EventScr Ch6_DeadBossChecker[] = {
+	CHECK_EXISTS(CHARACTER_BOSS_ASKON_EMPEROR) //Emperor
+	BNE(100, EVT_SLOT_C, EVT_SLOT_0)
+		CHECK_EXISTS(CHARACTER_BOSS_KIMUZ_HOMONCULLI) //Homonculli Kimuz
+		BNE(103, EVT_SLOT_C, EVT_SLOT_0)
+			CHECK_EXISTS(CHARACTER_BOSS_ASKON_EMPRESS)//Empress
+				BNE(102, EVT_SLOT_C, EVT_SLOT_0)
+					GOTO(101)
+
+
+LABEL(100)
+	//check if empress lives
+	CHECK_EXISTS(CHARACTER_BOSS_ASKON_EMPRESS)//Empress
+		BNE(104, EVT_SLOT_C, EVT_SLOT_0)	
+			ENUT(EVFLAG_EMPEROR_AND_EMPRESS_DEAD)
+			GOTO(105)
+LABEL(105)
+	//text
+	ENUT(EVFLAG_WIN)
+	GOTO(101)
+
+LABEL(104)
+	ENUT(EVFLAG_EMPEROR_DEAD)
+	//text
+	ENUT(EVFLAG_WIN)
+	GOTO(101)
+
+LABEL(102)
+	//Text
+	GOTO(101)
+
+LABEL(103)
+	//text
+	ENUT(EVFLAG_WIN)
+
+LABEL(101)
 	ENDA
 };
 /**
@@ -309,6 +378,12 @@ static const EventListScr Ch6_RandoReinforcements[] = {
  */
 static const EventListScr Ch6_EventListScr_Turn[] = {
 	//TurnEventPlayer_(EVFLAG_TMP(10), EventScr_089FD6D8, 1, 255)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,2)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,4)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,6)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,8)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,10)
+	TurnEventEnemy(EVFLAG_TMP(8),Ch6_RandoReinforcements,11)
 	END_MAIN
 };
 
@@ -324,22 +399,9 @@ static const EventListScr Ch6_EventListScr_Location[] = {
 
 static const EventListScr Ch6_EventListScr_Misc[] = {
 	Survive(Ch6_EventScr_Ending,12)
-	AFEV(0,Ch6_DeadBossChecker,3)
+	AFEV(EVFLAG_TMP(9),Ch6_DeadBossChecker,3)
 	CauseGameOverIfLordDies
 	END_MAIN
-};
-
-static const EventListScr Ch6_DeadBossChecker[] = {
-	CHECK_EXISTS(CHARACTER_KLIMT) //Emperor
-	BNE(100, EVT_SLOT_C, EVT_SLOT_0)
-		CHECK_EXISTS(CHARACTER_DARA) //Homonculli Kimuz
-		BNE(101, EVT_SLOT_C, EVT_SLOT_0)
-			//Empress
-
-
-LABEL(100)
-
-	ENDA
 };
 
 static const EventListScr Ch6_EventListScr_SelectUnit[] = {
