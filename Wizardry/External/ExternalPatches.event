@@ -18,7 +18,10 @@
     #include "ConvoyExpa/ConvoyExpa.event"
 #endif
 
+//FEB ASM patches
 #include "SplitPathWindowRework/Installer.event"
-
-//TODO find why narrowfont bamboozles make???
-//#include "NarrowFont/Narrowfontinstaller.event"
+#include "Chapternamestext/fe8_chnames.event"
+#include "NarrowFont/Narrowfontinstaller.event"
+#include "ExtendWeaponDescBox/Installer.event"
+//#include "BattleTransforming/Installer.event"
+#include "ChangeUnitDesc/Installer.event"

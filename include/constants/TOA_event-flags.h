@@ -24,10 +24,9 @@ enum event_flag_idx {
     EVFLAG_TRIANGLE_2 = 128,
     EVFLAG_TRIANGLE_3 = 129,
     EVFLAG_DK_MUSIC_CHANGE = 130 ,
-    EVFLAG_PATH_SELECT = 131,
     EVFLAG_HIDE_BLINKING_ICON = 132,
     EVFLAG_AUGUST_TYPE = 133, 
-    EVFLAG_136 = 136, // WM flag skip chapter intro If flag is 0x6
+    EVFLAG_PATH_SELECT = 136, // WM flag skip chapter intro If flag is 0x6
     EVFLAG_WM_FIST_LOAD = 137, 
     EVFLAG_AUGUST_CROWNED = 138,
     //176 - 296 free since IDAF about guide

@@ -1,9 +1,3 @@
-## LightLordName
-^{Light Lord}[X]
-
-## LightLordDesc
-P l a c e h o l d e r[X]
-
 ##UNUSEDNAME
 UNUSED[X]
 

@@ -1,11 +1,5 @@
 ## UNUSEDCHARTEXT
 UNUSED ONE[X]
 
-## FOXKINNAME
-Foxkin[X]
-
-## WOLFKINNAME
-Wolfkin[X]
-
 ## CATKINNAME
 Catkin[X]

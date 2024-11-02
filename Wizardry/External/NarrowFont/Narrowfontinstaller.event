@@ -14,7 +14,7 @@ ALIGN 4
 #define mGlyphEntry(mGlyphEntry,mGlyphLoc) "PUSH; ORG menuGlyphTable+mGlyphEntry*0x04; POIN mGlyphLoc; POP"
 #define tGlyphEntry(tGlyphEntry,tGlyphLoc) "PUSH; ORG tGlyphTable+tGlyphEntry*0x04; POIN tGlyphLoc; POP"
 
-#include "SerifLowercase/LowercaseSerif.txt" // includes text bubble icons and short space
-#include "SerifUppercase/UppercaseSerif.txt"
-#include "MenuLowercase/LowercaseMenu.txt"
-#include "MenuUppercase/UppercaseMenu.txt"	
+#include "SerifLowercase/LowercaseSerif.event"
+#include "SerifUppercase/UppercaseSerif.event"
+#include "MenuLowercase/LowercaseMenu.event"
+#include "MenuUppercase/UppercaseMenu.event"	
