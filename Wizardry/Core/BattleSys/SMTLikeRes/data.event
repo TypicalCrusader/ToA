@@ -1,0 +1,10 @@
+#ifndef SMT_LIKE_RES_DATA_INSTALLED
+#define SMT_LIKE_RES_DATA_INSTALLED
+
+#include "source/SMTLikeResConf.lyn.event"
+
+ALIGN 4
+gpRaceStruct:
+    POIN gRaceStruct
+
+#endif //SMT_LIKE_RES_DATA_INSTALLED

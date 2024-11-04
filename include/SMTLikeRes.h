@@ -35,6 +35,9 @@ const struct RaceStruct {
     u8 uRaceWeak[0x4];
 };
 
+extern struct RaceStruct const gRaceStruct[0xFF];
+extern struct RaceStruct const *const gpRaceStruct[0xFF];
+
 s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender);
 
 #endif // SMT_LIKE_RES_H

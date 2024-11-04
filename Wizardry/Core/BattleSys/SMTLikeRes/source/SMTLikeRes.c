@@ -24,7 +24,7 @@ FUTURE TODO
 - add pictures to appear on res/nul/weak/absr attack
 */
 
-struct RaceStruct Race[0xFF];
+extern struct RaceStruct gRaceStruct[0xFF];
 
 s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {

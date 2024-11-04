@@ -1,6 +1,6 @@
 #include "SMTLikeRes.h"
 
-const struct RaceStruct Race[0xFF] = {
+const struct RaceStruct gRaceStruct[0xFF] = {
     [RACE_HUMAN] = {
         .uRaceNameID = RACE_HUMAN_NAME_ID,
         .uRaceDescID = RACE_HUMAN_DESC_ID,
