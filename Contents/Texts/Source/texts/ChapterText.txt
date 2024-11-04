@@ -1,3 +1,9 @@
+## CH_6_MAIN_MENU_CH_NAME
+Threading In Shadows[X]
+
+## CH_6_ROUTE_B_CH_NAME
+Shadows Cleared[X]
+
 ## Ch6_Canon_BegScene
 Placeholder[X]
 

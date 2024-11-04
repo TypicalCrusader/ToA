@@ -15,8 +15,8 @@ const struct ROMChapterData Ch6Chapter = {
 	},
 	.initialFogLevel = 0,
 	.hasPrepScreen = FALSE,
-	.chapTitleId = 7,
-	.chapTitleIdInHectorStory = 7,
+	.chapTitleId = 7, //ch6 complicit route
+	.chapTitleIdInHectorStory = 9, //ch9 canon route
 	.initialPosX = 13,
 	.initialPosY = 25,
 	.initialWeather = WEATHER_FINE,
@@ -103,7 +103,7 @@ const struct ROMChapterData Ch6Chapter = {
 		[0] = 40,
 		[1] = 40,
 	},
-	.unk5E = 0,
+	.unk5E = CH_6_MAIN_MENU_CH_NAME,
 	.goldForFundsRankInEliwoodStory = {
 		[0] = 1060,
 		[1] = 1060,
@@ -112,8 +112,8 @@ const struct ROMChapterData Ch6Chapter = {
 		[0] = 1060,
 		[1] = 1060,
 	},
-	.chapTitleTextId = 167,
-	.chapTitleTextIdInHectorStory = 167,
+	.chapTitleTextId = CH_6_ROUTE_A_CH_NAME,
+	.chapTitleTextIdInHectorStory = CH_6_ROUTE_B_CH_NAME,
 	.mapEventDataId = 24,
 	.gmapEventId = 8,
 	.divinationTextIdBeginning = 0,
@@ -155,7 +155,7 @@ static const struct UnitDefinition Ch6_August_Light[] = {
 		.autolevel = false,
 		.level = 1,
 		.xPosition = 16,
-		.yPosition = 29,
+		.yPosition = 6,
 		.redaCount = 0,
 		.redas = NULL,
 		.items = {
@@ -171,7 +171,7 @@ static const struct UnitDefinition Ch6_August_Heavy[] = {
 		.autolevel = false,
 		.level = 1,
 		.xPosition = 16,
-		.yPosition = 29,
+		.yPosition = 6,
 		.redaCount = 0,
 		.redas = NULL,
 		.items = {
@@ -179,7 +179,12 @@ static const struct UnitDefinition Ch6_August_Heavy[] = {
 	},	
 };
 
-
+// NCanon
+// 4 units in throne room in normal, 4 outside
+// 3 in hard & lunatic
+// Canon
+// 2 Units in Throne room 2 in room left, 4 outside
+// 2 Units in Throne room 2 in room left, 3 outside
 static const struct UnitDefinition Ch6_UnitDef_Canon_Normal[] = {
 };
 static const struct UnitDefinition Ch6_UnitDef_Canon_Hard[] = {
@@ -274,8 +279,8 @@ static const EventScr Ch6_EventScr_Beginning[] = {
 
 LABEL(11)
 	//check on which path are you
-	CHECK_EVENTID(EVFLAG_PATH_SELECT)//EVFLAG 130
-	BEQ(0, EVT_SLOT_C, EVT_SLOT_0) //IF 0 THEN CANON PATH, IF 1 THEN COMPLICIT PATH
+	CHECK_EVENTID(EVFLAG_PATH_SELECT)//EVFLAG 0x88
+	BEQ(0, EVT_SLOT_C, EVT_SLOT_0) //IF 0 THEN nonCANON PATH, IF 1 THEN canon PATH
 		CHECK_TUTORIAL //CHECK IF IN NORMAL
 		BNE(5, EVT_SLOT_C, EVT_SLOT_0)
 			CHECK_HARD //CHECK IF IN HARD
@@ -283,6 +288,12 @@ LABEL(11)
 				GOTO(7)
 LABEL(4)
 	//Text_BG(0xA,Ch6_NonCanon_BegScene) 
+	ASMC(GetCurrentMC)
+	SVAL(EVT_SLOT_2, EVT_SLOT_1)	
+	MOVE(5, 0xfffd, 8, -1)
+	//Text_BG(0xA,Ch6_NonCanon_BegScene_2) 
+	MOVE(5, )
+	MOVE(5, 0xfffd, 0, 1)
 	GOTO(3)
 
 LABEL(0)
@@ -296,32 +307,32 @@ LABEL(8)
 	GOTO(3)
 
 LABEL(1)
-	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Normal)
+	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Normal)
 	ENUN
 	GOTO(4)
 
 LABEL(2)
-	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Lunatic)
+	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Lunatic)
 	ENUN
 	GOTO(4)
 
 LABEL(3)
-	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Hard)
+	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Hard)
 	ENUN
 	GOTO(4)
 
 LABEL(5)
-	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Normal)
+	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Normal)
 	ENUN
 	GOTO(8)
 
 LABEL(6)
-	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Lunatic)
+	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Lunatic)
 	ENUN
 	GOTO(8)
 
 LABEL(7)
-	LOAD1(0X1, Ch6_UnitDef_Ally_NonCanon_Hard)
+	LOAD1(0X1, Ch6_UnitDef_Ally_Canon_Hard)
 	ENUN
 	GOTO(8)
 
@@ -477,7 +488,7 @@ const struct ChapterEventGroup Ch6Event = {
 
 	.playerUnitsChoice1InEncounter = Ch6_UnitDef_NonCanon_Normal,
 	.playerUnitsChoice2InEncounter = Ch6_UnitDef_NonCanon_Hard,
-	.playerUnitsChoice3InEncounter = Ch6_UnitDef_Lunatic,
+	.playerUnitsChoice3InEncounter = NULL,
 
 	.enemyUnitsChoice1InEncounter = Ch6_UnitDef_Enemy_Normal,
 	.enemyUnitsChoice2InEncounter = Ch6_UnitDef_Enemy_Hard,

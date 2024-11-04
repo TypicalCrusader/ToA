@@ -6,8 +6,6 @@
 #include "Constants.event"
 #include "Indices.event"
 
-#include "Lists/RaceList.event"
-
 #include "Tables/Class.event"
 #include "Tables/Character.event"
 #include "Tables/Item.event"

@@ -1,6 +1,25 @@
 #ifndef GUARD_CONSTANTS_ITEMS_H
 #define GUARD_CONSTANTS_ITEMS_H
 
+/*
+enum {
+    ITYPE_SWORD = 0,
+    ITYPE_LANCE = 1,
+    ITYPE_AXE   = 2,
+    ITYPE_BOW   = 3,
+    ITYPE_STAFF = 4,
+    ITYPE_ANIMA = 5,
+    ITYPE_LIGHT = 6,
+    ITYPE_DARK  = 7,
+    ITYPE_BLLST = 8,
+    ITYPE_ITEM  = 9,
+    ITYPE_DRAGN = 10,
+
+    ITYPE_11    = 11,
+    ITYPE_12    = 12,
+};
+*/
+
 enum {
     ITEM_NONE              = 0x00,
 
@@ -14,7 +33,7 @@ enum {
     ITEM_BLADE_SILVER      = 0x07,
     ITEM_SWORD_VENIN       = 0x08,
     ITEM_SWORD_RAPIER      = 0x09,*/
-    ITEM_SWORD_MKATTI      = 0x0A,
+    ITEM_SWORD_TYRFANG_SEALED      = 0x0A,
 /*    ITEM_SWORD_BRAVE       = 0x0B,
     ITEM_SWORD_SHAMSIR     = 0x0C,
     ITEM_SWORD_KILLER      = 0x0D,

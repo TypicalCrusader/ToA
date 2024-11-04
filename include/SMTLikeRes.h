@@ -5,18 +5,35 @@
 
 #include "common-chax.h"
 #include "bmbattle.h"
+#include "bmitem.h"
 
-struct RaceStruct {
+enum {
+    RACE_HUMAN = 1,
+    RACE_ASCENDED = 2,
+    RACE_DRAGON_EARTH =3,
+    RACE_DRAGON_LIGHTING = 4,
+    RACE_DRAGON_WATER =5,
+    RACE_DRAGON_FIRE = 6,
+    RACE_DRAGON_DAWN = 7,
+    RACE_DRAGON_DUSK = 8,
+    RACE_WOLFKIN = 9,
+    RACE_FOXKIN = 10,
+    RACE_CATKIN = 11,
+    RACE_ELDER_DRAGON_DAWN = 11,
+    RACE_ELDER_DRAGON_DUSK = 12,
+    RACE_INNATH_APEX = 13,
+    RACE_NO_RACE = 255
+};
+
+const struct RaceStruct {
     u16 uRaceNameID;
     u16 uRaceDescID;
 
-    u8 uRaceRes[0x3];
-    u8 uRaceNull[0x3];
-    u8 uRaceAbsorb[0x3];
-    u8 uRaceWeak[0x3];
+    u8 uRaceRes[0x4];
+    u8 uRaceNull[0x4];
+    u8 uRaceAbsorb[0x4];
+    u8 uRaceWeak[0x4];
 };
-
-extern struct RaceStruct Race[0xFF];
 
 s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender);
 

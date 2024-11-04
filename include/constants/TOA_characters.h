@@ -8,9 +8,10 @@ enum {
     // Player Characters
     CHARACTER_PLAY_AUGUST_HEAVY     = 0x01, //August - Heavy
     CHARACTER_PLAY_CYRIC            = 0x02, //Cyric
+    CHARACTER_PLAY_NESIA            = 0x03, //Nesia
+    CHARACTER_PLAY_DURIN            = 0x04, //Durin
+    
 /*    
-    CHARACTER_GILLIAM      = 0x03,
-    CHARACTER_FRANZ        = 0x04,
     CHARACTER_MOULDER      = 0x05,
     CHARACTER_VANESSA      = 0x06,
     CHARACTER_ROSS         = 0x07,

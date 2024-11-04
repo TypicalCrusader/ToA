@@ -8,8 +8,31 @@
   .short 0xf800
 .endm
 
-//Typical Edit
-.equ CheckEventId,0x8083da8
+//Typical Edit below
+//Since i want people to understand what they read im equing juuuust to be sure
+.equ CheckEventId,		0x8083da8					// {U}
+.equ ProcScr_SaveMenu,  0x8A200B8					// {U}
+.equ Proc_Find, 0x8002E9C							// {U}
+.equ GetStringFromIndex, 0x800a240					// {U}
+//.equ GetStringFromIndex 0x8009fa8 				// {J}
+.equ TextBufferOffset, 0x202A6AC					// {U}
+//.equ TextBufferOffset, 0x202A6A8					// {J}
+.equ gGenericBuffer,  0x2020188						// {U + J}
+.equ GetROMChapterStruct, 0x8034618 				// {U}
+//.equ GetROMChapterStruct, 0x8034520 				// {J}
+.equ UnLZ77Decompress, 0x8012f50         			// {U}
+@.equ UnLZ77Decompress, 0x8013008        			// {J}
+.equ gGMData, 0x0300528								// {U}
+@.equ gGMData, gGMData								// {J}
+.equ GetWorldMapNodeName, 0x080BBA28				// {U}
+@.equ GetWorldMapNodeName, 0x080c086c				// {J}
+.equ GetBattleMapKind, 0x080BD068        			// {U}
+@.equ GetBattleMapKind, 0x080C1E74        			// {J}
+.equ gChapterTitleGrahicsWorkBuffer, 0x203E78C		// {U}
+@.equ gChapterTitleGrahicsWorkBuffer, 0x0203E788	// {J}
+
+
+//typical Edit End here
 
 loader:
 b main
@@ -17,16 +40,16 @@ b main
 
 strcat_gBuffer_with_decode:
 push {lr}
-blh     0x800a240         @GetStringFromIndex	{J}
-@blh     0x8009fa8         @GetStringFromIndex	{U}
+blh     GetStringFromIndex 
+@blh     GetStringFromIndex
 bl      strcat_gBuffer
 pop {r0}
 bx r0
 
 strcat_onechar:
 push {lr}
-ldr     r1,=0x202A6AC           @TextBufferOffset	{U}
-@ldr     r1,=0x202A6A8           @TextBufferOffset	{J}
+ldr     r1,=TextBufferOffset           @TextBufferOffset	{U}
+@ldr     r1,=TextBufferOffset           @TextBufferOffset	{J}
 strb    r0,[r1]            @gBuffer[0]=0x0
 mov     r0,#0x0
 strb    r0,[r1,#0x01]            @gBuffer[1]=0x0
@@ -85,7 +108,7 @@ strcat_gBuffer:
 push {lr}
 
 mov     r1,r0
-ldr     r0,=0x2020188      @gGenericBuffer	{U}	{J} common
+ldr     r0,=gGenericBuffer      @gGenericBuffer	{U}	{J} common
 bl strcat
 
 pop {r0}
@@ -123,30 +146,33 @@ push    {r4,lr}
 mov     r4,r0
 
 mov     r0,#0x0
-blh     0x8034618                 @GetChapterDefinition {U}
-@blh     0x8034520                 @GetChapterDefinition {J}
+blh     GetROMChapterStruct                 @GetChapterDefinition {U}
+@blh     GetROMChapterStruct                 @GetChapterDefinition {J}
 mov 	r5,r0 //line added by Typical
 mov     r1,#0x00
 chapertileid_to_chapterid_Loop:
 cmp r1,#0x7f
 bge chapertileid_to_chapterid_Exit
 
-@here it gets the actual title id >:)
-//added by Typical
-@mov r0, #0xFF //flag 255
-@add r0, #0x29 //flag 296
-@blh CheckEventId
-@	cmp r0, #0
-@		mov     r0,#0x0
-@		mov 	r0,r5 //leave data alone
-@		beq FE8Path1
-@			ldrb r2,[r0,#0xe] @f]  @chapTitleIdInHectorStory
-@			b Fe8PostPathCheck
-@FE8Path1:
-ldrb r2,[r0,#0xe]  @ChapterTitleID
-@Fe8PostPathCheck:
+//Typical Edit Below
+@here it gets the chapter number)
+mov r0, 0x74 //mapEventDataId
+ldrb r0, [r0] //get value
+cmp r0, #0x7 // prologue events id
+beq FE8Path1 //ignore following code if we are at prologue
+	mov r0, #0x88 // New Arrivals flag (path split)
+	blh CheckEventId
+		cmp r0, #0
+		beq FE8Path1
+			mov 	r0,r5 //leave data alone
+			ldrb r2,[r0,#0xe] @f]  @chapTitleIdInHectorStory
+			b Fe8PostPathCheck
+	FE8Path1:
+	mov 	r0,r5 //leave data alone	
+	ldrb r2,[r0,#0xe]  @ChapterTitleID
+	Fe8PostPathCheck:
 
-//End Typical Edit
+//Typical Edit end here
 
 cmp r2,r4
 beq chapertileid_to_chapterid_Found
@@ -584,8 +610,8 @@ bl      sub_8082224
 lsl     r0,r0,#0x18
 lsr     r5,r0,#0x18
 mov     r6,r5
-ldr     r1,=0x203E78C	@gChapterTitleGrahicsWorkBuffer	{U}
-@ldr     r1,=0x0203E788	@gChapterTitleGrahicsWorkBuffer	{J}
+ldr     r1,=gChapterTitleGrahicsWorkBuffer	@gChapterTitleGrahicsWorkBuffer	{U}
+@ldr     r1,=gChapterTitleGrahicsWorkBuffer	@gChapterTitleGrahicsWorkBuffer	{J}
 ldr     r2,=0x3FF
 mov     r0,r2
 and     r4,r0
@@ -599,9 +625,9 @@ mov     r1,r8
 swi #0xC
 
 ldr     r0, =ChFont
-ldr     r1,=0x2020188      @gGenericBuffer	{U}	{J} common
-blh      0x8012f50         @UnLZ77Decompress	{U}
-@blh      0x8013008         @UnLZ77Decompress	{J}
+ldr     r1,=gGenericBuffer      @gGenericBuffer	{U}	{J} common
+blh      UnLZ77Decompress         @UnLZ77Decompress	{U}
+@blh      UnLZ77Decompress         @UnLZ77Decompress	{J}
 b       loc_80823C6
 .align
 .ltorg
@@ -640,7 +666,7 @@ b       loc_80823A2
 loc_80823A0:
 mov     r6,r5
 loc_80823A2:
-ldr     r0,=0x2020188      @gGenericBuffer	{U}	{J} common
+ldr     r0,=gGenericBuffer      @gGenericBuffer	{U}	{J} common
 mov     r1,r8
 mov     r3,r6
 bl      sub_8082168
@@ -690,30 +716,30 @@ b       chapter_text
 nodata_text:
 mov     r0,#0xCC      @NO DATA	{U}
 @mov     r0,#0x61      @NO DATA	{J}
-blh     0x800a240         @GetStringFromIndex	{J}
-@blh     0x8009fa8         @GetStringFromIndex	{U}
+blh     GetStringFromIndex         @GetStringFromIndex	{J}
+@blh     GetStringFromIndex         @GetStringFromIndex	{U}
 b       end_80822a4
 
 epilogue_text:
 ldr     r0,=0x7cf     @Epilogue (song name) {U}
 @ldr     r0,=0x746     @Epilogue (song name) {J}
-blh     0x800a240         @GetStringFromIndex	{J}
-@blh     0x8009fa8         @GetStringFromIndex	{U}
+blh     GetStringFromIndex         @GetStringFromIndex	{J}
+@blh     GetStringFromIndex         @GetStringFromIndex	{U}
 b       end_80822a4
 
 worldmap_node_text:
-ldr     r0,=0x03005280  @gSomeWMEventRelatedStruct	{U}
-@ldr     r0,=0x03005270  @gSomeWMEventRelatedStruct	{J}
+ldr     r0,=gGMData0  @gSomeWMEventRelatedStruct	{U}
+@ldr     r0,=gGMData  @gSomeWMEventRelatedStruct	{J}
 ldrb    r0,[r0,#0x11]
-blh     0x080BBA28      @GetWorldMapNodeName	{U}
-@blh     0x080c086c      @GetWorldMapNodeName	{J}
+blh     GetWorldMapNodeName      @GetWorldMapNodeName	{U}
+@blh     GetWorldMapNodeName      @GetWorldMapNodeName	{J}
 b       end_80822a4
 
 postgame_text:
 ldr     r0,=0x7D0     @ blank	{U}
 @ldr     r0,=0x0       @ blank	{J}	候補がない
-blh     0x800a240         @GetStringFromIndex	{J}
-@blh     0x8009fa8         @GetStringFromIndex	{U}
+blh     GetStringFromIndex         @GetStringFromIndex	{J}
+@blh     GetStringFromIndex         @GetStringFromIndex	{U}
 b       end_80822a4
 .ltorg
 
@@ -721,11 +747,11 @@ chapter_text:
 mov     r0,r4
 bl chapertileid_to_chapterid
 mov     r4,r0
-blh     0x8034618                 @GetChapterDefinition {U}
-@blh     0x8034520                 @GetChapterDefinition {J}
+blh     GetROMChapterStruct                 @GetChapterDefinition {U}
+@blh     GetROMChapterStruct                 @GetChapterDefinition {J}
 mov     r5, r0
 
-ldr     r1,=0x2020188      @gGenericBuffer	{U}	{J} common
+ldr     r1,=gGenericBuffer      @gGenericBuffer	{U}	{J} common
 mov     r0,#0x0
 strb    r0,[r1]            @gBuffer[0]=0x0
 
@@ -748,8 +774,8 @@ b       Space_Text
 
 
 CheckTowerOrRuins:
-blh     0x080BD068        @GetChapterThing {U}
-@blh     0x080C1E74        @GetChapterThing {J}
+blh     GetBattleMapKind        @GetChapterThing {U}
+@blh     GetBattleMapKind        @GetChapterThing {J}
 cmp     r0,#0x0
 bne     Chapter_Main_Text   @塔やタワーならば本文を表示しない
 
@@ -792,23 +818,30 @@ Chapter_Main_Text:
 @Chapter Name Main text
 
 //Typical Edit go below
-
 mov r4, r0
+//check if we are in main menu
+mov r0, ProcScr_SaveMenu
+blh Proc_Find
+cmp r0, #0 //if true then we are in game
+beq InGameTextIDGetter
+	mov r0, #0x0
+	mov r0, r4
+	mov r0, #0x5E //unk5E u16 (short) pad in chapter data - used to store main menu chapter textID
+	b FE8PathTextEnd
 
-
+InGameTextIDGetter:
 mov r0, #0x88 //vanilla new arrivals flag (aka path split)
 blh CheckEventId
 	cmp r0, #0
 	beq FE8PathText1
-		mov r0, #0x0
 		mov r0, r4
-		mov     r0,#0x72
-			b FE8PathTextEnd
+		mov r0,#0x72 //hector textID
+		b FE8PathTextEnd
 
 FE8PathText1:
 mov r0, #0x0
 mov r0, r4
-mov     r0,#0x70
+mov r0,#0x70	//"normal textID"
 FE8PathTextEnd:
 
 //Typical Edit end here
@@ -817,9 +850,9 @@ ldrh    r0,[r5,r0]
 bl      strcat_gBuffer_with_decode
 
 Reverse_strcpy_TextBuffer:
-ldr     r0,=0x202A6AC           @TextBufferOffset	{U}
-@ldr     r0,=0x202A6A8           @TextBufferOffset	{J}
-ldr     r1,=0x2020188           @gGenericBuffer	{U}	{J} common
+ldr     r0,=TextBufferOffset           @TextBufferOffset	{U}
+@ldr     r0,=TextBufferOffset           @TextBufferOffset	{J}
+ldr     r1,=gGenericBuffer           @gGenericBuffer	{U}	{J} common
 blh     0x080D1D3C	@strcpy   return r0=TextBufferOffset	{U}
 @blh     0x080d69bc	@strcpy   return r0=TextBufferOffset	{J}
 

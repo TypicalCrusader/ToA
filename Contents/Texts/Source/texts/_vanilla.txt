@@ -1,6 +1,9 @@
 #0x160 PrologueText
 Onion 2137[X]
 
+#0x167 CH_6_ROUTE_A_CH_NAME
+Stumbling in Shadows[X]
+
 #0x24d Imperial
 Imperial[X]
 
