@@ -30,6 +30,7 @@
 @.equ GetBattleMapKind, 0x080C1E74        			// {J}
 .equ gChapterTitleGrahicsWorkBuffer, 0x203E78C		// {U}
 @.equ gChapterTitleGrahicsWorkBuffer, 0x0203E788	// {J}
+.equ gPlaySt, 0x202BCF0								// {U}
 
 
 //typical Edit End here
@@ -155,23 +156,25 @@ cmp r1,#0x7f
 bge chapertileid_to_chapterid_Exit
 
 //Typical Edit Below
-@here it gets the chapter number)
-mov r0, 0x74 //mapEventDataId
-ldrb r0, [r0] //get value
-cmp r0, #0x7 // prologue events id
+@here it gets the chapter number
+mov 	r0, 0x74 //mapEventDataId
+ldrb 	r0, [r0] //get value
+cmp 	r0, #0x7 // prologue events id
 beq FE8Path1 //ignore following code if we are at prologue
-	mov r0, #0x88 // New Arrivals flag (path split)
-	blh CheckEventId
-		cmp r0, #0
+	mov 	r0, gPlaySt
+	add 	r0, #0x1B
+	ldrb 	r0, [r0]
+	cmp 	r0, #1
+	beq FE8Path1
+		cmp r0, #2
 		beq FE8Path1
 			mov 	r0,r5 //leave data alone
-			ldrb r2,[r0,#0xe] @f]  @chapTitleIdInHectorStory
+			ldrb 	r2,[r0,#0xf]  @chapTitleIdInHectorStory
 			b Fe8PostPathCheck
 	FE8Path1:
 	mov 	r0,r5 //leave data alone	
-	ldrb r2,[r0,#0xe]  @ChapterTitleID
-	Fe8PostPathCheck:
-
+	ldrb 	r2,[r0,#0xe]  @ChapterTitleID
+Fe8PostPathCheck:
 //Typical Edit end here
 
 cmp r2,r4
@@ -818,25 +821,22 @@ Chapter_Main_Text:
 @Chapter Name Main text
 
 //Typical Edit go below
-mov r4, r0
-//check if we are in main menu
-mov r0, ProcScr_SaveMenu
-blh Proc_Find
-cmp r0, #0 //if true then we are in game
-beq InGameTextIDGetter
-	mov r0, #0x0
-	mov r0, r4
-	mov r0, #0x5E //unk5E u16 (short) pad in chapter data - used to store main menu chapter textID
-	b FE8PathTextEnd
-
-InGameTextIDGetter:
-mov r0, #0x88 //vanilla new arrivals flag (aka path split)
-blh CheckEventId
-	cmp r0, #0
+mov 	r4, r0
+mov 	r0, gPlaySt
+add 	r0, #0x1B
+ldrb 	r0, [r0] //path byte
+cmp 	r0 #1 //prologue
+beq PrologueChName
+	cmp 	r0, #2 //erika
 	beq FE8PathText1
-		mov r0, r4
-		mov r0,#0x72 //hector textID
+		mov 	r0, r4
+		mov 	r0,#0x72 //hector textID
 		b FE8PathTextEnd
+
+PrologueChName
+mov r0, 	r4
+mov r0, 	#0x5E //unk5E u16 (short) pad in chapter data - used to store main menu chapter textID
+b FE8PathTextEnd
 
 FE8PathText1:
 mov r0, #0x0

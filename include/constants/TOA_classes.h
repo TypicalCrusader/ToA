@@ -1,9 +1,8 @@
-#ifndef GUARD_CONSTANTS_CLASSES_H
-#define GUARD_CONSTANTS_CLASSES_H
+#ifndef GUARD_CONSTANTS_TOA_CLASSES_H
+#define GUARD_CONSTANTS_TOA_CLASSES_H
 
 enum {
     CLASS_NONE                = 0x00,
-
     CLASS_PLAY_ARMORED_LORD         = 0x01,
     CLASS_PLAY_LIGHT_LORD           = 0x02,
     CLASS_PLAY_ARMORED_GREAT_LORD   = 0x03,
@@ -91,8 +90,9 @@ enum {
     CLASS_BONEWALKER_BOW      = 0x55,*/
     CLASS_PLAY_EMPEROR                   = 0x56,
     CLASS_PLAY_GRAND_EMPEROR             = 0x57,
-    /*CLASS_BAEL                = 0x58,
-    CLASS_ELDER_BAEL          = 0x59,
+    CLASS_CUTS_NOBLE                     = 0x58,
+    CLASS_PLAY_MAGE_LORD                 = 0x59,
+    /*
     CLASS_CYCLOPS             = 0x5A,
     CLASS_MAUTHEDOOG          = 0x5B,
     CLASS_GWYLLGI             = 0x5C,
@@ -136,4 +136,4 @@ enum {
     CLASS_OBSTACLE = CLASS_EPHRAIM_LORD, */
 };
 
-#endif // GUARD_CONSTANTS_CLASSES_H
+#endif // GUARD_CONSTANTS_TOA_CLASSES_H

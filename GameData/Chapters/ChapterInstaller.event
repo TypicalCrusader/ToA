@@ -1,5 +1,31 @@
+
 {
-    //prologue
+    //Pr0 - map 0
+}
+{
+    //CH1 - map 1
+    EventPointerTable(0xA, Ch1Event)
+    #include "Ch1/Event/Ch1_header.lyn.event"
+    #include "Ch1/Event/Ch1.lyn.event" 
+}
+{
+    //CH2 - map 2
+
+}
+{
+    //CH3 - map 3
+
+}
+{
+    //CH4 - map 4
+
+}
+{
+    //CH5 - map 5
+
+}
+{
+    //CH 6 - map 7
     EventPointerTable(0x24, Ch6Event)
     #include "Ch6/Event/Ch6.lyn.event"
 }

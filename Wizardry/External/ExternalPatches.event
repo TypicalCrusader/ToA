@@ -25,3 +25,4 @@
 #include "ExtendWeaponDescBox/Installer.event"
 //#include "BattleTransforming/Installer.event"
 #include "ChangeUnitDesc/Installer.event"
+#include "ChangeMCEphraim/installer.event"

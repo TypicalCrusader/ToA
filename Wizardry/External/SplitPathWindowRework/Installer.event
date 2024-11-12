@@ -30,3 +30,42 @@ Chapter1Menu:
 
 
 EventMenuCommandEnd */
+ALIGN 4
+Class_Choice_MenuASMC:
+MenuASMC
+
+ALIGN 4
+POIN Class_Choice_MenuDefs
+
+ALIGN 4
+Class_Choice_MenuDefs:
+	BYTE 6 8 18 0           // Geomerty, order: X, Y, Width, Height (Height doesn't matter)
+	WORD 1                  // style (change it if u want)
+	POIN Class_Choice_Menu         //pCommandDefinition // Command Definitions
+	WORD 0 0 0 0 0 0        // No routines to handle B press/R press/construction/etc
+
+ALIGN 4
+Class_Choice_Menu:
+	EventMenuCommand(Class_Choice_Menu_Heavy)
+	EventMenuCommand(Class_Choice_Menu_Light)
+EventMenuCommandEnd
+
+ALIGN 4
+Path_Choice_MenuASMC:
+MenuASMC
+
+ALIGN 4
+POIN Path_Choice_MenuDefs
+
+ALIGN 4
+Path_Choice_MenuDefs:
+	BYTE 6 8 18 0           // Geomerty, order: X, Y, Width, Height (Height doesn't matter)
+	WORD 1                  // style (change it if u want)
+	POIN Path_Choice_Menu         //pCommandDefinition // Command Definitions
+	WORD 0 0 0 0 0 0        // No routines to handle B press/R press/construction/etc
+
+ALIGN 4
+Path_Choice_Menu:
+	EventMenuCommand(Path_Choice_Menu_Canon)
+	EventMenuCommand(Path_Choice_Menu_Non_Canon)
+EventMenuCommandEnd

@@ -1,0 +1,11 @@
+## Class_Choice_Menu_Light
+Don the Gambesson[X]
+
+## Class_Choice_Menu_Heavy
+Don the Plate Armour[X]
+
+## Path_Choice_Menu_Canon
+Go through the Forest[X]
+
+## Path_Choice_Menu_Non_Canon
+Go through the Hills[X]

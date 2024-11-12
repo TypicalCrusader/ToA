@@ -76,6 +76,22 @@ static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 	BU_CHG_MAG(bu) = GetStatIncreaseFixed(GetUnitMagGrowth(unit) + bonus, ref += 5);
 }
 
+static void UnitLvup_Modern(struct BattleUnit *bu, int bonus)
+{
+	struct Unit *unit = GetUnit(bu->unit.index);
+	struct ClassData *class = GetClassData(bu->unit.pClassData->number);
+
+	bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit) + class->growthHP  + bonus);
+	bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + class->growthPow + bonus);
+	bu->changeSkl = GetStatIncrease(GetUnitSklGrowth(unit) + class->growthSkl + bonus);
+	bu->changeSpd = GetStatIncrease(GetUnitSpdGrowth(unit) + class->growthSpd + bonus);
+	bu->changeLck = GetStatIncrease(GetUnitLckGrowth(unit) + class->growthLck + bonus);
+	bu->changeDef = GetStatIncrease(GetUnitDefGrowth(unit) + class->growthDef + bonus);
+	bu->changeRes = GetStatIncrease(GetUnitResGrowth(unit) + class->growthRes + bonus);
+
+	BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+};
+
 static void UnitLvup_100(struct BattleUnit *bu, int bonus)
 {
 	bu->changeHP  = 1;
@@ -98,7 +114,9 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 		[1] = UnitLvup_RandC,
 		[2] = UnitLvup_Fixed,
 		[3] = UnitLvup_100,
-		[4] = UnitLvup_0
+		[4] = UnitLvup_0,
+		//Typical EDIT
+		[5] = UnitLvup_Modern,
 	};
 
 	int mode;
@@ -110,8 +128,11 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 	else
 		mode = gpKernelDesigerConfig->lvup_mode_normal;
 
-	if (mode > 4)
+	if (bu->unit.pCharacterData->_u24 == 1) //allow modern growths
+		mode = 5;
+	if (mode > 5)
 		mode = 0;
+	
 
 	funcs[mode](bu, bonus);
 

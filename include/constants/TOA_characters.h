@@ -6,7 +6,7 @@ enum {
     //CHARACTER_NONE         = 0x00,
 
     // Player Characters
-    CHARACTER_PLAY_AUGUST_HEAVY     = 0x01, //August - Heavy
+    CHARACTER_PLAY_AUGUST           = 0x01, //August 
     CHARACTER_PLAY_CYRIC            = 0x02, //Cyric
     CHARACTER_PLAY_NESIA            = 0x03, //Nesia
     CHARACTER_PLAY_DURIN            = 0x04, //Durin
@@ -22,7 +22,7 @@ enum {
     CHARACTER_LUTE         = 0x0C,
     CHARACTER_NATASHA      = 0x0D,
     CHARACTER_CORMAG       = 0x0E, */
-    CHARACTER_PLAY_AUGUST_LIGHT      = 0x0F, //August - Light
+    //CHARACTER_PLAY_AUGUST_LIGHT      = 0x0F, //August - Light
 /*    CHARACTER_FORDE        = 0x10,
     CHARACTER_KYLE         = 0x11,
     CHARACTER_AMELIA       = 0x12,

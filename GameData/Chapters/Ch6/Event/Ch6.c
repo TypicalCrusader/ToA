@@ -165,7 +165,7 @@ static const struct UnitDefinition Ch6_August_Light[] = {
 //purely for cutscene
 static const struct UnitDefinition Ch6_August_Heavy[] = {
 	{
-		.charIndex = CHARACTER_PLAY_AUGUST_HEAVY,
+		.charIndex = CHARACTER_PLAY_AUGUST,
 		.classIndex = CLASS_EPHRAIM_LORD,
 		.allegiance = FACTION_ID_BLUE,
 		.autolevel = false,
@@ -271,7 +271,7 @@ void SelectRandomUnitGrouptoS2(){
 
 static const EventScr Ch6_EventScr_Beginning[] = {
 	//spawn MC
-	ASMC(GetCurrentMC)
+	
 	SVAL(EVT_SLOT_2, 1)
 	BEQ(10,EVT_SLOT_1,EVT_SLOT_2)
 		LOAD1(0X1, Ch6_August_Light)
@@ -288,7 +288,7 @@ LABEL(11)
 				GOTO(7)
 LABEL(4)
 	//Text_BG(0xA,Ch6_NonCanon_BegScene) 
-	ASMC(GetCurrentMC)
+	
 	SVAL(EVT_SLOT_2, EVT_SLOT_1)	
 	MOVE(5, 0xfffd, 8, -1)
 	//Text_BG(0xA,Ch6_NonCanon_BegScene_2) 
@@ -360,7 +360,7 @@ LABEL(202)
 
 LABEL(201)
 	//text
-	ASMC(GetCurrentMC)
+	
 	PROM(-3 ,CLASS_NONE,ITEM_NONE)
 LABEL(203)
 

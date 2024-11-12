@@ -30,7 +30,12 @@ void SetCourtApprovalValue()
     LastPermaFlagByte <<= 4; //clear 
     LastPermaFlagByte >>= 4; 
 
-    LastPermaFlagByte = LastPermaFlagByte + gEventSlots[0x1];
+    if(gEventSlots[0x2] == 0) {
+        LastPermaFlagByte = LastPermaFlagByte + gEventSlots[0x1];
+    }
+    else {
+        LastPermaFlagByte = gEventSlots[0x1];
+    }
     if(LastPermaFlagByte > 15)
     {
         LastPermaFlagByte = 15;

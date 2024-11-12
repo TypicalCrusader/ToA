@@ -1,8 +1,35 @@
+## CH_1_ROUTE_A_CH_NAME
+Fueled by Greed[X]
+
+## CH_1_ROUTE_B_CH_NAME
+Fueled by Desperation[X]
+
 ## CH_6_MAIN_MENU_CH_NAME
 Threading In Shadows[X]
 
 ## CH_6_ROUTE_B_CH_NAME
 Shadows Cleared[X]
+
+## Ch1_Beginning_text_1
+Placeholder[X]
+
+## Ch1_Beginning_text_2
+Placeholder[X]
+
+## Ch1_Beginning_text_chosen_heavy
+Placeholder[X]
+
+## Ch1_Beginning_text_chosen_light
+Placeholder[X]
+
+## Ch1_Beginning_text_3
+Placeholder[X]
+
+## Ch1_Beginning_text_4
+Placeholder[X]
+
+## Ch1_Beginning_text_5
+Placeholder[X]
 
 ## Ch6_Canon_BegScene
 Placeholder[X]

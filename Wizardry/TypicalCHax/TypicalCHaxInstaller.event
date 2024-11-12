@@ -1,3 +1,4 @@
 #include "CourtApproval/CourtApprovalInstaller.event"
-#include "GetCurrentMC/GetCurrentMCInstaller.event"
 #include "RandomReinforcements/RandomReinforcementsInstaller.event"
+#include "CurrentPath/installer.event"
+#include "SilentPromote/installer.event"

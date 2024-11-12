@@ -5,7 +5,7 @@
 
 #include "common-chax.h"
 #include "variables.h"
-
+#include "TChax.h"
 
 
 #endif // COURT_APPROVAL_H

@@ -1,0 +1,5 @@
+#include "src/CChangeUnitDescConf.lyn.event"
+
+#ALIGN 4
+gpCharDescStruct:
+    POIN gCharDescStruct
