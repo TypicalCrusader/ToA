@@ -34,9 +34,11 @@ ORG FreeSpaceDEMO
     */
     #include "GameData/GameData.event"
     /*
-        for events i need this
+        char anims
     */
+    #include "Contents/ChAnim/ChAnimInstaller.event"
     #include "GameData/Chapters/ChapterInstaller.event"
+    #include "Contents/Portraits.event"
     #define FreeSpaceEvents CURRENTOFFSET
 MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO) max (FreeSpaceDEMOMax - FreeSpaceDEMO)
 ASSERT (FreeSpaceDEMOMax - CURRENTOFFSET)

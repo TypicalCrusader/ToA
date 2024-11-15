@@ -6,6 +6,7 @@
 #include "common-chax.h"
 #include "bmbattle.h"
 #include "bmitem.h"
+#include "constants/texts.h"
 
 enum {
     RACE_HUMAN = 1,
@@ -22,10 +23,12 @@ enum {
     RACE_ELDER_DRAGON_DAWN = 11,
     RACE_ELDER_DRAGON_DUSK = 12,
     RACE_INNATH_APEX = 13,
-    RACE_NO_RACE = 255
+    RACE_HOMONCULLI = 14,
+    RACE_WIND_DRAGON = 15,
+    RACE_NO_RACE = 0xFF,
 };
 
-const struct RaceStruct {
+struct RaceStruct {
     u16 uRaceNameID;
     u16 uRaceDescID;
 
@@ -39,5 +42,6 @@ extern struct RaceStruct const gRaceStruct[0xFF];
 extern struct RaceStruct const *const gpRaceStruct[0xFF];
 
 s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender);
+void GetRaceDesc(struct HelpBoxProc *proc);
 
 #endif // SMT_LIKE_RES_H

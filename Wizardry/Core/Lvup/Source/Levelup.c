@@ -79,7 +79,7 @@ static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 static void UnitLvup_Modern(struct BattleUnit *bu, int bonus)
 {
 	struct Unit *unit = GetUnit(bu->unit.index);
-	struct ClassData *class = GetClassData(bu->unit.pClassData->number);
+	const struct ClassData *class = GetClassData(bu->unit.pClassData->number);
 
 	bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit) + class->growthHP  + bonus);
 	bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + class->growthPow + bonus);

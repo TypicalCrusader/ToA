@@ -73,3 +73,7 @@ s8 Battle_SMTLikeRes(struct BattleUnit *attacker, struct BattleUnit *defender)
         return 1;
     }
 }
+
+void GetRaceDesc(struct HelpBoxProc *proc){
+    proc->mid = gRaceStruct[gStatScreen.unit->pCharacterData->_u23].uRaceDescID;
+}

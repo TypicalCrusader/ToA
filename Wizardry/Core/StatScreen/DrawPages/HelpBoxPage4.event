@@ -16,7 +16,7 @@ Rtext_Page4_Support:
     _RMenu(0, Rtext_Page4_Atk, Rtext_Page4_Name, 0, 0x66, 0x18, MSG_MSS_SupportBonusHelp)
 
 Rtext_Page4_Atk:
-    _RMenu(Rtext_Page4_Support, Rtext_Page4_Def, Rtext_Page4_Name, 0, 0x66, 0x28, 0x55C)
+    _RMenu(Rtext_Page4_Support, Rtext_Page4_Def, Rtext_Page4_Name, Rtext_Page4_Race, 0x66, 0x28, 0x55C)
 
 Rtext_Page4_Def:
     _RMenu(Rtext_Page4_Atk, Rtext_Page4_Hit, Rtext_Page4_Name, 0, 0x66, 0x38, 0x573)
@@ -48,3 +48,6 @@ Rtext_Page4_Exp:
 
 Rtext_Page4_Hp:
     _RMenu(Rtext_Page4_Level, Rtext_Page4_Name, 0, Rtext_Page4_Dodge, 0x6, 0x88, 0x544)
+
+Rtext_Page4_Race:
+    _RMenu(Rtext_Page4_Atk, 0, Rtext_Page4_Name, 0, 0x6, 0x88, GetRaceDesc)

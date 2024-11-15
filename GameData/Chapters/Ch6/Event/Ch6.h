@@ -7,3 +7,4 @@
 #include "constants/TOA_characters.h"
 #include "constants/TOA_event-flags.h"
 #include "TChax.h"
+#include "constants/texts.h"

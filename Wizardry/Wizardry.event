@@ -56,7 +56,5 @@ ALIGN 4
 #include "Core/AiHack/AiHack.event"
 
 #include "Misc/SkillEffects/MiscSkillEffects.event"
-
-#include "External/ExternalPatches.event"
-
 #include "TypicalCHax/TypicalCHaxInstaller.event"
+#include "External/ExternalPatches.event"

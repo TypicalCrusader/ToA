@@ -157,11 +157,12 @@ bge chapertileid_to_chapterid_Exit
 
 //Typical Edit Below
 @here it gets the chapter number
-mov 	r0, 0x74 //mapEventDataId
+mov 	r0, #0x74 //mapEventDataId
 ldrb 	r0, [r0] //get value
 cmp 	r0, #0x7 // prologue events id
 beq FE8Path1 //ignore following code if we are at prologue
-	mov 	r0, gPlaySt
+	mov		r0, #0
+	ldr 	r0, =gPlaySt
 	add 	r0, #0x1B
 	ldrb 	r0, [r0]
 	cmp 	r0, #1
@@ -731,7 +732,7 @@ blh     GetStringFromIndex         @GetStringFromIndex	{J}
 b       end_80822a4
 
 worldmap_node_text:
-ldr     r0,=gGMData0  @gSomeWMEventRelatedStruct	{U}
+ldr     r0,=gGMData  @gSomeWMEventRelatedStruct	{U}
 @ldr     r0,=gGMData  @gSomeWMEventRelatedStruct	{J}
 ldrb    r0,[r0,#0x11]
 blh     GetWorldMapNodeName      @GetWorldMapNodeName	{U}
@@ -822,18 +823,19 @@ Chapter_Main_Text:
 
 //Typical Edit go below
 mov 	r4, r0
-mov 	r0, gPlaySt
+mov		r0,	#0
+ldr 	r0, =gPlaySt
 add 	r0, #0x1B
 ldrb 	r0, [r0] //path byte
-cmp 	r0 #1 //prologue
+cmp 	r0, #0 //prologue
 beq PrologueChName
-	cmp 	r0, #2 //erika
+	cmp 	r0, #1 //erika
 	beq FE8PathText1
 		mov 	r0, r4
 		mov 	r0,#0x72 //hector textID
 		b FE8PathTextEnd
 
-PrologueChName
+PrologueChName:
 mov r0, 	r4
 mov r0, 	#0x5E //unk5E u16 (short) pad in chapter data - used to store main menu chapter textID
 b FE8PathTextEnd

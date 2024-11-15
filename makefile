@@ -79,6 +79,7 @@ PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
 LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
+PORTRAITFORMATTER := $(EA_DIR)/Tools/PortraitFormatter
 
 PORTRAIT_PROCESS  := python3 $(TOOL_DIR)/FE-PyTools/portrait-process.py
 C2EA              := python3 $(TOOL_DIR)/FE-PyTools/NMM2CSV/c2ea.py
@@ -224,7 +225,6 @@ TABLE_EVENTS := $(NMMS:.nmm=.event)
 TMXS := $(shell find -type f -name '*.tmx')
 MAP_GENERATED := $(TMXS:.tmx=.event) $(TMXS:.tmx=_data.dmp)
 
-
 # =========
 # = Texts =
 # =========
@@ -281,6 +281,33 @@ CLEAN_FILES += $(TSA_FILES:.tsa=.tsa.lz)
 	@$(GRIT) $< -gB 4 -gzl -m -mLf -mR4 -mzl -pn 16 -ftb -fh! -o $@
 
 CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
+
+# =============
+# = PORTRAITS =
+# =============
+
+PORTRAIT_LIST      := $(CONTENTS_DIR)/PortraitList.txt
+PORTRAIT_INSTALLER := $(CONTENTS_DIR)/Portraits.event
+PORTRAITS := $(wildcard Contents/Portraits/*.png)
+PORTRAIT_DIR    := $(CONTENTS_DIR)/Portraits
+
+PORTRAIT_DMPS      := $(shell $(PORTRAIT_PROCESS) $(PORTRAIT_LIST) --list-files)
+
+# Make the portrait installer
+$(PORTRAIT_INSTALLER): $(PORTRAIT_LIST) $(PORTRAIT_DMPS)
+	@echo "[MUG]	$@"
+	$(NOTIFY_PROCESS)
+	@$(PORTRAIT_PROCESS) $< -o $@
+
+# Convert a png to portrait components
+%_mug.dmp %_palette.dmp %_frames.dmp %_minimug.dmp: %.png
+	@echo "[MUG]	$@"
+	$(NOTIFY_PROCESS)
+	@$(PORTRAITFORMATTER) $<
+
+CLEAN_FILES +=  $(PNG_FILES:.png=_mug.dmp) $(PNG_FILES:.png=_palette.dmp) \
+    $(PNG_FILES:.png=_frames.dmp) $(PNG_FILES:.png=_minimug.dmp)
+CLEAN_BUILD +=	$(PORTRAIT_DIR)
 
 # ============
 # = EfxAnims =

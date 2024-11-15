@@ -7,7 +7,7 @@
 void CheckCourtApprovalValue()
 {
     u8 LastPermaFlagByte;
-    LastPermaFlagByte = gPermanentFlagBits[196];
+    LastPermaFlagByte = gPermanentFlagBits[24];
     LastPermaFlagByte >>= 1;
     LastPermaFlagByte <<= 4;
     LastPermaFlagByte >>= 4;
@@ -25,7 +25,7 @@ void CheckCourtApprovalValue()
 void SetCourtApprovalValue()
 {
     u8 LastPermaFlagByte;
-    LastPermaFlagByte = gPermanentFlagBits[196]; //Index of flag we want is FlagID - 100 - 1 so if we want 4 from last then its 196 = 297
+    LastPermaFlagByte = gPermanentFlagBits[24]; //Index of flag we want is FlagID - 100 - 1 so if we want 4 from last then its 196 / 8 = 24
     LastPermaFlagByte >>= 1; //take last unused bit (200)
     LastPermaFlagByte <<= 4; //clear 
     LastPermaFlagByte >>= 4; 
@@ -40,7 +40,6 @@ void SetCourtApprovalValue()
     {
         LastPermaFlagByte = 15;
     }
-
-    LastPermaFlagByte <<= 1;
-    gPermanentFlagBits[196] = gPermanentFlagBits[196] | LastPermaFlagByte;
+    LastPermaFlagByte >>= 3;
+    gPermanentFlagBits[24] = gPermanentFlagBits[24] | LastPermaFlagByte;
 }

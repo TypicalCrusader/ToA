@@ -142,8 +142,8 @@ const struct RaceStruct gRaceStruct[0xFF] = {
         }        
     },  
     [RACE_DRAGON_FIRE] = {
-        .uRaceNameID = RACE_DRAGON_DAWN_NAME_ID,
-        .uRaceDescID = RACE_DRAGON_DAWN_DESC_ID,
+        .uRaceNameID = RACE_DRAGON_FIRE_NAME_ID,
+        .uRaceDescID = RACE_DRAGON_FIRE_DESC_ID,
         .uRaceRes = {
             [0] = ITYPE_SWORD,
             [1] = ITYPE_AXE,
@@ -309,17 +309,17 @@ const struct RaceStruct gRaceStruct[0xFF] = {
             [3] = ITYPE_11, //DRAGONSTONE
         }
     },
-    [RACE_NO_RACE] = {
-        .uRaceNameID = 0x0,
-        .uRaceDescID = 0x0,
+    [RACE_HOMONCULLI] = {
+        .uRaceNameID = RACE_HOMONCULLI_NAME_ID,
+        .uRaceDescID = RACE_HOMONCULLI_DESC_ID,
         .uRaceRes = {
-            [0] = 0xFF,
-            [1] = 0xFF,
+            [0] = ITYPE_LANCE,
+            [1] = ITYPE_SWORD,
             [2] = 0xFF,
             [3] = 0xFF,
         },
         .uRaceNull = {
-            [0] = 0xFF,
+            [0] = ITYPE_DARK,
             [1] = 0xFF,
             [2] = 0xFF,
             [3] = 0xFF,
@@ -331,10 +331,38 @@ const struct RaceStruct gRaceStruct[0xFF] = {
             [3] = 0xFF,
         },
         .uRaceWeak = {
+            [0] = ITYPE_11,
+            [1] = ITYPE_DRAGN,
+            [2] = 0xFF,
+            [3] = 0xFF,
+        }
+    },    
+    [RACE_WIND_DRAGON] = {
+        .uRaceNameID = RACE_DRAGON_WIND_NAME_ID,
+        .uRaceDescID = RACE_DRAGON_WIND_DESC_ID,
+        .uRaceRes = {
+            [0] = ITYPE_LANCE,
+            [1] = ITYPE_SWORD,
+            [2] = ITYPE_AXE,
+            [3] = 0xFF,
+        },
+        .uRaceNull = {
             [0] = 0xFF,
             [1] = 0xFF,
             [2] = 0xFF,
             [3] = 0xFF,
+        },
+        .uRaceAbsorb = {
+            [0] = ITYPE_ANIMA,
+            [1] = 0xFF,
+            [2] = 0xFF,
+            [3] = 0xFF,
+        },
+        .uRaceWeak = {
+            [0] = ITYPE_11,
+            [1] = ITYPE_DRAGN,
+            [2] = 0xFF,
+            [3] = 0xFF,
         }
-    }
+    },        
 };

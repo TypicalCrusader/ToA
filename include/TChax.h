@@ -8,3 +8,4 @@ void CheckCourtApprovalValue();
 u8 CheckCurrentPath();
 void ReturnCurrentPathtoS1();
 void SetCurrentPath();
+void gSilentPromote();

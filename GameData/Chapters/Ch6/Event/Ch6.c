@@ -149,7 +149,7 @@ const struct ROMChapterData Ch6Chapter = {
 //purely for cutscene
 static const struct UnitDefinition Ch6_August_Light[] = {
 	{
-		.charIndex = CHARACTER_PLAY_AUGUST_LIGHT,
+		.charIndex = CHARACTER_PLAY_AUGUST,
 		.classIndex = CLASS_EIRIKA_LORD,
 		.allegiance = FACTION_ID_BLUE,
 		.autolevel = false,
@@ -193,8 +193,8 @@ static const struct UnitDefinition Ch6_UnitDef_NonCanon_Normal[] = {
 };
 static const struct UnitDefinition Ch6_UnitDef_NonCanon_Hard[] = {
 };
-static const struct UnitDefinition Ch6_UnitDef_Lunatic[] = {
-};
+//static const struct UnitDefinition Ch6_UnitDef_Lunatic[] = {
+//};
 //allies
 static const struct UnitDefinition Ch6_UnitDef_Ally_Canon_Normal[] = {
 
@@ -292,7 +292,7 @@ LABEL(4)
 	SVAL(EVT_SLOT_2, EVT_SLOT_1)	
 	MOVE(5, 0xfffd, 8, -1)
 	//Text_BG(0xA,Ch6_NonCanon_BegScene_2) 
-	MOVE(5, )
+	//MOVE(5, )
 	MOVE(5, 0xfffd, 0, 1)
 	GOTO(3)
 

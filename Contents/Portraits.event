@@ -1,0 +1,138 @@
+// File generated from by portrait-process
+#include "Tools/Tool Helpers.txt"
+
+{
+_MugGfx:
+#incbin "Portraits/August_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/August_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/August_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/August_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x02)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 5 3 3
+WORD 1
+POP
+}
+
+#define MUG_AUGUST 0x02
+
+{
+_MugGfx:
+#incbin "Portraits/AugustEmpy_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/AugustEmpy_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/AugustEmpy_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/AugustEmpy_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x03)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 2 5 2 3
+WORD 1
+POP
+}
+
+#define MUG_AUGUST_EMPEROR 0x03
+
+{
+_MugGfx:
+#incbin "Portraits/Cyric_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Cyric_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Cyric_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Cyric_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x04)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 5 3 4
+WORD 1
+POP
+}
+
+#define MUG_CYRIC 0x04
+
+{
+_MugGfx:
+#incbin "Portraits/Nesia_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Nesia_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Nesia_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Nesia_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x05)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 2 4 2 2
+WORD 1
+POP
+}
+
+#define MUG_NESIA 0x05
+
+{
+_MugGfx:
+#incbin "Portraits/Duren_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Duren_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Duren_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Duren_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x06)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 2 5 2 3
+WORD 1
+POP
+}
+
+#define MUG_DUREN 0x06
+

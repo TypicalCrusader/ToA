@@ -102,10 +102,34 @@ static const struct UnitDefinition Ch1_UnitDef_Canon_Hard[] = {
 
 //enemies main
 static const struct UnitDefinition Ch1_UnitDef_Enemy_Normal[] = {
-	
+	{
+		.charIndex = CHARACTER_IMPR_SOLDIER_HEAVY_M,
+		.classIndex = CLASS_ARMOR_KNIGHT,
+		.allegiance = FACTION_ID_GREEN,
+		.autolevel = false,
+		.level = 1,
+		.xPosition = 16,
+		.yPosition = 6,
+		.redaCount = 0,
+		.redas = NULL,
+		.items = {
+		},
+	},
 };
 static const struct UnitDefinition Ch1_UnitDef_Enemy_Hard[] = {
-
+	{
+		.charIndex = CHARACTER_IMPR_SOLDIER_HEAVY_M,
+		.classIndex = CLASS_ARMOR_KNIGHT,
+		.allegiance = FACTION_ID_GREEN,
+		.autolevel = false,
+		.level = 1,
+		.xPosition = 16,
+		.yPosition = 6,
+		.redaCount = 0,
+		.redas = NULL,
+		.items = {
+		},
+	},
 };
 
 static const EventScr Ch1_EventScr_Beginning[] = {
@@ -118,10 +142,10 @@ static const EventScr Ch1_EventScr_Beginning[] = {
 		FADU(0XF)
 		TEXTCONT
 	TEXTEND
-	LOAD1(Ch1_BegScene_Units) //Durrin Arrives with the news
+	LOAD1(0x1,Ch1_BegScene_Units) //Durrin Arrives with the news
     Text_BG(0,Ch1_Beginning_text_2) //Durrin tells the news
-    ASMC(Class_Choice_MenuASMC) //August decides what to wear
-    SVAL(EVT_SLOT_7, 0) //Heavy
+	ASMC(Class_Choice_MenuASMC) //August decides what to wear    
+	SVAL(EVT_SLOT_7, 0) //Heavy
     BEQ(0,EVT_SLOT_C,EVT_SLOT_7)
         SVAL(EVT_SLOT_7, 1) //Light
         BEQ(1,EVT_SLOT_C,EVT_SLOT_7)
@@ -136,7 +160,10 @@ LABEL(1)
 
 LABEL(2)
 	Text_BG(0,Ch1_Beginning_text_3) //Durrin and Co talk how to get to the villiage
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wuninitialized"	
 	ASMC(Path_Choice_MenuASMC) //August decides what to wear
+	#pragma GCC diagnostic pop	
     SVAL(EVT_SLOT_7, 0) //Hurry through Forest
     BEQ(3,EVT_SLOT_C,EVT_SLOT_7)
         SVAL(EVT_SLOT_7, 1) //Go through Hillsite
@@ -156,6 +183,8 @@ LABEL(4)
 	LOMA(0x18) //non-canon map
 
 LABEL(10)
+	LOAD1(0x1,Ch1_UnitDef_Enemy_Normal)
+	LOAD1(0x1,Ch1_UnitDef_Enemy_Hard)
 	ENDA
 };
 

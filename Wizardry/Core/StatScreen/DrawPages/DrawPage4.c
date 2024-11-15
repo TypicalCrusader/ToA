@@ -3,6 +3,7 @@
 #include "stat-screen.h"
 #include "skill-system.h"
 #include "constants/texts.h"
+#include "SMTLikeRes.h"
 
 #define PAGE4_PINFO_MAX 8
 
@@ -60,6 +61,20 @@ static void DrawPage4SupportBonus(void)
 		TEXT_COLOR_SYSTEM_GOLD,
 		0, 0,
 		GetStringFromIndex(0x51E)); // Dodge
+
+	PutDrawText(
+		&gStatScreen.text[2],
+		gUiTmScratchA + TILEMAP_INDEX(0xB, 0x1),
+		TEXT_COLOR_SYSTEM_GOLD,
+		0, 0,
+		GetStringFromIndex(RACE)); // race
+
+	PutDrawText(
+		&gStatScreen.text[STATSCREEN_TEXT_ITEM0],
+		gUiTmScratchA + TILEMAP_INDEX(0xB, 0x3),
+		TEXT_COLOR_SYSTEM_WHITE,
+		0, 0,
+		GetStringFromIndex(gRaceStruct[unit->pCharacterData->_u23].uRaceNameID)); // race name	
 
 	/* Generate bonus value */
 	GetUnitSupportBonuses(unit, &bonuses);

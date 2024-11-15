@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_TOA_CLASSES_H
 
 enum {
-    CLASS_NONE                = 0x00,
+    //CLASS_NONE                = 0x00,
     CLASS_PLAY_ARMORED_LORD         = 0x01,
     CLASS_PLAY_LIGHT_LORD           = 0x02,
     CLASS_PLAY_ARMORED_GREAT_LORD   = 0x03,

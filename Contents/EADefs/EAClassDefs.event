@@ -1,0 +1,8 @@
+#define CLASS_PLAY_ARMORED_LORD              0x01
+#define CLASS_PLAY_LIGHT_LORD                0x02
+#define CLASS_PLAY_ARMORED_GREAT_LORD        0x03
+#define CLASS_PLAY_LIGHT_GREAT_LORD          0x04
+#define CLASS_PLAY_EMPEROR                   0x56
+#define CLASS_PLAY_GRAND_EMPEROR             0x57
+#define CLASS_CUTS_NOBLE                     0x58
+#define CLASS_PLAY_MAGE_LORD                 0x59

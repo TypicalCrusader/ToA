@@ -6,8 +6,10 @@
 	mov lr, \reg
 	.short 0xF800
 .endm
+.global EffectCallMenu
+.type EffectCallMenu, function
 
-CommandEffect_EventCalledMenu:
+EffectCallMenu:
 	push {lr}
 	
 	@ r1 is command 6C

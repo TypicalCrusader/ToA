@@ -1,0 +1,7 @@
+#                                Index MouthX MouthY EyesX EyesY IndexDefinition
+"Portraits/August.png"           0x02  3      5      3     3     MUG_AUGUST
+"Portraits/AugustEmpy.png"       0x03  2      5      2     3     MUG_AUGUST_EMPEROR
+"Portraits/Cyric.png"            0x04  3      5      3     4     MUG_CYRIC
+"Portraits/Nesia.png"            0x05  2      4      2     2     MUG_NESIA
+"Portraits/Duren.png"            0x06  2      5      2     3     MUG_DUREN
+#                                Index MouthX MouthY EyesX EyesY IndexDefinition

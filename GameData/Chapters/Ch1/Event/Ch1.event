@@ -1,0 +1,128 @@
+#include "EAstdlib.event"
+#include "../../../../Contents/EADefs/EADefsLib.event"
+
+//definitions
+#define SilentPromote(pid,jid) "SVAL s1 pid ; SVAL s2 jid ; ASMC gSilentPromote"
+#define EVTFLAG_USE_CANON_MAP 0x7
+#define EVTFLAG_USE_NON_CANON_MAP 0x8
+#define EVTFLAG_USE_CANON_HOUSE 0x9
+#define EVTFLAG_USE_NON_CANON_HOUSE 0xA
+
+//this is the only singular chapter that uses 2 maps 
+Ch1_ThisChapter:
+
+POIN Ch1_TurnBasedEvents
+POIN Ch1_CharacterBasedEvents
+POIN Ch1_LocationBasedEvents
+POIN Ch1_MiscBasedEvents
+POIN Ch1_Dunno Ch1_Dunno Ch1_Dunno //unused, leftover from fe7
+POIN Ch1_Tutorial
+POIN Ch1_Ballista1 Ch1_Ballista2 //traps - normal, hard
+POIN Ch1_Units1 Ch1_Units1 //normal, hard
+POIN $0 $0 $0 $0 $0 $0 //Skirmish Related
+POIN Ch1_BeginningScene Ch1_EndingScene
+
+Ch1_TurnBasedEvents:
+TURN
+
+Ch1_CharacterBasedEvents:
+CHAR
+
+Ch1_LocationBasedEvents:
+//House(EVTFLAG_USE_NON_CANON_HOUSE,offset,3,11) 
+//House(EVTFLAG_USE_CANON_HOUSE,offset,villX,villY) 
+LOCA
+
+Ch1_MiscBasedEvents:
+CauseGameOverIfLordDies
+DefeatAll(Ch1_EndingScene)
+
+AFEV
+
+Ch1_Dunno:
+END_MAIN
+
+Ch1_Tutorial:
+END_MAIN
+
+Ch1_Ballista1:
+END_MAIN
+
+Ch1_Ballista2:
+END_MAIN
+ALIGN 4
+
+Ch1_BegScene_Units:
+//frens
+UNIT CHARACTER_PLAY_AUGUST CLASS_CUTS_NOBLE CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_PLAY_CYRIC CLASS_PLAY_MAGE_LORD CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_PLAY_NESIA WyvernKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_PLAY_DURIN  GreatKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+//allies
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT
+
+Ch1_Units1:
+//Add Player Units
+UNIT
+
+Ch1_BeginningScene:
+	FADI 20 
+	SVAL s1 4  //value to add/set
+	SVAL s1 1  //0 - add, >=1 - set
+	ASMC SetCourtApprovalValue //default court approval - expected value xxx01000
+	LOMA 0x3b  //Castle Dreshic
+    Text(0,Ch1_Beginning_text_1)  //august wakes
+		FADU 0xF 
+		TEXTCONT
+	TEXTEND
+	LOAD1 0x1 Ch1_BegScene_Units  //Durrin Arrives with the news
+    Text(0,Ch1_Beginning_text_2)  //Durrin tells the news
+	ASMC Class_Choice_MenuASMC|1  //August decides what to wear    
+	SVAL s7 0  //Heavy
+    BEQ 0 sC s7 
+        SVAL s7 1  //Light
+        BEQ 1 sC s7 
+            GOTO 10 
+LABEL 0 
+	Text(0,Ch1_Beginning_text_chosen_heavy) //August wears plate
+	SilentPromote(CHARACTER_PLAY_AUGUST,CLASS_PLAY_ARMORED_LORD)
+		GOTO 2 
+LABEL 1 
+	Text(0,Ch1_Beginning_text_chosen_light)  //august wears gambesson
+	SilentPromote(CHARACTER_PLAY_AUGUST,CLASS_PLAY_LIGHT_LORD)
+
+LABEL 2 
+	Text(0,Ch1_Beginning_text_3)  //Durrin and Co talk how to get to the villiage
+	ASMC Path_Choice_MenuASMC|1  //August decides what to wear
+    SVAL s7 0  //Hurry through Forest
+    BEQ 3 sC s7 
+        SVAL s7 1  //Go through Hillsite
+        BEQ 4 sC s7 
+            GOTO 10 	
+LABEL 3
+    SVAL s1 3  //Canon
+	ASMC SetCurrentPath 
+	Text(0,Ch1_Beginning_text_4)  //August decides to move through forest
+	LOMA 0x1  //canon map
+	ENUT EVTFLAG_USE_CANON_MAP
+	GOTO 10 
+
+LABEL 4
+    SVAL s1 2  //Non-Canon
+	ASMC SetCurrentPath 
+	Text(0,Ch1_Beginning_text_5)  //August decides to move through hillsides
+	ENUT EVTFLAG_USE_NON_CANON_MAP	
+	LOMA 0x18  //non-canon map
+
+LABEL 10
+ENDA
+ALIGN 4
+
+Ch1_EndingScene:
+MNCH 0x01 //TODO: Replace with proper code for next chapter.
+ENDA
+
+
+MESSAGE CH1 Events end at offset CURRENTOFFSET

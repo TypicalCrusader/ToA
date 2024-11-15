@@ -1,0 +1,12 @@
+//author Fati
+
+PUSH
+ORG 0x0C6714
+BYTE 0xC0 0x46
+POP
+
+//author unknown
+PUSH
+ORG 0xC4928
+BYTE 0x00 0x00
+POP

@@ -3,7 +3,7 @@
 //s1 - CharID, s2 ClassID
 void gSilentPromote(){
     struct Unit *unit = GetUnit(gEventSlots[1]);
-    struct ClassData *class = GetClassData(gEventSlots[2]);
+    const struct ClassData *class = GetClassData(gEventSlots[2]);
 
     //set class
     unit->pClassData = class;

@@ -3,3 +3,6 @@ UNUSED ONE[X]
 
 ## CATKINNAME
 Catkin[X]
+
+## InnathName
+Innath[X]

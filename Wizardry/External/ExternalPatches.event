@@ -19,10 +19,12 @@
 #endif
 
 //FEB ASM patches
+#include "ChangeMCEphraim/installer.event"
 #include "SplitPathWindowRework/Installer.event"
 #include "Chapternamestext/fe8_chnames.event"
 #include "NarrowFont/Narrowfontinstaller.event"
 #include "ExtendWeaponDescBox/Installer.event"
 //#include "BattleTransforming/Installer.event"
 #include "ChangeUnitDesc/Installer.event"
-#include "ChangeMCEphraim/installer.event"
+#include "SkipIntro/installer.event"
+#include "DisableCreatureCampaign/installer.event"

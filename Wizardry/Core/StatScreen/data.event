@@ -1,4 +1,4 @@
-#include "DrawPages/HelpBoxPage4.event"
+#include "DrawPages/HelpBoxPage4.lyn.event"
 
 #include "DrawMorePage/data.event"
 #include "DrawSkillPage/data.event"

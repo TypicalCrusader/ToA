@@ -1,68 +1,80 @@
-## HumanName
+## RACE_HUMAN_NAME_ID
 Human[X]
-## HumanDesc
+## RACE_HUMAN_DESC_ID
 Human[X]
-## AscendedName
+## RACE_ASCENDED_NAME_ID
 Ascemded[X]
-## AscendedDesc
+## RACE_ASCENDED_DESC_ID
 Humans who drank Elder Dragon[NL]
 Blood.[X]
-## DawnTribeName
+## RACE_DRAGON_DAWN_NAME_ID
 Dawn Dragon[X]
-## DawnTribeDesc
+## RACE_DRAGON_DAWN_DESC_ID
 Dragon hailing from Dawn tribe[NL]
 Blessed by the Benevolence[X]
-## DuskTribeName
+## RACE_DRAGON_DUSK_NAME_ID
 Dusk Dragon[X]
-## DuskTribeDesc
+## RACE_DRAGON_DUSK_DESC_ID
 Dragon hailing from Dusk Tribe[NL]
 Blessed by the Shadows[NL]
 Pariahs in most of Aurus.[X]
-## ThunderTribeName
+## RACE_DRAGON_LIGHTING_NAME_ID
 Thunder Dragon[X]
-## ThunderTribeDesc
+## RACE_DRAGON_LIGHTING_DESC_ID
 Dragon hailing from Thunder Tribe[NL]
 Blessed by elemental[NL] 
 powers of thunder[X]
-## FireTribeName
+## RACE_DRAGON_FIRE_NAME_ID
 Fire Dragon[X]
-## FireTribeDesc
+## RACE_DRAGON_FIRE_DESC_ID
 Dragon hailing from Fire Tribe[NL]
 Blessed by elemental[NL] 
 powers of Fire[X]
-## WindTribeName
-Wind Dragon[X]
-## WindTribeDesc
-Dragon hailing from Wind Tribe[NL]
+## RACE_DRAGON_WATER_NAME_ID
+Water Dragon[X]
+## RACE_DRAGON_WATER_DESC_ID
+Dragon hailing from Water Tribe[NL]
 Blessed by elemental[NL] 
-powers of Winds[X]
-## EarthTribeName
+powers of Water[X]
+## RACE_DRAGON_EARTH_NAME_ID
 Earth Dragon[X]
-## EarthTribeDesc
+## RACE_DRAGON_EARTH_DESC_ID
 Dragon hailing from Earth Tribe[NL]
 Blessed by elemental[NL] 
 powers of Rock and Stone[X]
-## HomonculliName 
+## RACE_ELDER_DRAGON_DUSK_NAME_ID
+Elder Dragon of Dusk[X]
+## RACE_ELDER_DRAGON_DUSK_DESC_ID
+Ancient dragon holding powers[NL]
+of Dusk, not bound by flow of time,[NL]
+nor by singular form[X]
+## RACE_ELDER_DRAGON_DAWN_NAME_ID
+Elder Dragon of Dawn[X]
+## RACE_ELDER_DRAGON_DAWN_DESC_ID
+Ancient dragon holding powers[NL]
+of Dawn, not bound by flow of time,[NL]
+nor by singular form[X]
+## RACE_INNATH_APEX_NAME_ID
+Malevolence[X]
+## RACE_INNATH_APEX_DESC_ID
+Elder Dragon of Dusk[NL]
+corrupted by the great evil[NL]
+granting them immeasurable powers[X]
+## RACE_HOMONCULLI_NAME_ID
 Homonculli[X]
-## HomonculliDesc
+## RACE_HOMONCULLI_DESC_ID
 Artifical being made from[NL]
 fragments of one soul, much[NL]
 weaker than original being[X]
-## ElderDuskName
-Elder Dragon of Dusk[X]
-## ElderDuskDesc
-Ancient dragon holding powers[NL]
-of Dusk, isnt bound by flow of time,[NL]
-nor by singular form[X]
-## ElderDawnName
-Elder Dragon of Dawn[X]
-## ElderDawnDesc
-Ancient dragon holding powers[NL]
-of Dawn, isnt bound by flow of time,[NL]
-nor by singular form[X]
-## MalevolenceName
-Malevolence[X]
-## MalevolenceDesc
-Being elder than most, One of 2[NL]
-Gods wooing for domination over[NL]
-continent of Aurus[X]
+## RACE_DRAGON_WIND_NAME_ID
+Wind Dragon[X]
+## RACE_DRAGON_WIND_DESC_ID
+Dragon hailing from Wind Tribe[NL]
+Blessed by elemental[NL] 
+powers of the Winds[X]
+
+## RACE
+Race[X]
+
+## RACEHELP
+Character Race[X]

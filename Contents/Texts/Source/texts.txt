@@ -1,4 +1,5 @@
 #include texts/_vanilla.txt
+#include texts/_vanillaChar.txt
 
 #0xD4C MSG_Reserved
 _reserved[X]
@@ -42,3 +43,4 @@ W.I.P.[X]
 #include texts/CharText.txt
 #include texts/ChapterText.txt
 #include texts/misc.txt
+#include texts/ChoiceText.txt

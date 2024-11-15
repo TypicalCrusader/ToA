@@ -1,0 +1,32 @@
+#define EVFLAG_ALWAYS_FALSE 0
+#define EVFLAG_BATTLE_QUOTES 1
+#define EVFLAG_DEFEAT_BOSS 2
+#define EVFLAG_WIN 3
+#define EVFLAG_BGM_CHANGE 4
+#define EVFLAG_5 5
+#define EVFLAG_DEFEAT_ALL 6
+//7-40 remain on suspend cleared upon finishing chapter
+//41-63 cleared on suspend/resume remain upon finishing chapter
+//64-100 dont use
+#define EVFLAG_GAMEOVER 101
+#define EVFLAG_OBJWINDOW_DISABLE 102
+#define EVFLAG_EXTRA_UNIT_BASE 103
+#define EVFLAG_EMPEROR_DEAD 104
+#define EVFLAG_EMPRESS_DEAD 105
+#define EVFLAG_EMPEROR_AND_EMPRESS_DEAD 106
+//107 - 126
+#define EVFLAG_TRIANGLE_1 127
+#define EVFLAG_TRIANGLE_2 128
+#define EVFLAG_TRIANGLE_3 129
+#define EVFLAG_DK_MUSIC_CHANGE 130 
+#define EVFLAG_HIDE_BLINKING_ICON 132
+#define EVFLAG_AUGUST_TYPE 133 
+#define EVFLAG_PATH_SELECT 136 // WM flag skip chapter intro If flag is 0x6
+#define EVFLAG_WM_FIST_LOAD 137 
+#define EVFLAG_AUGUST_CROWNED 138
+//176 - 296 free since IDAF about guide
+//guide deez nuts
+#define EVFLAG_SPECIAL_COURT_APPR_4BIT_BIT1 297
+#define EVFLAG_SPECIAL_COURT_APPR_4BIT_BIT2 298
+#define EVFLAG_SPECIAL_COURT_APPR_4BIT_BIT3 299
+#define EVFLAG_SPECIAL_COURT_APPR_4BIT_BIT4 300
