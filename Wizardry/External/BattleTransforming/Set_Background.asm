@@ -6,7 +6,7 @@
 .equ Func_6FA84, . + 0x6FA84 - origin
 
 push	{r4-r7,r14}
-ldr		r0,=#0x203E120		@not a bloody clue what this is, but if it's not 0<=x<=2, then we skip everything
+ldr		r0,=#0x203E120		@not a bloody clue what this is, but if it's not 0<=x<=2, then we skip everything //distance
 mov		r1,#0
 ldsh	r0,[r0,r1]
 cmp		r0,#0

@@ -13,7 +13,7 @@ PUSH
     BYTE $3F
     ORG $70C5E
     BYTE $3F
-    PROTECT $70B3C $70D04 
+    //PROTECT $70B3C $70D04 
 
     ORG $59A8C // UpdateBanimFrame
     BYTE $3F

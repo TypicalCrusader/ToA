@@ -1,0 +1,10 @@
+#ifndef DRAGON_TRANSFORM_INSTALLED
+#define DRAGON_TRANSFORM_INSTALLED
+
+#include "source/SMTLikeResConf.lyn.event"
+
+ALIGN 4
+gpTranformStruct:
+    POIN gTranformStruct
+
+#endif //DRAGON_TRANSFORM_INSTALLED

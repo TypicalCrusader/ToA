@@ -806,4 +806,12 @@
 	// #define GoldGem 0xBB
 #endif // NO_VANILLA_ITEMS
 
+	#define CHARACTER_AFFN_FIRE             1
+	#define CHARACTER_AFFN_THUNDER          2
+	#define CHARACTER_AFFN_WIND             3
+	#define CHARACTER_AFFN_ICE              4
+	#define CHARACTER_AFFN_DARK             5
+	#define CHARACTER_AFFN_LIGHT            6
+	#define CHARACTER_AFFN_ANIMA            7
+
 #endif // GAMEDATA_INDICES
