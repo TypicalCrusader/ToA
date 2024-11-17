@@ -9,10 +9,10 @@ PUSH
 
 //TOA TODO CHECK IF THIS ACTUALLY AFFECT ANYTHING
 
-    ORG $70BA0 // RegisterEkrDragonStatusType
-    BYTE $3F
-    ORG $70C5E
-    BYTE $3F
+    //ORG $70BA0 // RegisterEkrDragonStatusType
+    //BYTE $3F
+    //ORG $70C5E
+    //BYTE $3F
     //PROTECT $70B3C $70D04 
 
     ORG $59A8C // UpdateBanimFrame

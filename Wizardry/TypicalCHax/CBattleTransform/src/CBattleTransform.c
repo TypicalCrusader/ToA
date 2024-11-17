@@ -5,6 +5,132 @@
 //original battle transform by Tequila ,UNKNOWN ,Aera, circleseverywhere. Transport to FEB by 7743
 //i need to port this to c only because otherwise it breaky :<
 
+LYN_REPLACE_CHECK(RegisterEkrDragonStatusType);
+void RegisterEkrDragonStatusType(void)
+{
+    struct BattleUnit *bu1 = gpEkrBattleUnitLeft;
+    struct BattleUnit *bu2 = gpEkrBattleUnitRight;
+
+    struct BattleUnit *bu1a = bu1, *bu2a = bu2;
+
+    u16 validl = gBanimValid[EKR_POS_L];
+    u16 validr = gBanimValid[EKR_POS_R];
+    u8 i;
+
+    switch (gEkrDistanceType) {
+    case EKR_DISTANCE_CLOSE:
+    case EKR_DISTANCE_FAR:
+    case EKR_DISTANCE_FARFAR:
+        break;
+
+    case EKR_DISTANCE_MONOCOMBAT:
+    case EKR_DISTANCE_PROMOTION:
+    default:
+        return;
+    }
+
+    switch (UNIT_CLASS_ID(&bu1a->unit)) {
+    case CLASS_MANAKETE_MYRRH:
+        if (bu1a->unit.statusIndex == UNIT_STATUS_SLEEP)
+            break;
+
+        if (bu1a->unit.statusIndex == UNIT_STATUS_PETRIFY)
+            break;
+
+        if (bu1a->unit.statusIndex == UNIT_STATUS_13)
+            break;
+
+        if (GetItemIndex(bu2->weaponBefore) == ITEM_STAFF_SLEEP)
+            break;
+
+        if (GetItemIndex(bu2->weaponBefore) == ITEM_STAFF_BERSERK)
+            break;
+
+        if (GetItemIndex(bu2->weaponBefore) == ITEM_STAFF_SILENCE)
+            break;
+
+        if (GetItemIndex(bu2->weaponBefore) == ITEM_MONSTER_STONE)
+            break;
+
+        if (UNIT_FACTION_FAKE(bu1a) == UNIT_FACTION(GetUnitFromCharId(UNIT_CHAR_ID(&bu2->unit))))
+            break;
+
+        if (validl == false)
+            break;
+
+        if (GetItemIndex(bu1a->weaponBefore) == ITEM_DIVINESTONE)
+            SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_MYRRH);
+
+        break;
+
+    case CLASS_DRACO_ZOMBIE:
+        SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_DRACO_ZOMBIE);
+        break;
+
+    case CLASS_DEMON_KING:
+        SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_DEMON_KING);
+        break;
+
+    default:
+        SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_NORMAL);
+        break;
+    }
+
+    for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
+    {
+        if (bu1a->unit.pClassData->number == gTranformStruct[i]->jid && bu1a->weaponBefore == gTranformStruct[i]->iid)
+        {
+            SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_MYRRH);
+        }
+    }
+
+    /* Judge another side */
+    if (UNIT_CLASS_ID(&bu2a->unit) == CLASS_MANAKETE_MYRRH) {
+        if (bu2a->unit.statusIndex == UNIT_STATUS_SLEEP)
+            return;
+
+        if (bu2a->unit.statusIndex == UNIT_STATUS_PETRIFY)
+            return;
+
+        if (bu2a->unit.statusIndex == UNIT_STATUS_13)
+            return;
+
+        if (GetItemIndex(bu1->weaponBefore) == ITEM_STAFF_SLEEP)
+            return;
+
+        if (GetItemIndex(bu1->weaponBefore) == ITEM_STAFF_BERSERK)
+            return;
+
+        if (GetItemIndex(bu1->weaponBefore) == ITEM_STAFF_SILENCE)
+            return;
+
+        if (GetItemIndex(bu1->weaponBefore) == ITEM_MONSTER_STONE)
+            return;
+
+        if (UNIT_FACTION_FAKE(bu1a) == UNIT_FACTION(GetUnitFromCharId(UNIT_CHAR_ID(&bu2a->unit))))
+            return;
+
+        if (validr == false)
+            return;
+
+        if (GetItemIndex(bu2->weaponBefore) == ITEM_DIVINESTONE)
+            SetEkrDragonStatusType(gAnims[2], EKRDRGON_TYPE_MYRRH);
+    }
+    else
+    {
+        SetEkrDragonStatusType(gAnims[2], EKRDRGON_TYPE_NORMAL);
+
+        for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
+        {
+            if(bu2->unit.pClassData->number == gTranformStruct[i]->jid && bu2->weaponBefore == gTranformStruct[i]->iid)
+            {
+                SetEkrDragonStatusType(gAnims[2], EKRDRGON_TYPE_MYRRH);
+            }
+        }
+    }
+        
+}
+
 LYN_REPLACE_CHECK(NewEkrDragonManakete);
 void NewEkrDragonManakete(struct Anim *anim)
 {
@@ -30,13 +156,13 @@ void EkrMyr_PrepareBanimfx(struct ProcEkrDragon * proc)
 
     for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
     {
-        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
         {
             EkrPrepareBanimfx(anim, gTranformStruct[i]->gMainAnim - 1);
             SwitchAISFrameDataFromBARoundType(anim, 0);
             LZ77UnCompWram(banim[gTranformStruct[i]->gMainAnim - 1].pal, gPal_Banim);
         }
-        else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+        else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
         {
             EkrPrepareBanimfx(anim, gTranformStruct[i]->gMainAnim - 1);
             SwitchAISFrameDataFromBARoundType(anim, 0);
@@ -67,12 +193,12 @@ void EkrMyr_WaitForTransform(struct ProcEkrDragon *proc)
     for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
     {
         if (++proc->timer == 0x1A) {
-            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
             {
                 EfxPlaySE(gTranformStruct[i]->TransformStartSound, 0x100); //transform
                 M4aPlayWithPostionCtrl(0xDC, anim->xPosition, 1);
             }
-            else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+            else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
             {
                 EfxPlaySE(gTranformStruct[i]->TransformStartSound, 0x100); //transform
                 M4aPlayWithPostionCtrl(0xDC, anim->xPosition, 1);
@@ -84,13 +210,13 @@ void EkrMyr_WaitForTransform(struct ProcEkrDragon *proc)
         }
 
         if (ANINS_GET_TYPE(*anim->pScrCurrent) == ANIM_INS_TYPE_STOP) {
-            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
             {
                 EfxPlaySE(gTranformStruct[i]->TransformFinishSound, 0x100);
                 M4aPlayWithPostionCtrl(gTranformStruct[i]->TransformFinishSound, anim->xPosition, 1);        
                 EkrPrepareBanimfx(anim, gTranformStruct[i]->gIntroAnim - 1);
             }
-            else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+            else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
             {
                 EfxPlaySE(gTranformStruct[i]->TransformFinishSound, 0x100);
                 M4aPlayWithPostionCtrl(gTranformStruct[i]->TransformFinishSound, anim->xPosition, 1);        
@@ -138,11 +264,11 @@ void EkrMyr_ReturnToLoli(struct ProcEkrDragon * proc)
         proc->timer = 0;
         for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
         {
-            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+            if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
             {
                 EkrPrepareBanimfx(anim, gTranformStruct[i].gNoWPNAnim - 1);
             }
-            else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+            else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
             {
                 EkrPrepareBanimfx(anim, gTranformStruct[i].gNoWPNAnim - 1);
 
@@ -159,13 +285,13 @@ void EkrMyr_ReturnToLoli(struct ProcEkrDragon * proc)
 
     for(i=0;i<=(Div(sizeof(gTranformStruct),sizeof(gTranformStruct{0}));i++))
     {
-        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
         {
             EfxPlaySE(gTranformStruct[i]->UntransformSound, 0x100);
             M4aPlayWithPostionCtrl(gTranformStruct[i]->UntransformSound, anim->xPosition, 1);
             EkrPrepareBanimfx(anim, gTranformStruct[i]->gExitAnim - 1);
         }
-        else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+        else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
         {
             EfxPlaySE(gTranformStruct[i]->UntransformSound, 0x100);
             M4aPlayWithPostionCtrl(gTranformStruct[i]->UntransformSound, anim->xPosition, 1);
@@ -180,11 +306,11 @@ void EkrMyr_ReturnToLoli(struct ProcEkrDragon * proc)
 
         SwitchAISFrameDataFromBARoundType(anim, 0);
         Proc_Break(proc);
-        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weapon == gTranformStruct[i]->iid)
+        if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i]->iid)
         {
             LZ77UnCompWram(banim[gTranformStruct[i]->gIntroAnim - 1].pal, gPal_Banim);   
         }
-        else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weapon == gTranformStruct[i]->iid)
+        else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i]->jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i]->iid)
         {
             LZ77UnCompWram(banim[gTranformStruct[i]->gIntroAnim - 1].pal, gPal_Banim);   
         }
