@@ -3,6 +3,8 @@
 
 #include "EAstdlib.event"
 
+#include "../Contents/EADefs/EACharDefs.event"
+#include "../Contents/EADefs/EAClassDefs.event"
 #include "Constants.event"
 #include "Indices.event"
 

@@ -1,5 +1,8 @@
 #include texts/_vanilla.txt
+#include texts/_vanillaChapter.txt
 #include texts/_vanillaChar.txt
+#include texts/_vanillaClass.txt
+#include texts/_vanillaItem.txt
 
 #0xD4C MSG_Reserved
 _reserved[X]

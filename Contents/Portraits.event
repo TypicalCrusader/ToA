@@ -136,3 +136,111 @@ POP
 
 #define MUG_DUREN 0x06
 
+{
+_MugGfx:
+#incbin "Portraits/Ikaria_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Ikaria_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Ikaria_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Ikaria_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x07)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 5 3 3
+WORD 1
+POP
+}
+
+#define MUG_IKARIA 0x07
+
+{
+_MugGfx:
+#incbin "Portraits/Frea_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Frea_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Frea_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Frea_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x08)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 5 3 3
+WORD 1
+POP
+}
+
+#define MUG_FREA 0x08
+
+{
+_MugGfx:
+#incbin "Portraits/Innath-Apex_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Innath-Apex_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Innath-Apex_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Innath-Apex_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x0b)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 3 3 3
+WORD 1
+POP
+}
+
+#define MUG_INNATH_APEX 0x0b
+
+{
+_MugGfx:
+#incbin "Portraits/Inanth-Corrupted_mug.dmp"
+
+_MugPal:
+#incbin "Portraits/Inanth-Corrupted_palette.dmp"
+
+_MugMiniGfx:
+#incbin "Portraits/Inanth-Corrupted_minimug.dmp"
+
+_MugFramesGfx:
+#incbin "Portraits/Inanth-Corrupted_frames.dmp"
+
+PUSH
+ORG PortraitTable+(0x1C*0x4A)
+POIN _MugGfx
+POIN _MugMiniGfx
+POIN _MugPal
+POIN _MugFramesGfx
+WORD 0
+BYTE 3 3 3 3
+WORD 1
+POP
+}
+
+#define MUG_INNATH_CORRUPTED 0x4A
+

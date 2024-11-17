@@ -28,3 +28,5 @@
 #include "ChangeUnitDesc/Installer.event"
 #include "SkipIntro/installer.event"
 #include "DisableCreatureCampaign/installer.event"
+#include "DontDisplayMapAsRuinorTower/installer.event"
+#include "OlderFEItemsMakeASound/installer.event"

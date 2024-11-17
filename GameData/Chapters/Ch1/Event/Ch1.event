@@ -70,7 +70,7 @@ UNIT
 Ch1_BeginningScene:
 	FADI 20 
 	SVAL s1 4  //value to add/set
-	SVAL s1 1  //0 - add, >=1 - set
+	SVAL s2 1  //0 - add, >=1 - set
 	ASMC SetCourtApprovalValue //default court approval - expected value xxx01000
 	LOMA 0x3b  //Castle Dreshic
     Text(0,Ch1_Beginning_text_1)  //august wakes
@@ -87,15 +87,16 @@ Ch1_BeginningScene:
             GOTO 10 
 LABEL 0 
 	Text(0,Ch1_Beginning_text_chosen_heavy) //August wears plate
-	SilentPromote(CHARACTER_PLAY_AUGUST,CLASS_PLAY_ARMORED_LORD)
-		GOTO 2 
+	SilentPromote(0,CLASS_PLAY_ARMORED_LORD)
+	GOTO 2 
 LABEL 1 
 	Text(0,Ch1_Beginning_text_chosen_light)  //august wears gambesson
-	SilentPromote(CHARACTER_PLAY_AUGUST,CLASS_PLAY_LIGHT_LORD)
+	SilentPromote(0,CLASS_PLAY_LIGHT_LORD)
+	GOTO 2
 
 LABEL 2 
 	Text(0,Ch1_Beginning_text_3)  //Durrin and Co talk how to get to the villiage
-	ASMC Path_Choice_MenuASMC|1  //August decides what to wear
+	ASMC Path_Choice_MenuASMC|1  //August where to go
     SVAL s7 0  //Hurry through Forest
     BEQ 3 sC s7 
         SVAL s7 1  //Go through Hillsite

@@ -41,4 +41,5 @@ u8 const *const gWTypeIcons[0x100] = {
 	[ITYPE_LIGHT] = GFX_WtypeIcon_Light,
 	[ITYPE_DARK] = GFX_WtypeIcon_Dark,
 	[ITYPE_STAFF] = GFX_WtypeIcon_Staff,
+	[ITYPE_11] = GFX_WtypeIcon_Dragonstone,
 };

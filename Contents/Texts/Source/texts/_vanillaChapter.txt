@@ -1,0 +1,14 @@
+#0x160 PrologueText
+Premonition at Dawn[X]
+
+#0x161 CH_1_MAIN_MENU_CH_NAME
+Intrigues in the Dark[X]
+
+#0x167 CH_6_ROUTE_A_CH_NAME
+Stumbling in Shadows[X]
+
+#0x1a3 CH_1_OBJ
+Defeat all[X]
+
+#0x19f CH_1_OBJ_DETAIL
+Defeat all Brigands[X]
