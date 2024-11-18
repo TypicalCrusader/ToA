@@ -1,0 +1,32 @@
+## FireStoneName
+Firestone[X]
+## WindStoneName
+Windstone[X]
+## ThunderStoneName
+Thunderstone[X]
+## IceStoneName
+Icestone[X]
+## EarthStoneName
+Earthstone[X]
+## DawnStoneName
+Dawnstone[X]
+## DuskStoneName
+Duskstone[X]
+## FireStoneDesc
+PLACEHOLDER[X]
+## WindStoneDesc
+PLACEHOLDER[X]
+## ThunderStoneDesc
+PLACEHOLDER[X]
+## IceStoneDesc
+PLACEHOLDER[X]
+## EarthStoneDesc
+PLACEHOLDER[X]
+## DawnStoneDesc
+PLACEHOLDER[X]
+## DuskStoneDesc
+PLACEHOLDER[X]
+## StoneOfDecayName
+Stone of Decay[X]
+## StoneOfDecayDesc
+PLACEHOLDER[X]

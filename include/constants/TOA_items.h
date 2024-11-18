@@ -1,5 +1,5 @@
-#ifndef GUARD_CONSTANTS_ITEMS_H
-#define GUARD_CONSTANTS_ITEMS_H
+#ifndef GUARD_CONSTANTS_TOA_ITEMS_H
+#define GUARD_CONSTANTS_TOA_ITEMS_H
 
 /*
 enum {
@@ -21,7 +21,7 @@ enum {
 */
 
 enum {
-    ITEM_NONE              = 0x00,
+//    ITEM_NONE              = 0x00,
 
     // Swords
 /*  ITEM_SWORD_IRON        = 0x01,
@@ -237,15 +237,16 @@ enum {
     ITEM_200G              = 0xB9,
     ITEM_BLACKGEM          = 0xBA,
     ITEM_GOLDGEM           = 0xBB,
-
-    ITEM_UNK_BC            = 0xBC,
-    ITEM_UNK_BD            = 0xBD,
-    ITEM_UNK_BE            = 0xBE,
-    ITEM_UNK_BF            = 0xBF,
-    ITEM_UNK_C0            = 0xC0,
-    ITEM_UNK_C1            = 0xC1,
-    ITEM_UNK_C2            = 0xC2,
-    ITEM_UNK_C3            = 0xC3,
+    */
+    ITEM_DRAGONSTONE_FIRE = 0xBC,
+    ITEM_DRAGONSTONE_WIND = 0xBD,
+    ITEM_DRAGONSTONE_THUNDER = 0xBE,
+    ITEM_DRAGONSTONE_ICE = 0xBF,
+    ITEM_DRAGONSTONE_EARTH = 0xC0,
+    ITEM_DRAGONSTONE_DAWN = 0xB1,
+    ITEM_DRAGONSTONE_DUSK = 0xB2,
+    ITEM_DRAGONSTONE_DECAY = 0xB3,
+/*
     ITEM_UNK_C4            = 0xC4,
     ITEM_UNK_C5            = 0xC5,
     ITEM_UNK_C6            = 0xC6,
@@ -258,4 +259,4 @@ enum {
     ITEM_UNK_CD            = 0xCD, */
 };
 
-#endif // GUARD_CONSTANTS_ITEMS_H
+#endif // GUARD_CONSTANTS_TOA_ITEMS_H

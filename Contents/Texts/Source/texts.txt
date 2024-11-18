@@ -47,3 +47,4 @@ W.I.P.[X]
 #include texts/ChapterText.txt
 #include texts/misc.txt
 #include texts/ChoiceText.txt
+#include texts/ItemText.txt

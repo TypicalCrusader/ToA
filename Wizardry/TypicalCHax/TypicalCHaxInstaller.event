@@ -2,3 +2,4 @@
 #include "RandomReinforcements/RandomReinforcementsInstaller.event"
 #include "CurrentPath/installer.event"
 #include "SilentPromote/installer.event"
+#include "CBattleTransform/installer.event"

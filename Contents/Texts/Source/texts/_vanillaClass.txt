@@ -4,11 +4,20 @@
 #0x2c0 LightLord
 [0xA6]i[0x87][0x88][0x95] [0xA6][0x8C][0x8F][0x84][X]
 
+#0x2D7 DragonName
+Dragon[X]
+
 #0x2f5 Emperor
 Emperor[X]
 
 #0x2f6 GrandEmperor
 Grand Emperor[X]
+
+#0x2FD DawnDragonName
+Dawn Dragon[X]
+
+#0x2FE DuskDragonName
+Dusk Dragon[X]
 
 #0x2f7 NobleName
 Noble[X]
@@ -26,6 +35,11 @@ Mage Lord[X]
 Heavily armoured Noble.[NL]
 Wielding immense power.[X]
 
+#0x323 DragonDesc
+Powerful Being with near[NL]
+limitless power.[NL]
+Wields Dragonstone[X]
+
 #0x32e MageLordDesc
 Noble wielding destructive[NL]
 powers of magic[X]
@@ -38,6 +52,7 @@ Inspired near allies[X]
 Noble of Noble house[NL]
 If you see this the something broke[NL]
 Badly...[X]
+
 
 #0x342 GrandEmperorDesc
 Established Ruler of the nation.[NL]

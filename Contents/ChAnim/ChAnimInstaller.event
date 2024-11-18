@@ -3,7 +3,7 @@
 //ORG 0xC01568
 //FILL(0xC01568-0xC01807)
 //POP
-PROTECT 0xC01808
+//PROTECT 0xC01808
 
 #ifndef ClassAnimTable
   #ifdef _FE8_
@@ -58,6 +58,60 @@ PROTECT 0xC01808
 {
     #include "ZelgiusV3/8.Unarmed/UnarmedInstaller.event"
 }
+//dark dragon
+{
+    #include "DarkDragon/8.Dragonstone/DragonstoneInstaller.event"
+}
+{
+    #include "DarkDragon/8.Revert/RevertInstaller.event"
+}
+{
+    #include "DarkDragon/8.Transform/TransformInstaller.event"
+}
+{
+    #include "DarkDragon/8.Unarmed/UnarmedInstaller.event"
+}
+//generic transform
+{
+    #include "GenericTransform/8.Revert/RevertInstaller.event"
+}
+{
+    #include "GenericTransform/8.Transform/TransformInstaller.event"
+}
+{
+    #include "GenericTransform/9.Unarmed/UnarmedInstaller.event"
+}
+//earth dragon
+{
+    #include "EarthDragon/8.Dragonstone/DragonstoneInstaller.event"
+}
+//fire dragon
+{
+    #include "FireDragon/8.Monster/MonsterInstaller.event"
+}
+//dawn dragon
+{
+    #include "LightDragon/8.Dragonstone/DragonstoneInstaller.event"
+}
+{
+    #include "LightDragon/8.Revert/RevertInstaller.event"
+}
+{
+    #include "LightDragon/8.Transform/TransformInstaller.event"
+}
+{
+    #include "LightDragon/8.Unarmed/UnarmedInstaller.event"
+}
+//Idunn
+{
+    #include "Idunn/8.Dragonstone/TransformInstaller.event"
+}
+{
+    #include "Idunn/8.Dragonstone/RevertInstaller.event"
+}
+{
+    #include "Idunn/8.Dragonstone/DragonstoneInstaller.event"
+}
 //PUSH
 //ORG 0xC01568 //beg of unised vanilla anim space
 
@@ -82,7 +136,38 @@ AugustEmperorAnims:
     UnarmedAnim(0xB3)
 WORD 0x0
 
+DarkDragonAnims:
+    UnarmedAnim(0xbd)
+    SpecialAnim(0xbd,0xc2) //duskstone    
+WORD 0x0
+
+NormalDragonAnims:
+    UnarmedAnim(0xb6)
+    SpecialAnim(0xb6,0xbc)
+    SpecialAnim(0xb6,0xbd)
+    SpecialAnim(0xb6,0xbe)
+    SpecialAnim(0xb6,0xbf)
+    SpecialAnim(0xb6,0xc0)
+WORD 0x0
+
+DawnDragonAnims:
+    UnarmedAnim(0xc1)
+    SpecialAnim(0xc1,0xc1) //dawnstone  
+WORD 0x0
+
+IdunnDragonAnims:
+    UnarmedAnim(0x77)
+    SpecialAnim(0x77,0xc3)
+WORD 0x0
+
 SetAnimationPointers(0x1,AugustHeavyAnims)
 SetAnimationPointers(0x2,AugustLightAnims)
-SetAnimationPointers(0x56, AugustEmperorAnims)
+SetAnimationPointers(0x0E,NormalDragonAnims)
+SetAnimationPointers(0x3C,NormalDragonAnims)
+SetAnimationPointers(0x56,AugustEmperorAnims)
+SetAnimationPointers(0x60,DarkDragonAnims)
+SetAnimationPointers(0x61,DarkDragonAnims)
+SetAnimationPointers(0x5F,DawnDragonAnims)
+SetAnimationPointers(0x3B,DawnDragonAnims)
+SetAnimationPointers(0x5A,IdunnDragonAnims)
 //POP

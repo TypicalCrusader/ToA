@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
+#include "constants/TOA_event-flags.h"
 
 extern struct DefeatTalkEnt * pr_gDefeatTalkList;
 

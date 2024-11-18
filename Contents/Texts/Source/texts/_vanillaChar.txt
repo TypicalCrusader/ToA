@@ -105,7 +105,7 @@ the forever Rival of the Askon.[X]
 Mortals seeking an life or fortune[NL]
 by exploting weaker beings than them[X]
 
-#0x40A DragonDesc
+#0x40A DragonClassDesc
 DragonDesc[X]
 
 #0x419 PenbarianDesc

@@ -58,6 +58,8 @@ UNIT CHARACTER_PLAY_AUGUST CLASS_CUTS_NOBLE CHARACTER_PLAY_AUGUST Level(1,Ally,0
 UNIT CHARACTER_PLAY_CYRIC CLASS_PLAY_MAGE_LORD CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT CHARACTER_PLAY_NESIA WyvernKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT CHARACTER_PLAY_DURIN  GreatKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+
+Ch1_BegScene_NPC:
 //allies
 UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
@@ -78,6 +80,7 @@ Ch1_BeginningScene:
 		TEXTCONT
 	TEXTEND
 	LOAD1 0x1 Ch1_BegScene_Units  //Durrin Arrives with the news
+	LOAD1 0x1 Ch1_BegScene_NPC
     Text(0,Ch1_Beginning_text_2)  //Durrin tells the news
 	ASMC Class_Choice_MenuASMC|1  //August decides what to wear    
 	SVAL s7 0  //Heavy

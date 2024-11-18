@@ -13,6 +13,7 @@
 #define W_DISARMED  W_ITEM // For Animation Definition Readability
 #define W_MONSTER   0x0B
 #define W_DANCERING 0x0C
+#define W_DRAGONSTONE 0x11
 
 #define WR_NONE 0
 #define WR_E    1

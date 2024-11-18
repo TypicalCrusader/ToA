@@ -1,7 +1,7 @@
 #ifndef DRAGON_TRANSFORM_INSTALLED
 #define DRAGON_TRANSFORM_INSTALLED
 
-#include "source/SMTLikeResConf.lyn.event"
+#include "src/Data.lyn.event"
 
 ALIGN 4
 gpTranformStruct:
