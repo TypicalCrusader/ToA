@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "constants/TOA_items.h"
 
-#define MAXTRANSFORMTABLESIZE 13
+#define MAXTRANSFORMTABLESIZE 14
 //2X air, dusk, dawn, innath,flame,earth,thunder,ice 1X decay
 
 struct TransformTable {

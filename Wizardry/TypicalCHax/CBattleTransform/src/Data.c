@@ -70,10 +70,21 @@ const struct TransformTable gTranformStruct[] = {
     {
         .jid = CLASS_CYCLOPS, //innath
         .iid = ITEM_DRAGONSTONE_DECAY,
-        .gMainAnim= 0xc2,
-        .gIntroAnim= 0xc4,
-        .gExitAnim= 0xc3,
+        .gMainAnim= 0xc5,
+        .gIntroAnim= 0xc6,
+        .gExitAnim= 0xc7,
         .gNoWPNAnim= 0x77,
+        .TransformStartSound= 0xDE, //howl
+        .TransformFinishSound= 0xDC, //transform
+        .UntransformSound= 0xDD, //untransform
+    },
+    {
+        .jid = CLASS_DEMON_KING, //innath
+        .iid = ITEM_BREATH_HATRED,
+        .gMainAnim= 0xc2,
+        .gIntroAnim= 0xc3,
+        .gExitAnim= 0xc4,
+        .gNoWPNAnim= 0xc2,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
         .UntransformSound= 0xDD, //untransform

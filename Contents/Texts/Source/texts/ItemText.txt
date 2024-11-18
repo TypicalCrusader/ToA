@@ -12,6 +12,8 @@ Earthstone[X]
 Dawnstone[X]
 ## DuskStoneName
 Duskstone[X]
+## BreathOfHatredName
+Breath of Hatred[X]
 ## FireStoneDesc
 PLACEHOLDER[X]
 ## WindStoneDesc
@@ -29,4 +31,6 @@ PLACEHOLDER[X]
 ## StoneOfDecayName
 Stone of Decay[X]
 ## StoneOfDecayDesc
+PLACEHOLDER[X]
+## BreathOfHatredDesc
 PLACEHOLDER[X]

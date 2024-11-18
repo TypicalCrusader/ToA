@@ -48,7 +48,7 @@ PrepItemUsabilityFunc_t const gPrepItemUsabilityFuncs[0x100] = {
 	[ITEM_OCEANSEAL]   = CanUnitUsePromotionItem,
 	[ITEM_LUNARBRACE]  = CanUnitUsePromotionItem,
 	[ITEM_SOLARBRACE]  = CanUnitUsePromotionItem,
-	[ITEM_UNK_C1]      = CanUnitUsePromotionItem,
+	//[ITEM_UNK_C1]      = CanUnitUsePromotionItem,
 
 	[ITEM_METISSTOME] = CanUnitUseMetiStome,
 	[ITEM_JUNAFRUIT]  = (void *)CanUnitUseFruitItem,

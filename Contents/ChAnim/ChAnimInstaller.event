@@ -112,6 +112,16 @@
 {
     #include "Idunn/8.Dragonstone/DragonstoneInstaller.event"
 }
+//Duma
+{
+    #include "Duma/8.Monster/MonsterInstaller.event"
+}
+{
+    #include "Duma/8.Monster/TransformInstaller.event"
+}
+{
+    #include "Duma/8.Monster/FinishInstaller.event"
+}
 //PUSH
 //ORG 0xC01568 //beg of unised vanilla anim space
 
@@ -160,6 +170,11 @@ IdunnDragonAnims:
     SpecialAnim(0x77,0xc3)
 WORD 0x0
 
+DumaDragonAnims:
+    UnarmedAnim(0xc3)
+    SpecialAnim(0xc3,0xc4)
+WORD 0x0
+
 SetAnimationPointers(0x1,AugustHeavyAnims)
 SetAnimationPointers(0x2,AugustLightAnims)
 SetAnimationPointers(0x0E,NormalDragonAnims)
@@ -170,4 +185,5 @@ SetAnimationPointers(0x61,DarkDragonAnims)
 SetAnimationPointers(0x5F,DawnDragonAnims)
 SetAnimationPointers(0x3B,DawnDragonAnims)
 SetAnimationPointers(0x5A,IdunnDragonAnims)
+SetAnimationPointers(0x66,DumaDragonAnims)
 //POP
