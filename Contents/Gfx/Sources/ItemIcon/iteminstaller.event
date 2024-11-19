@@ -1,0 +1,33 @@
+
+PUSH
+ORG 0x597D74
+    #incbin "Thunderstone.4bpp"
+POP
+PUSH 
+ORG 0x597DF4
+	#incbin "Dawnstone.4bpp"
+POP
+PUSH
+ORG 0x597E74
+    #incbin "Duskstone.4bpp"
+POP
+PUSH
+ORG 0x598CF4
+	#incbin "Earthstone.4bpp"
+POP
+PUSH
+ORG 0x598D74
+	#incbin "Flamestone.4bpp"
+POP
+PUSH
+ORG 0x598DF4
+	#incbin "Nightfall.4bpp"
+POP    
+PUSH   
+ORG 0x598E74
+	#incbin "Skystone.4bpp"
+POP
+PUSH  
+ORG 0x597674
+	#incbin "StoneofDecay.4bpp"
+POP    

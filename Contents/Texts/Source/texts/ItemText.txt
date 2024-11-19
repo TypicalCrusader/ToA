@@ -14,6 +14,8 @@ Dawnstone[X]
 Duskstone[X]
 ## BreathOfHatredName
 Breath of Hatred[X]
+##SlashOfVoidName
+Slash of Void[X]
 ## FireStoneDesc
 PLACEHOLDER[X]
 ## WindStoneDesc
@@ -33,4 +35,6 @@ Stone of Decay[X]
 ## StoneOfDecayDesc
 PLACEHOLDER[X]
 ## BreathOfHatredDesc
+PLACEHOLDER[X]
+##SlashOfVoidDesc
 PLACEHOLDER[X]

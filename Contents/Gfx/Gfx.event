@@ -4,5 +4,5 @@
 ALIGN 4
 /* Auto generated */
 #include "GfxInstaller.event"
-
+#include "Sources/ItemIcon/iteminstaller.event"
 #endif /* GFX_INSTALLED */
