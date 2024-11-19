@@ -10,7 +10,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE,
@@ -21,7 +21,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE,
@@ -32,7 +32,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE,
@@ -43,7 +43,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE_2, //dawn M
@@ -54,7 +54,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= BANIM_INDEX_MYRRH_NOWPN,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_GORGON, //dusk M
@@ -65,7 +65,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xbd,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_CYCLOPS, //innath
@@ -76,7 +76,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0x77,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_DEMON_KING, //innath
@@ -87,7 +87,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xc2,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE_MYRRH,
@@ -98,7 +98,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE_MYRRH,
@@ -109,7 +109,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE_MYRRH,
@@ -120,7 +120,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MANAKETE_MYRRH,
@@ -131,7 +131,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xb6,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_MOGALL, //dawn F
@@ -142,7 +142,7 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= BANIM_INDEX_MYRRH_NOWPN,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     },
     {
         .jid = CLASS_ARCH_MOGALL, //dusk F
@@ -153,6 +153,6 @@ const struct TransformTable gTranformStruct[] = {
         .gNoWPNAnim= 0xbd,
         .TransformStartSound= 0xDE, //howl
         .TransformFinishSound= 0xDC, //transform
-        .UntransformSound= 0xDD, //untransform
+        .UntransformSound= 0xDD //untransform
     }, 
 };

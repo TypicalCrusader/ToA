@@ -6,6 +6,37 @@
 //original battle transform by Tequila ,UNKNOWN ,Aera, circleseverywhere. Transport to FEB by 7743
 //i need to port this to c only because otherwise it breaky :<
 
+LYN_REPLACE_CHECK(sub_8070AE4);
+void sub_8070AE4(struct ProcEkrDragon *proc)
+{
+    u8 i;
+    struct Anim *anim = proc->anim;
+    if (ANINS_GET_TYPE(*anim->pScrCurrent) == ANIM_INS_TYPE_STOP) {
+
+        for(i=0;i<=MAXTRANSFORMTABLESIZE;i++)
+        {
+            if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i].iid)
+            {        
+                EkrPrepareBanimfx(anim, gTranformStruct[i].gNoWPNAnim - 1);
+                break;
+            }
+            if (gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i].iid)
+            {        
+                EkrPrepareBanimfx(anim, gTranformStruct[i].gNoWPNAnim - 1);
+                break;
+            }       
+        }     
+        AddEkrDragonStatusAttr(proc->anim, EKRDRGON_ATTR_END);
+
+        if (GetAnimPosition(anim) == EKR_POS_L)
+            SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_NORMAL);
+        else
+            SetEkrDragonStatusType(gAnims[2], EKRDRGON_TYPE_NORMAL);
+
+        Proc_Break(proc);
+    }
+}
+
 LYN_REPLACE_CHECK(RegisterEkrDragonStatusType);
 void RegisterEkrDragonStatusType(void)
 {
@@ -101,16 +132,16 @@ void EkrMyr_PrepareBanimfx(struct ProcEkrDragon * proc)
     {
         if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i].iid)
         {
-            EkrPrepareBanimfx(anim, gTranformStruct[i].gMainAnim - 1);
+            EkrPrepareBanimfx(anim, gTranformStruct[i].gIntroAnim - 1);
             SwitchAISFrameDataFromBARoundType(anim, 0);
-            LZ77UnCompWram(banim[gTranformStruct[i].gMainAnim - 1].pal, gPal_Banim);
+            LZ77UnCompWram(banim[gTranformStruct[i].gIntroAnim - 1].pal, gPal_Banim);
             break;            
         }
         else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i].iid)
         {
-            EkrPrepareBanimfx(anim, gTranformStruct[i].gMainAnim - 1);
+            EkrPrepareBanimfx(anim, gTranformStruct[i].gIntroAnim - 1);
             SwitchAISFrameDataFromBARoundType(anim, 0);
-            LZ77UnCompWram(banim[gTranformStruct[i].gMainAnim - 1].pal, gPal_Banim);
+            LZ77UnCompWram(banim[gTranformStruct[i].gIntroAnim - 1].pal, gPal_Banim);
             break;                  
         }
     }
@@ -131,9 +162,9 @@ void EkrMyr_WaitForTransform(struct ProcEkrDragon *proc)
 
     u8 i;
 
-    for(i=0;i<=MAXTRANSFORMTABLESIZE;i++)
-    {
-        if (++proc->timer == 0x1A) {
+    if (++proc->timer == 0x1A) {
+        for(i=0;i<=MAXTRANSFORMTABLESIZE;i++)
+        {    
             if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i].iid)
             {
                 EfxPlaySE(gTranformStruct[i].TransformStartSound, 0x100); //transform
@@ -147,20 +178,23 @@ void EkrMyr_WaitForTransform(struct ProcEkrDragon *proc)
                 break;                
             }
         }
+    }
 
-        if (ANINS_GET_TYPE(*anim->pScrCurrent) == ANIM_INS_TYPE_STOP) {
+    if (ANINS_GET_TYPE(*anim->pScrCurrent) == ANIM_INS_TYPE_STOP) {
+        for(i=0;i<=MAXTRANSFORMTABLESIZE;i++)
+        {               
             if(gpEkrBattleUnitRight->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitRight->weaponBefore == gTranformStruct[i].iid)
             {
                 EfxPlaySE(gTranformStruct[i].TransformFinishSound, 0x100);
                 M4aPlayWithPostionCtrl(gTranformStruct[i].TransformFinishSound, anim->xPosition, 1);        
-                EkrPrepareBanimfx(anim, gTranformStruct[i].gIntroAnim - 1);
+                EkrPrepareBanimfx(anim, gTranformStruct[i].gMainAnim - 1);
                 break;
             }
             else if (gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i].iid)
             {
                 EfxPlaySE(gTranformStruct[i].TransformFinishSound, 0x100);
                 M4aPlayWithPostionCtrl(gTranformStruct[i].TransformFinishSound, anim->xPosition, 1);        
-                EkrPrepareBanimfx(anim,gTranformStruct[i].gIntroAnim - 1);
+                EkrPrepareBanimfx(anim,gTranformStruct[i].gMainAnim - 1);
                 break;
             }      
         }
@@ -186,7 +220,7 @@ void EkrMyr_InBattleIdle(struct ProcEkrDragon * proc)
         Proc_Break(proc);
     }
 }
-
+//ironically this the *end* of chain
 LYN_REPLACE_CHECK(EkrMyr_ReturnToLoli);
 void EkrMyr_ReturnToLoli(struct ProcEkrDragon * proc)
 {
@@ -223,20 +257,21 @@ void EkrMyr_ReturnToLoli(struct ProcEkrDragon * proc)
         {
             EfxPlaySE(gTranformStruct[i].UntransformSound, 0x100);
             M4aPlayWithPostionCtrl(gTranformStruct[i].UntransformSound, anim->xPosition, 1);
-            EkrPrepareBanimfx(anim, gTranformStruct[i].gExitAnim - 1);            
+            EkrPrepareBanimfx(anim, gTranformStruct[i].gExitAnim - 1);  
+            break;           
         }
         else if(gpEkrBattleUnitLeft->unit.pClassData->number == gTranformStruct[i].jid && gpEkrBattleUnitLeft->weaponBefore == gTranformStruct[i].iid)
         {
             EfxPlaySE(gTranformStruct[i].UntransformSound, 0x100);
             M4aPlayWithPostionCtrl(gTranformStruct[i].UntransformSound, anim->xPosition, 1);
             EkrPrepareBanimfx(anim, gTranformStruct[i].gExitAnim - 1);
+            break; 
         }   
-
-        SwitchAISFrameDataFromBARoundType(anim, 0);
-        Proc_Break(proc);
-        LZ77UnCompWram(banim[gTranformStruct[i].gIntroAnim - 1].pal, gPal_Banim);   
-        break; 
     }
+
+    SwitchAISFrameDataFromBARoundType(anim, 0);
+    Proc_Break(proc);
+    LZ77UnCompWram(banim[gTranformStruct[i].gIntroAnim - 1].pal, gPal_Banim);       
 
     if (GetAnimPosition(anim) == EKR_POS_L)
         CpuFastCopy(gPal_Banim, PAL_OBJ(0x7), 0x40);
