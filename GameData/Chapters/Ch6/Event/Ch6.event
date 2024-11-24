@@ -1,0 +1,288 @@
+#include "EAstdlib.event"
+#include "../../../../Contents/EADefs/EADefsLib.event"
+
+//definitions
+#define EVFLAG_SUMMONER_DEFEATED 8
+
+
+Ch6Event:
+POIN Ch6_EventListScr_Turn
+POIN Ch6_EventListScr_Character
+POIN Ch6_EventListScr_Location
+POIN Ch6_EventListScr_Misc
+POIN Ch6_EventListScr_SelectUnit Ch6_EventListScr_SelectDestination Ch6_EventListScr_UnitMove //unused, leftover from fe7
+POIN Ch6_EventListScr_Tutorial
+POIN Ch6_EventListScr_Trap Ch6_EventListScr_Trap //traps - normal, hard
+POIN Ch6_UnitDef_Canon_Normal Ch6_UnitDef_Canon_Hard //normal, hard
+POIN $0 $0 $0 $0 $0 $0 //Skirmish Related
+POIN Ch6_EventScr_Beginning Ch6_EventScr_Ending
+
+/**
+ * Main events
+*/
+
+//Cutscene
+Ch6_August_Heavy:
+
+UNIT
+
+Ch6_August_Light:
+
+UNIT
+
+// NCanon
+// 4 units in throne room in normal  4 outside
+// 3 in hard & lunatic
+// Canon
+// 2 Units in Throne room 2 in room left  4 outside
+// 2 Units in Throne room 2 in room left  3 outside
+Ch6_UnitDef_Canon_Normal:
+UNIT
+
+Ch6_UnitDef_Canon_Hard:
+UNIT
+
+Ch6_UnitDef_NonCanon_Normal:
+UNIT
+
+Ch6_UnitDef_NonCanon_Hard:
+UNIT
+
+//Ch6_UnitDef_Lunatic
+//
+//allies
+Ch6_UnitDef_Ally_Canon_Normal:
+UNIT
+
+Ch6_UnitDef_Ally_Canon_Hard:
+UNIT
+
+Ch6_UnitDef_Ally_Canon_Lunatic:
+UNIT
+
+Ch6_UnitDef_Ally_NonCanon_Normal:
+UNIT
+
+Ch6_UnitDef_Ally_NonCanon_Hard:
+UNIT
+
+Ch6_UnitDef_Ally_NonCanon_Lunatic:
+UNIT
+
+//enemies main
+Ch6_UnitDef_Enemy_Normal:
+UNIT
+
+Ch6_UnitDef_Enemy_Hard:
+UNIT
+
+Ch6_UnitDef_Enemy_Lunatic:
+UNIT
+
+
+Ch6_UnitDef_Enemy_Random_1:
+UNIT
+
+Ch6_UnitDef_Enemy_Random_2:
+UNIT
+
+Ch6_UnitDef_Enemy_Random_3:
+UNIT
+
+Ch6_UnitDef_Enemy_Random_4:
+UNIT
+
+Ch6_UnitDef_Enemy_Random_5:
+UNIT
+
+
+Ch6_EventScr_Beginning:
+	//spawn MC
+	SVAL s1 Ch6_August_Heavy
+	SENQUEUE 
+	SVAL s1 Ch6_August_Light
+	SENQUEUE
+	ASMC HeroUnitPointoS2
+	LOAD_S2 0x1
+
+	//check on which path are you
+	CHECK_EVENTID EVFLAG_PATH_SELECT//EVFLAG 0x88
+	BEQ 0  sC  s0 //IF 0 THEN nonCANON PATH  IF 1 THEN canon PATH
+		Text(0xA,Ch6_Canon_BegScene)
+		//Canon Path
+		SVAL s1 Ch6_UnitDef_Ally_Canon_Normal //-0
+		SENQUEUE
+		SVAL s1 Ch6_UnitDef_Ally_Canon_Lunatic // - 1
+		SENQUEUE
+		SVAL s1 Ch6_UnitDef_Ally_Canon_Hard // -2
+		SENQUEUE
+		ASMC UnitPointertoS2Diff
+		LOAD_S2 0x1
+		ENUN
+		GOTO 3
+
+//NON Canon Path		
+LABEL 0
+	Text(0xA,Ch6_NonCanon_BegScene) 
+	SVAL s1 Ch6_UnitDef_Ally_NonCanon_Normal
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Ally_NonCanon_Lunatic
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Ally_NonCanon_Hard
+	SENQUEUE
+	ASMC UnitPointertoS2Diff
+	LOAD_S2 0x1
+	ENUN	
+	GOTO 3
+
+LABEL 3
+	// PREP event
+	CALL 0x591FD8
+
+	NoFade
+TERMINATE
+
+Ch6_EventScr_Ending:
+	CHECK_EVENTID EVFLAG_EMPEROR_DEAD
+	BNE 201  sC  s0
+		CHECK_EVENTID EVFLAG_EMPEROR_AND_EMPRESS_DEAD
+		BNE 202  sC  s0
+			GOTO 204
+
+LABEL 202
+	//text
+	GOTO 203
+LABEL 201
+	//text
+LABEL 203
+	gSilentPromoteFromS2(CHARACTER_PLAY_AUGUST,CLASS_PLAY_EMPEROR)
+	//Askonian Civil war check
+	ASMC gGet4BitEIDInt
+	SVAL s2 8 //start at 4, +1 at ch1, +2 ch3, +2 ch4, +1 ch5, +3 ch5x
+	BGE 205 s1 s2
+		GOTO 200
+
+LABEL 205
+	CHECK_EVENTID EVFLAG_PATH_SELECT//EVFLAG 0x88
+	BEQ 206  sC  s0 //IF 0 THEN nonCANON PATH  IF 1 THEN canon PATH
+		//canon text
+		GOTO_CHAPTER 8 //maps 08-0A - Askonian Civil War
+
+LABEL 206
+	//Non canon text
+	//rulianus leaves
+	GOTO_CHAPTER 8 //maps 08-0A - Askonian Civil War
+
+LABEL 204
+	//text
+
+LABEL 200
+	GOTO_CHAPTER 0xb //Route to Penbar
+TERMINATE
+
+
+/**
+ * Misc events
+ */	
+
+Ch6_DeadBossChecker:
+	NoFade
+	CHECK_EXISTS CHARACTER_BOSS_ASKON_EMPEROR //Emperor
+	BNE 100  sC  s0
+		CHECK_EXISTS CHARACTER_BOSS_KIMUZ_HOMONCULLI //Homonculli Kimuz
+		BNE 103  sC  s0
+			CHECK_EXISTS CHARACTER_BOSS_ASKON_EMPRESS//Empress
+				BNE 102  sC  s0
+					CHECK_EXISTS CHARACTER_BOSS_CH6_CULT_SUMMNR
+						BNE 106 sC s0
+							GOTO 101
+
+LABEL 100
+	//check if empress lives
+	CHECK_EXISTS CHARACTER_BOSS_ASKON_EMPRESS//Empress
+		BNE 104  sC  s0	
+		FLAG_T EVFLAG_EMPEROR_AND_EMPRESS_DEAD
+			GOTO 105
+
+LABEL 105
+	//text
+FLAG_T EVFLAG_WIN
+	GOTO 101
+
+LABEL 104
+	FLAG_T EVFLAG_EMPEROR_DEAD
+	//text
+	FLAG_T EVFLAG_WIN
+	GOTO 101
+
+LABEL 102
+	//Text
+	GOTO 101
+
+LABEL 103
+	//text
+	FLAG_T EVFLAG_WIN
+	GOTO 101
+
+LABEL 106
+	FLAG_T EVFLAG_SUMMONER_DEFEATED
+
+LABEL 101
+ENDA
+
+Ch6_RandoReinforcements:
+	NoFade
+	SVAL s1 Ch6_UnitDef_Enemy_Random_1
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Enemy_Random_2
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Enemy_Random_3
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Enemy_Random_4
+	SENQUEUE
+	SVAL s1 Ch6_UnitDef_Enemy_Random_5	
+	SENQUEUE
+	ASMC UnitPointertoS2Rand
+	LOAD_S2 0x0
+ENDA
+
+/**
+ * Event list
+ */
+Ch6_EventListScr_Turn:
+	TurnEventPlayer(EVFLAG_SUMMONER_DEFEATED,Ch6_RandoReinforcements,2,11)
+END_MAIN
+
+
+Ch6_EventListScr_Character:
+	//	CharacterEventBothWays EVFLAG_TMP 7  EventScr_Talk_EirikaSeth  CHARACTER_EIRIKA  CHARACTER_SETH
+END_MAIN
+
+
+Ch6_EventListScr_Location:
+END_MAIN
+
+
+Ch6_EventListScr_Misc:
+	Survive(Ch6_EventScr_Ending,12)
+	AFEV 0 Ch6_DeadBossChecker 2
+	CauseGameOverIfLordDies
+END_MAIN
+
+
+Ch6_EventListScr_SelectUnit:
+END_MAIN
+
+
+Ch6_EventListScr_SelectDestination:
+END_MAIN
+
+
+Ch6_EventListScr_UnitMove:
+END_MAIN
+
+Ch6_EventListScr_Tutorial:
+END_MAIN
+
+Ch6_EventListScr_Trap:
+ENDA

@@ -13,3 +13,9 @@ void SetCurrentPath() {
     gPlaySt.chapterModeIndex = gEventSlots[1];
     return;
 }
+
+void gGetCurrentMode() {
+
+
+    return;
+}

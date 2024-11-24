@@ -1,0 +1,10 @@
+//Hextator   Compatability:7743
+
+PUSH 
+ORG 0x058D64
+#incbin "00058D64.bin"
+POP
+PUSH
+ORG 0x464400
+#incbin "00464400.bin"
+POP

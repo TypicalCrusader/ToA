@@ -1,0 +1,36 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../fireemblem8u"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.txt": "ck3",
+			"smtlikeres.h": "c",
+			"courtapproval.h": "c",
+			"variables.h": "c",
+			"toa_characters.h": "c",
+			"toa_event-flags.h": "c",
+			"ch6.h": "c",
+			"skill-system.h": "c",
+			"event-rework.h": "c",
+			"common-chax.h": "c",
+			"kernel-lib.h": "c",
+			"vanilla.h": "c",
+			"tchax.h": "c",
+			"ch1.h": "c",
+			"tea-custom_macros.h": "c",
+			"eastdlib.h": "c",
+			"texts.h": "c",
+			"silentpromote.h": "c",
+			"cbattletransform": "cpp",
+			"data.h": "c",
+			"configs.h": "c",
+			"toa_items.h": "c"
+		}
+	}
+}

@@ -841,7 +841,6 @@ mov r0, 	#0x5E //unk5E u16 (short) pad in chapter data - used to store main menu
 b FE8PathTextEnd
 
 FE8PathText1:
-mov r0, #0x0
 mov r0, r4
 mov r0,#0x70	//"normal textID"
 FE8PathTextEnd:

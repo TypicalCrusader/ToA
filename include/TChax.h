@@ -1,11 +1,13 @@
 #pragma once
+#include "common-chax.h"
 
 void GetCurrentMC();
-void NextRN_100_to_S1();
-void SelectNextReinforcements();
-void SetCourtApprovalValue();
-void CheckCourtApprovalValue();
+//Abomination
+void gSet4BitEIDInt();
+void gGet4BitEIDInt();
 u8 CheckCurrentPath();
 void ReturnCurrentPathtoS1();
 void SetCurrentPath();
+//Silient PROM
 void gSilentPromote();
+void gSilientPromoteFromS2();

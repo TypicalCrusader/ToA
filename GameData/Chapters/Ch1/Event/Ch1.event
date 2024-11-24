@@ -2,11 +2,13 @@
 #include "../../../../Contents/EADefs/EADefsLib.event"
 
 //definitions
-#define SilentPromote(pid,jid) "SVAL s1 pid ; SVAL s2 jid ; ASMC gSilentPromote"
-#define EVTFLAG_USE_CANON_MAP 0x7
-#define EVTFLAG_USE_NON_CANON_MAP 0x8
-#define EVTFLAG_USE_CANON_HOUSE 0x9
-#define EVTFLAG_USE_NON_CANON_HOUSE 0xA
+#define EVTFLAG_USE_CANON_MAP 			0x7
+#define EVTFLAG_USE_NON_CANON_MAP 		0x8
+#define EVTFLAG_USE_CANON_HOUSE 		0x9
+#define EVTFLAG_USE_NON_CANON_HOUSE 	0xA
+#define EVTFLAG_IKARIA_RECRUITED 		0xB
+#define EVTFLAG_USE_CANON_VILLAGE 		0xC
+#define EVTFLAG_USE_NON_CANON_VILLAGE 	0xD
 
 //this is the only singular chapter that uses 2 maps 
 Ch1_ThisChapter:
@@ -26,11 +28,14 @@ Ch1_TurnBasedEvents:
 TURN
 
 Ch1_CharacterBasedEvents:
+CharacterEvent(EVTFLAG_IKARIA_RECRUITED,Ch1_RecruitIkaria,CHARACTER_PLAY_AUGUST,CHARACTER_PLAY_IKARIA)
 CHAR
 
 Ch1_LocationBasedEvents:
 //House(EVTFLAG_USE_NON_CANON_HOUSE,offset,3,11) 
 //House(EVTFLAG_USE_CANON_HOUSE,offset,villX,villY) 
+//Village(EVTFLAG_USE_CANON_VILLAGE, Ch1_Canon_Village)
+Village(EVTFLAG_USE_NON_CANON_VILLAGE, Ch1_Non_Canon_Village,21,27)
 LOCA
 
 Ch1_MiscBasedEvents:
@@ -43,13 +48,13 @@ Ch1_Dunno:
 END_MAIN
 
 Ch1_Tutorial:
-END_MAIN
+ENDTRAP
 
 Ch1_Ballista1:
-END_MAIN
+ENDTRAP
 
 Ch1_Ballista2:
-END_MAIN
+ENDTRAP
 ALIGN 4
 
 Ch1_BegScene_Units:
@@ -58,29 +63,61 @@ UNIT CHARACTER_PLAY_AUGUST CLASS_CUTS_NOBLE CHARACTER_PLAY_AUGUST Level(1,Ally,0
 UNIT CHARACTER_PLAY_CYRIC CLASS_PLAY_MAGE_LORD CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT CHARACTER_PLAY_NESIA WyvernKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT CHARACTER_PLAY_DURIN  GreatKnight CHARACTER_PLAY_AUGUST Level(1,Ally,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT
 
 Ch1_BegScene_NPC:
 //allies
-UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
-UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [1,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [8,18] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [8,20] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [7,24] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [2,24] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [7,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
+UNIT CHARACTER_IMPR_SOLDIER_HEAVY_M Knight CHARACTER_PLAY_AUGUST Level(1,NPC ,0) [2,1] 0 0x0 0 0 [0, 0, 0, 0] NoAI
 UNIT
 
 Ch1_Units1:
 //Add Player Units
 UNIT
 
+Ch1_Enemy_Canon:
+UNIT
+
+Ch1_Enemy_Non_Canon:
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [3,22] 0 0x0 0 0 [IronAxe, 0, 0, 0] [AttackIfClose,BrigandMove,0,0]
+UNIT CHARACTER_BRIG_SOLDIER_MYRYM_M Myrmidon CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [2,16] 0 0x0 0 0 [SlimSword, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Myrmidon CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [10,2] 0 0x0 0 0 [SlimSword, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_MYRYM_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [17,3] 0 0x0 0 0 [SlimSword, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_MYRYM_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [16,27] 0 0x0 0 0 [SlimSword, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [21,5] 0 0x0 0 0 [IronAxe, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [10,2] 0 0x0 0 0 [IronAxe, 0, 0, 0] [AttackIfClose,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [17,3] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [16,27] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [18,9] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [12,16] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [6,25] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_ARCHR_M Archer CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [5,8] 0 0x0 0 0 [IronBow, 0, 0, 0] [AttackInRange,BrigandMove,NoRecovery,0]
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [15,13] 0 0x0 0 0 [IronAxe, 0, 0, 0] [AttackIfClose,BrigandMove,0,0]
+UNIT CHARACTER_BRIG_SOLDIER_BRIGN_M Brigand CHARACTER_BOSS_CH1_BRIG_SHANK Level(1,Enemy ,0) [13,28] 0 0x0 0 0 [IronAxe, 0, 0, 0] [AttackIfClose,BrigandMove,0,0]
+UNIT CHARACTER_BOSS_CH1_BRIG_SHANK Brigand 0x0 Level(1,Enemy ,0) [12,24] DropItem 0x0 0 0 [SteelAxe, Vulnerary, 0, EnergyRing] [AttackIfClose,DoNotMove,CautiousRecovery,0]
+UNIT
+
+Ch1_Ikaria:
+UNIT CHARACTER_PLAY_IKARIA Cavalier_F 0 Level(2,Ally ,0) [21,27] 0 0x0 0 0 [IronLance, IronSword, Vulnerary, 0] [AttackIfClose,DoNotMove,CautiousRecovery,0]
+UNIT
+
 Ch1_BeginningScene:
-	FADI 20 
-	SVAL s1 4  //value to add/set
+	EVBIT_MODIFY 4 //disallow text and scene skip
+	FADEIN 20 
+	SVAL s1 0x4  //value to add/set
 	SVAL s2 1  //0 - add, >=1 - set
-	ASMC SetCourtApprovalValue //default court approval - expected value xxx01000
-	LOMA 0x3b  //Castle Dreshic
+	ASMC gSet4BitEIDInt //default court approval - expected value xxxx0100
+	LOADMAP 0x3b  //Castle Dreshic
     Text(0,Ch1_Beginning_text_1)  //august wakes
-		FADU 0xF 
+		FADEOUT 0xF 
 		TEXTCONT
 	TEXTEND
-	LOAD1 0x1 Ch1_BegScene_Units  //Durrin Arrives with the news
-	LOAD1 0x1 Ch1_BegScene_NPC
+	LOAD_CUTSCENE Ch1_BegScene_Units  //Durrin Arrives with the news
+	LOAD_CUTSCENE Ch1_BegScene_NPC
     Text(0,Ch1_Beginning_text_2)  //Durrin tells the news
 	ASMC Class_Choice_MenuASMC|1  //August decides what to wear    
 	SVAL s7 0  //Heavy
@@ -90,11 +127,12 @@ Ch1_BeginningScene:
             GOTO 10 
 LABEL 0 
 	Text(0,Ch1_Beginning_text_chosen_heavy) //August wears plate
-	SilentPromote(0,CLASS_PLAY_ARMORED_LORD)
+	gSilentPromoteFromS2(CHARACTER_PLAY_AUGUST,CLASS_PLAY_ARMORED_LORD)
+	FLAG_T EVFLAG_AUGUST_TYPE
 	GOTO 2 
 LABEL 1 
 	Text(0,Ch1_Beginning_text_chosen_light)  //august wears gambesson
-	SilentPromote(0,CLASS_PLAY_LIGHT_LORD)
+	gSilentPromoteFromS2(CHARACTER_PLAY_AUGUST,CLASS_PLAY_LIGHT_LORD)	
 	GOTO 2
 
 LABEL 2 
@@ -109,24 +147,55 @@ LABEL 3
     SVAL s1 3  //Canon
 	ASMC SetCurrentPath 
 	Text(0,Ch1_Beginning_text_4)  //August decides to move through forest
-	LOMA 0x1  //canon map
-	ENUT EVTFLAG_USE_CANON_MAP
+	//move to end of map
+	MOVE 10 CHARACTER_PLAY_AUGUST [4,25]
+	MOVE 10 CHARACTER_PLAY_DURIN [5,25]
+	ENUN
+	REMOVEUNIT 	CHARACTER_PLAY_DURIN
+	REMOVEUNIT	CHARACTER_PLAY_AUGUST
+	MOVE 10 CHARACTER_PLAY_NESIA [4,25]
+	MOVE 10 CHARACTER_PLAY_CYRIC [5,25]
+	ENUN
+	REMOVEUNIT	CHARACTER_PLAY_NESIA
+	REMOVEUNIT	CHARACTER_PLAY_CYRIC
+	REMOVEALL_GREEN
+	LOADMAP 0x1  //canon map
+	FLAG_T EVTFLAG_USE_CANON_MAP
 	GOTO 10 
 
 LABEL 4
     SVAL s1 2  //Non-Canon
 	ASMC SetCurrentPath 
 	Text(0,Ch1_Beginning_text_5)  //August decides to move through hillsides
-	ENUT EVTFLAG_USE_NON_CANON_MAP	
-	LOMA 0x18  //non-canon map
+	FLAG_T EVTFLAG_USE_NON_CANON_MAP	
+	LOADMAP 0x9 //non-canon map
+	LOAD 0x1 Ch1_Enemy_Non_Canon
+	Text(0,Ch1_Beginning_text_5)  //Brigands Arrrive
+	CURSOR_FLASHING [21,27] //point at villiage			
+	Text(0,Ch1_Beginning_text_5)  //scene at vill, ikaria decides to protecc	
 
 LABEL 10
-ENDA
+NoFade
+TERMINATE
 ALIGN 4
 
+Ch1_RecruitIkaria:
+	//music
+	//text
+	CUSA CHARACTER_PLAY_IKARIA
+END
+
+Ch1_Non_Canon_Village:
+	NoFade
+	FLAG_T EVFLAG_CH1_NON_CANON_VILL_ENTERED
+	//Text(0,Ch1_noncanon_vill_text)  //scene at vill, 
+	GIVEITEMTO -1
+END
+
 Ch1_EndingScene:
-MNCH 0x01 //TODO: Replace with proper code for next chapter.
-ENDA
+NoFade
+GOTO_CHAPTER 0x02 //TODO: Replace with proper code for next chapter.
+TERMINATE
 
 
 MESSAGE CH1 Events end at offset CURRENTOFFSET

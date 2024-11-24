@@ -1,0 +1,50 @@
+﻿ALIGN 4
+CastleConfig:
+    #incext compress "Castle/CastleUpdateConfig.mapchip_config"
+
+ALIGN 4
+Castle1_Pal:
+    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 1.png"
+    #incbin "Castle/ImprovedCastleObject_Palette1_pal.dmp"
+
+ALIGN 4
+Castle1_Obj:
+    #incbin "Castle/ImprovedCastleObject_Palette1.dmp"
+ALIGN 4
+Castle2_Pal:
+    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 2.png"
+    #incbin "Castle/ImprovedCastleObject_Palette2_pal.dmp"
+    //#incbin "Castle\Improved Castle Object_Palette 2.dmp"
+ALIGN 4
+Castle3_Pal:
+    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 3.png"
+    #incbin "Castle/ImprovedCastleObject_Palette3_pal.dmp"
+    //#incbin "Castle\Improved Castle Object_Palette 3.dmp"
+ALIGN 4
+Castle5_Pal:
+    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette Snowy.png"    
+    #incbin "Castle/ImprovedCastleObject_PaletteSnowy_pal.dmp"
+    //#incbin "Castle\Improved Castle Object_Palette Snowy.dmp"
+ALIGN 4
+CaveConfig:
+    #incext compress "FE7Cave/FE7_Cave.mapchip_config"
+
+ALIGN 4
+CaveObj:
+    #incbin "FE7Cave/FE7_Cave_Obj.dmp"
+
+ALIGN 4
+CavePal:
+    #incbin "FE7Cave/FE7_Cave_Obj_pal.dmp"
+
+
+ALIGN 4
+EventPointerTable(0x18, Castle1_Obj)
+EventPointerTable(0x19, Castle1_Pal)
+EventPointerTable(0x1A, CastleConfig)
+EventPointerTable(0x48, Castle3_Pal)
+EventPointerTable(0x57, Castle5_Pal)
+EventPointerTable(0xB9, Castle2_Pal)
+EventPointerTable(0x30, CaveConfig)
+EventPointerTable(0x2F, CavePal)
+EventPointerTable(0x2E, CaveObj)

@@ -1,0 +1,11 @@
+
+#define SilentPromote(pid,jid) "SVAL s1 pid ; SVAL s2 jid ; ASMC gSilentPromote"
+#define SilentPromoteWithItem(pid,jid,iid) "SVAL s1 pid ; SVAL s2 jid ; SVAL s3 iid ; ASMC gSilentPromoteWithItem"
+#define gSilentPromoteFromS2(pid,jid) "SVAL s3 3;SVAL s1 jid; SENQUEUE; SVAL s2 pid; ASMC gSilentPromoteFromEventParameter"
+#define Set4BitEIDInt(number,mode) "SVAL s1 number ; SVAL s2 mode; ASMC gSet4BitEIDInt"
+//credits vesly
+#define TutText(text) "SVAL 0xB 0xFFFFFFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Centered 
+#define TutText_B(text) "SVAL 0xB 0x00B0FFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Bottom-Centered 
+#define TutText_M(text) "SVAL 0xB 0x280028; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Bottom-Centered 
+#define TutTextAutoFade(background,textID) "MUSI; SMOV 0x2 background; CALL $9EE2E8; TutText(textID); MUNO; CALL $9EE2C4"
+#define TutText(background,textID) "MUSI; SMOV 0x2 background; CALL $9EE2E8; TutText(textID); MUNO"

@@ -8,10 +8,7 @@ MESSAGE Event_Space starts at (CURRENTOFFSET)
     //CH1 - map 1
     EventPointerTable(0xA, Ch1_ThisChapter)
     #include "Ch1/Event/Ch1_header.lyn.event"
-    #include "Ch1/Event/Ch1.event" 
-    //maps
-    #include "Ch1/Maps/CastleDreshic.event"
-    #include "Ch1/Maps/FueledByDesperation.event"   
+    #include "Ch1/Event/Ch1.event"   
 }
 {
     //CH2 - map 2
@@ -30,8 +27,33 @@ MESSAGE Event_Space starts at (CURRENTOFFSET)
 
 }
 {
+    //CH5x - map 6
+    #include "Ch5x/Map/Ch5x.event"
+}
+{
     //CH 6 - map 7
     EventPointerTable(0x24, Ch6Event)
-    #include "Ch6/Event/Ch6.lyn.event"
+    #include "Ch6/Event/Ch6_header.lyn.event"
+    #include "Ch6/Event/Ch6.event"
+    #include "Ch6/Map/Ch6.event"   
 }
+{
+    //CH 6x - map 8
+    //EventPointerTable(0x27, Ch6xEvent)
+    #include "Ch6x/Map/Ch6x.event"
+}
+{   //Ch 7x - map 9
+    //maps
+    #include "Ch7x/Map/FueledByGreed.event"     
+}
+{   //CH 11 - 10
+    #include "Ch11/Map/Ch11.event"
+}
+{   //CH 12 - 11
+    #include "Ch12/Map/Ch12.event"
+}
+{   //Castle Dreshic, no chap
+    #include "0x3B/Map/CastleDreshic.event"
+}
+
 MESSAGE Event_Space end at (CURRENTOFFSET) size as (CURRENTOFFSET - Event_Space_Beg)

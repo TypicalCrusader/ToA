@@ -31,3 +31,7 @@ PUSH
 ORG 0x597674
 	#incbin "StoneofDecay.4bpp"
 POP    
+PUSH
+ORG 0x5977F4
+	#incbin "DivineStone.4bpp"
+POP

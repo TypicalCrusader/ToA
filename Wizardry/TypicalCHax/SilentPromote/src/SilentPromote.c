@@ -1,23 +1,58 @@
 #include "SilentPromote.h"
 
-//s1 - CharID, s2 ClassID
+//at most 3 values from Queue, 0 - deployindex, 1- class, 2-item
 void gSilentPromote(){
-    struct Unit *unit = GetUnit(gEventSlots[1]);
-    const struct ClassData *class = GetClassData(gEventSlots[2]);
+    struct Unit *unit = GetUnit(gEventSlotQueue[0]);
+    u8 i;
 
-    //set class
-    unit->pClassData = class;
-    //add class stats
-    unit->maxHP += class->promotionHp;
-    if((unit->curHP + class->promotionHp) > unit->maxHP)
+    if(gEventSlots[0xD]<3)
     {
-        unit->curHP += class->promotionHp;
+        ApplyUnitPromotion(unit,gEventSlotQueue[1]);        
     }
-    unit->pow += class->promotionPow;
-    unit->skl += class->promotionSkl;
-    unit->spd += class->promotionSpd;
-    unit->def += class->promotionDef;
-    unit->res += class->promotionRes;   
+    else 
+    {
+        ApplyUnitPromotion(unit,gEventSlotQueue[1]);  
+        if ((s32) gEventSlotQueue[2] != (s32)-1) {
+            UnitUpdateUsedItem(unit, gEventSlotQueue[2]);
+        }                 
+    }
+
+    //clear the Queue
+    for(i=1;i<=(gEventSlots[0xD]-1);i++)
+    {
+        gEventSlotQueue[i] = 0;
+    }    
+    gEventSlots[0xD] = 0;
+
+    return;
+}
+
+//takes 2 at most values from slot Queue, 0-classID, 1- itemID + charID from s2/unit location at slotB/active unit/leader + mode in unisgned
+void gSilentPromoteFromEventParameter(){
+    //0, active leader, -1 active unit, -2 unit location, -3 unitID from S3
+    s32 mode = (s32) gEventSlots[0x3] * -1;
+    struct Unit *unit = GetUnitStructFromEventParameter(mode);
+    u8 temp = gEventSlots[0xD];
+    u8 i;
+    if(gEventSlots[0xD]<2)
+    {
+        ApplyUnitPromotion(unit,gEventSlotQueue[0]);
+    }
+    else
+    {
+        s32 ItemID = (s32) gEventSlotQueue[1];
+        ApplyUnitPromotion(unit,gEventSlotQueue[0]);  
+        if ((s32) ItemID != (s32)-1) {
+            UnitUpdateUsedItem(unit, ItemID);
+        }             
+    }
+
+    //clear the Queue
+    for(i=1;i<=temp;i++)
+    {
+        gEventSlotQueue[i] = 0;
+    }    
+    gEventSlots[0xD] = 0;
 
     return;
 }

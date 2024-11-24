@@ -1,15 +1,12 @@
 
 #include "CourtApproval.h"
 
-//takes last used byte of perma flags (03005268) 
-//since there are 199 perma flags and 200 values we bitshift 1 right
+//takes last used byte of perma flags (03005268)
 //then take and return value to S1
-void CheckCourtApprovalValue()
+void gGet4BitEIDInt()
 {
     u8 LastPermaFlagByte;
     LastPermaFlagByte = gPermanentFlagBits[24];
-    LastPermaFlagByte >>= 1;
-    LastPermaFlagByte <<= 4;
     LastPermaFlagByte >>= 4;
     if(LastPermaFlagByte > 15)
     {
@@ -21,14 +18,19 @@ void CheckCourtApprovalValue()
     return;
 }
 
-//Takes value from S1 adds it to LastPermaFlagByte which before is added to gPermanentFlagBits[196] is moved left
-void SetCourtApprovalValue()
+//Takes value from S1 adds it to LastPermaFlagByte which before is added to gPermanentFlagBits[24] is moved left
+void gSet4BitEIDInt()
 {
-    u8 LastPermaFlagByte;
-    LastPermaFlagByte = gPermanentFlagBits[24]; //Index of flag we want is FlagID - 100 - 1 so if we want 4 from last then its 196 / 8 = 24
-    LastPermaFlagByte >>= 1; //take last unused bit (200)
-    LastPermaFlagByte <<= 4; //clear 
-    LastPermaFlagByte >>= 4; 
+    if(gEventSlots[0x1] > 15)
+    {
+        gEventSlots[0x1] = 15;
+    }
+
+    u8 LastPermaFlagByte = gPermanentFlagBits[24];
+    u8 Buffer = gPermanentFlagBits[24];
+    LastPermaFlagByte >>= 4; //clear most significant bits 
+    Buffer <<=4;//clear least significant bits
+    Buffer >>=4;//return
 
     if(gEventSlots[0x2] == 0) {
         LastPermaFlagByte = LastPermaFlagByte + gEventSlots[0x1];
@@ -36,10 +38,8 @@ void SetCourtApprovalValue()
     else {
         LastPermaFlagByte = gEventSlots[0x1];
     }
-    if(LastPermaFlagByte > 15)
-    {
-        LastPermaFlagByte = 15;
-    }
-    LastPermaFlagByte >>= 3;
-    gPermanentFlagBits[24] = gPermanentFlagBits[24] | LastPermaFlagByte;
+
+    LastPermaFlagByte <<= 4; //move to least significant
+    LastPermaFlagByte = LastPermaFlagByte | Buffer;
+    gPermanentFlagBits[24] = LastPermaFlagByte;
 }

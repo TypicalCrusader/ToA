@@ -22,7 +22,7 @@ Imperial[X]
 #0x24e Echean
 Echean[X]
 
-#0x254 Brigand
+#0x254 BrigandName
 Brigand[X]
 
 #0x255 Drosian
