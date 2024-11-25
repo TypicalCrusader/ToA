@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "TChax.h"
+#include "constants/TOA_event-flags.h"
 
 void HeroUnitPointoS2()
 {
