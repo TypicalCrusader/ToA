@@ -113,9 +113,6 @@ Ch1_BeginningScene:
 	ASMC gSet4BitEIDInt //default court approval - expected value xxxx0100
 	LOADMAP 0x3b  //Castle Dreshic
 
-	SVAL s2 1
-	GOTO 0xFFFF
-
     Text(0,Ch1_Beginning_text_1)  //august wakes
 		FADEOUT 0xF 
 		TEXTCONT
