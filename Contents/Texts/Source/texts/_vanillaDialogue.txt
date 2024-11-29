@@ -1,0 +1,88 @@
+#0x0C26 Ch1_Beginning_text_1
+Hey! Hey! Wake up![A][LoadOverworldFaces]Its not a time to[NL]
+be sleeping![A][LoadOverworldFaces]Good morning brother its[NL]
+nice you finally decided to awaken.[A][NL]
+Cyric[..] Nesia[..] what are you doing[NL]
+in my room.[A][NL] 
+You look bad, have you had an nightmare?[A][NL]
+No[..] nothing of this sort, i have seen[NL]
+something akin to memories, at first i[NL]
+could'nt think where or who am i[...] until[A][NL]
+i seen tyrfang on my hip and Black Dragon.[A][NL]
+What i think i seen was a final battle[NL]
+against Black Dragon and their forces..[A][NL]
+Are you absolutely sure you are good[NL] 
+brother?[A] Because what you speak of[NL] 
+seems to be preety much madness.[A][NL]
+Im not joking Cyric, i have seen it[..]
+its [ToggleRed]Hate [ToggleRed], its malice[A][NL]
+Never in my whole life i have seen[NL]
+something so utterly teriffying[...][A][NL]
+I hope its nothing but a nightmare[...][NL]
+for good of us all[..][A] Anyways[..][A][NL]
+Nesia, i havent seen you in a while[NL]
+how are the things in the capital?[A][NL]
+Nothing new brother, Father as always is[NL]
+placating nobles while taking part in[NL]
+demi-human slavery[..][A] Mother is[NL] 
+bloodthirsty and wants another war with[NL]
+Echea[A], Nobles are divided and the common[NL]
+folk struggle with no help from them[NL]
+after the lack of rain in[NL]
+this harvest season.[A] Forgive me for[NL]
+crass langauge but the whole situation[NL] 
+is an evergrowing clusterfuck[A][NL]
+Madness[...] what madness have conquered[NL]
+the minds of our parents and nobility[NL]
+If this continues we will soon have civil[NL]
+war on our hands, all while Holy Kingdom[A][NL]
+and Drosia bare their teeth preparing to[NL]
+strike us at the first sign of weakness.[NL]
+Maybe thats what our parents want[...] by[NL]
+causing chaos they can remove seeds of[NL] 
+rebellion before they will happen in the[NL]
+next war against Echea or Imperium[..][NL]
+Then they are mad[A] We are nothing[NL] 
+without commonfolk, they are levies we use[NL]
+they are source of food we eat and taxes[NL] 
+we use yet we treat them as less than[NL]
+humans. Cyric, Nesia we should acelerate[NL]
+our plans.[A] Yes Brot...[A] PRINCE AUGUST![A][NL][X]
+
+## Ch1_Beginning_text_2
+Prince August.[A] Durren. What has happened?[A][NL]
+Villiage of Careso have been attacked by[A][NL]
+brigands, the same one we hunted for![A][NL]
+When they attacked?[A] Half a day ago[NL]
+my lord.[A] Careso lies in the mountains[NL]
+it means that the only way they can move[NL]
+is west towards us and the villiages of[NL]
+Berz and Volubis.[A] Durrin go to stables[NL]
+and make them prepare mounts for us we[NL] 
+move in a hour.[A] Yes My Lord[A][NL]
+Nesia, Cyric you go with me?[A][NL]
+You even ask? Of Course.[A][NL]
+I Will go to, you might need air advantage[A][NL]
+Good, now i need to change into armor so[NL]
+please leave my room.[A][X]
+
+## Ch1_Beginning_text_chosen_heavy
+Placeholder[X]
+
+## Ch1_Beginning_text_chosen_light
+Placeholder[X]
+
+## Ch1_Beginning_text_3
+Placeholder[X]
+
+## Ch1_Beginning_text_4
+Placeholder[X]
+
+## Ch1_Beginning_text_5
+Placeholder[X]
+
+## Ch6_Canon_BegScene
+Placeholder[X]
+
+## Ch6_NonCanon_BegScene
+Placeholder[X]
