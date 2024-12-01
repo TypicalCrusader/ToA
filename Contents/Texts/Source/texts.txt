@@ -3,6 +3,7 @@
 #include texts/_vanillaChar.txt
 #include texts/_vanillaClass.txt
 #include texts/_vanillaItem.txt
+#include texts/_vanillaDialogue.txt
 
 #0xD4C MSG_Reserved
 _reserved[X]

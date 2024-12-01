@@ -49,7 +49,7 @@ we use yet we treat them as less than[NL]
 humans. Cyric, Nesia we should acelerate[NL]
 our plans.[A] Yes Brot...[A] PRINCE AUGUST![A][NL][X]
 
-## Ch1_Beginning_text_2
+#0x0C27 Ch1_Beginning_text_2
 Prince August.[A] Durren. What has happened?[A][NL]
 Villiage of Careso have been attacked by[A][NL]
 brigands, the same one we hunted for![A][NL]
@@ -66,23 +66,29 @@ I Will go to, you might need air advantage[A][NL]
 Good, now i need to change into armor so[NL]
 please leave my room.[A][X]
 
-## Ch1_Beginning_text_chosen_heavy
+#0x0C28 Ch1_Beginning_text_chosen_heavy
 Placeholder[X]
 
-## Ch1_Beginning_text_chosen_light
+#0x0C29 Ch1_Beginning_text_chosen_light
 Placeholder[X]
 
-## Ch1_Beginning_text_3
-Placeholder[X]
+#0x0C2A Ch1_Beginning_text_3
+Placeholder[A][X]
 
-## Ch1_Beginning_text_4
-Placeholder[X]
+#0x0C2B Ch1_Beginning_text_4
+Placeholder[A][X]
 
-## Ch1_Beginning_text_5
-Placeholder[X]
+#0x0C2C Ch1_Beginning_text_5
+Placeholder[A][X]
 
-## Ch6_Canon_BegScene
-Placeholder[X]
+#0x0C2D Ch1_Beginning_text_6
+Placeholder[A][X]
 
-## Ch6_NonCanon_BegScene
-Placeholder[X]
+#0x0C2E Ch1_Beginning_text_7
+Placeholder[A][X]
+
+#0x0C2F Ch6_Canon_BegScene
+Placeholder[A][X]
+
+#0x0C30 Ch6_NonCanon_BegScene
+Placeholder[A][X]

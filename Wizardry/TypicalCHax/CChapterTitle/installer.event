@@ -1,0 +1,12 @@
+//include this under free space
+
+#include "src/CChapterTitle.lyn.event"
+
+ALIGN 4
+gChFont:
+//#incext Png2Dmp "font.png" --lz77
+#incbin "src/font.png.dmp"	//HINT=BIN
+
+ALIGN 4
+ChTable:
+#incbin "src/chartable.dmp"	//HINT=BIN

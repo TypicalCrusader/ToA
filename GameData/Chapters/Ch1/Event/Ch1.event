@@ -184,9 +184,9 @@ LABEL 4
 	REMOVEALL_GREEN	
 	LOADMAP 0x9 //non-canon map
 	LOAD 0x1 Ch1_Enemy_Non_Canon
-	Text(0,Ch1_Beginning_text_5)  //Brigands Arrrive
+	Text(0,Ch1_Beginning_text_6)  //Brigands Arrrive
 	CURSOR_FLASHING [21,27] //point at villiage			
-	Text(0,Ch1_Beginning_text_5)  //scene at vill, ikaria decides to protecc	
+	Text(0,Ch1_Beginning_text_7)  //scene at vill, ikaria decides to protecc	
 
 LABEL 10
 NoFade

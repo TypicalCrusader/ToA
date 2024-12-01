@@ -15,8 +15,8 @@ const struct ROMChapterData Ch1Chapter = {
     //UNUSED VALUES
 	.hasPrepScreen = FALSE, //intsys why the fuck is this unused?????????
     //UNUSED VALUEs END
-	.chapTitleId = 2, //ch6 complicit route
-	.chapTitleIdInHectorStory = 2, //ch9 canon route
+	.chapTitleId = 1, //dont touch this
+	.chapTitleIdInHectorStory = 1, 
 	.initialPosX = 13,
 	.initialPosY = 25,
 	.initialWeather = WEATHER_FINE,
@@ -105,7 +105,7 @@ const struct ROMChapterData Ch1Chapter = {
 		[1] = 40,
 	},
     //UNUSED VALUES END
-	.unk5E = CH_1_MAIN_MENU_CH_NAME,
+	.unk5E = 0x0,
     //UNUSED VALUES
 	.goldForFundsRankInEliwoodStory = {
 		[0] = 1060,
@@ -118,8 +118,8 @@ const struct ROMChapterData Ch1Chapter = {
     //UNUSED VALUES END
 	.chapTitleTextId = CH_1_ROUTE_A_CH_NAME,
 	.chapTitleTextIdInHectorStory = CH_1_ROUTE_B_CH_NAME,
-	.mapEventDataId = 2,
-	.gmapEventId = 0xA,
+	.mapEventDataId = 0xA,
+	.gmapEventId = 2,
     //UNUSED VALUES
 	.divinationTextIdBeginning = 0,
 	.divinationTextIdInEliwoodStory = 0,
@@ -127,8 +127,8 @@ const struct ROMChapterData Ch1Chapter = {
 	.divinationTextIdEnding = 0,
 	.divinationPortrait = 0,
 	.divinationFee = 0,
-	.prepScreenNumber = 0,
-	.prepScreenNumberInHectorStory = 0,
+	.prepScreenNumber = 2, //used for chapter number
+	.prepScreenNumberInHectorStory = 3, //used for chapter number
 	.merchantPosX = 255,
 	.merchantPosXInHectorStory = 255,
 	.merchantPosY = 0,

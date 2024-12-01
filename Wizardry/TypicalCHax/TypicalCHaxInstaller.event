@@ -4,3 +4,4 @@
 #include "SilentPromote/installer.event"
 #include "CBattleTransform/installer.event"
 #include "GOTOAllowS2/installer.event"
+//#include "CChapterTitle/installer.event"

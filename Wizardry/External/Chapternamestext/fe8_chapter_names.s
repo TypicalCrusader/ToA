@@ -149,34 +149,11 @@ mov     r4,r0
 mov     r0,#0x0
 blh     GetROMChapterStruct                 @GetChapterDefinition {U}
 @blh     GetROMChapterStruct                 @GetChapterDefinition {J}
-mov 	r5,r0 //line added by Typical
 mov     r1,#0x00
 chapertileid_to_chapterid_Loop:
 cmp r1,#0x7f
 bge chapertileid_to_chapterid_Exit
-
-//Typical Edit Below
-@here it gets the chapter number
-mov 	r0, #0x74 //mapEventDataId
-ldrb 	r0, [r0] //get value
-cmp 	r0, #0x7 // prologue events id
-beq FE8Path1 //ignore following code if we are at prologue
-	mov		r0, #0
-	ldr 	r0, =gPlaySt
-	add 	r0, #0x1B
-	ldrb 	r0, [r0]
-	cmp 	r0, #1
-	beq FE8Path1
-		cmp r0, #2
-		beq FE8Path1
-			mov 	r0,r5 //leave data alone
-			ldrb 	r2,[r0,#0xf]  @chapTitleIdInHectorStory
-			b Fe8PostPathCheck
-	FE8Path1:
-	mov 	r0,r5 //leave data alone	
-	ldrb 	r2,[r0,#0xe]  @ChapterTitleID
-Fe8PostPathCheck:
-//Typical Edit end here
+ldrb 	r2,[r0,#0xe]  @ChapterTitleID
 
 cmp r2,r4
 beq chapertileid_to_chapterid_Found
@@ -789,16 +766,45 @@ ldr     r0, =0x157        @第 Ch	{U}
 bl      strcat_gBuffer_with_decode
 
 AppendChaperNumber:
+//Typical Edit Below
+mov 	r0, #0
+ldr 	r0,=gPlaySt
+add 	r0, #0x1B
+ldrb 	r0, [r0] //path byte
+cmp		r0, #1 	//tutorial
+beq	AppendVanillaChapterNumber1
+	cmp		r0, #2 //erika
+	beq	AppendVanillaChapterNumber1
+		mov 	r0, #0x81 @ROMChapterData.prepScreenNumberInHectorStory
+		b AppendChapterNumberPostNumSet1
+
+AppendVanillaChapterNumber1:
 mov     r0, #0x80
-ldrb    r0, [r5 , r0]             @MapSetting->ChapterID
+AppendChapterNumberPostNumSet1:
+ldrb    r0, [r5 , r0]             @ROMChapterData.prepScreenNumber
+//Typical Edit End
 lsr     r0,#0x1      @ChapterNumber
 bl      strcat_gBuffer_with_atoi
 
 @@@@mov r0, #0xe0    @章         FE8Jのみ {J}
 @@@@@bl      strcat_gBuffer_with_decode   @{J}
+//Typical Edit Below
+mov 	r0, #0
+ldr 	r0,=gPlaySt
+add 	r0, #0x1B
+ldrb 	r0, [r0] //path byte
+cmp		r0, #1 	//tutorial
+beq	AppendVanillaChapterNumber2
+	cmp		r0, #2 //erika
+	beq	AppendVanillaChapterNumber1
+	mov 	r0, #0x81 @ROMChapterData.prepScreenNumberInHectorStory
+		b AppendChapterNumberPostNumSet2
 
+AppendVanillaChapterNumber2:
 mov     r0, #0x80
-ldrb    r1, [r5 , r0]   @MapSetting->ChapterID
+AppendChapterNumberPostNumSet2:
+ldrb    r1, [r5 , r0]   @ROMChapterData.prepScreenNumber
+//Typical Edit end
 mov     r2,#0x01
 and     r1,r2
 cmp     r1,#0x00
@@ -822,29 +828,31 @@ Chapter_Main_Text:
 @Chapter Name Main text
 
 //Typical Edit go below
-mov 	r4, r0
+//r0 either holds GetBattleMapKind/GetROMChapterStruct, GetBattleMapKind is literally map type 0-???, 1,2 = go to here - that whole func is a fucking mess
+//we actually need struct to be always here soooo we 0 out r0, give it gPlaySt.chapterIndex and blh GetROMChapterStruct just so we dont end up with non-valid value
+//TODO: check if there is a way to only do 5 following lines if it doesnt have struct
+mov		r0, #0
+ldr 	r0, =gPlaySt
+add		r0, #0x0E //chapterIndex within Struct
+ldr 	r0, [r0]
+blh 	GetROMChapterStruct
+mov 	r4, r0 //save struct to r4
 mov		r0,	#0
 ldr 	r0, =gPlaySt
 add 	r0, #0x1B
 ldrb 	r0, [r0] //path byte
-cmp 	r0, #0 //prologue
-beq PrologueChName
-	cmp 	r0, #1 //erika
+cmp 	r0, #1 //prologue
+beq FE8PathText1
+	cmp 	r0, #2 //erika
 	beq FE8PathText1
 		mov 	r0, r4
 		mov 	r0,#0x72 //hector textID
 		b FE8PathTextEnd
 
-PrologueChName:
-mov r0, 	r4
-mov r0, 	#0x5E //unk5E u16 (short) pad in chapter data - used to store main menu chapter textID
-b FE8PathTextEnd
-
 FE8PathText1:
 mov r0, r4
-mov r0,#0x70	//"normal textID"
+mov r0,#0x70	//"normal textID" - used for pre path split AND path A/Erika
 FE8PathTextEnd:
-
 //Typical Edit end here
 
 ldrh    r0,[r5,r0]

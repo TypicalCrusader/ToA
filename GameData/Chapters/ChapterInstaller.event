@@ -7,8 +7,13 @@ MESSAGE Event_Space starts at (CURRENTOFFSET)
 {
     //CH1 - map 1
     EventPointerTable(0xA, Ch1_ThisChapter)
-    #include "Ch1/Event/Ch1_header.lyn.event"
     #include "Ch1/Event/Ch1.event"   
+}
+{
+    PUSH
+    ORG 0x8B0924
+    #include "Ch1/Event/Ch1_header.lyn.event"
+    POP
 }
 {
     //CH2 - map 2
