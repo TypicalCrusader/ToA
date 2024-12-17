@@ -14,7 +14,7 @@
     #endif
 #endif
 
-#define SetChapterData(ChapterID,ObjectType1,ObjectType2,PaletteID,TileConfig,MapID,MapPointer,Anims1,Anims2,MapChanges) "PUSH; ORG ChapterDataTable+(ChapterID*ChapterDataTableEntSize)+4; BYTE ObjectType1 ObjectType2 PaletteID TileConfig MapID Anims1 Anims2 MapChanges; EventPointerTable(MapID,MapPointer); POP"
+#define SetChapterData(ChapterID,ObjectType1,ObjectType2,PaletteID,TileConfig,MapID,MapPointer,Anims1,Anims2,MapChanges) "PUSH; ORG ChapterDataTable+(ChapterID*ChapterDataTableEntSize)+4; BYTE ObjectType1 ObjectType2 PaletteID TileConfig MapID Anims1 Anims2 MapChanges; SetMapData(MapID,MapPointer); POP" 
 
 #endif // TMX2EA
 
@@ -26,6 +26,6 @@ ALIGN 4
 MapData:
   #incbin "CastleDreshic_data.dmp"
 
-SetChapterData(0x3B, 0x18, 0, 0x48, 0x1A, 0x3B, MapData, 0, 0, 0)
+SetChapterData(0x3B, 0x3, 0, 0xB, 0x3, 0x3B, MapData, 0, 0, 0)
 
 }

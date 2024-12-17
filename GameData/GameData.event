@@ -11,5 +11,7 @@
 #include "Tables/Class.event"
 #include "Tables/Character.event"
 #include "Tables/Item.event"
+#include "Tables/BattleQuote.txt"
+#include "Tables/Split_PTABLE.txt"
 
 #endif // GAMEDATA

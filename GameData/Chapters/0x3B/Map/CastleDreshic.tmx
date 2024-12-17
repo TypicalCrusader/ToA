@@ -3,9 +3,9 @@
  <tileset firstgid="1" source="../../../../Tools/VanillaTilesets/FE 8/Improved Castle Tileset Palette 3.tsx"/>
  <layer id="1" name="Warstwa Kafelków 1" width="20" height="26">
   <properties>
-    <property name="ObjectType" value="0x18"/>
-    <property name="PaletteID" value="0x48"/>
-    <property name="TileConfig" value="0x1A"/>
+    <property name="ObjectType" value="0x3"/>
+    <property name="PaletteID" value="0xB"/>
+    <property name="TileConfig" value="0x3"/>
     <property name="ChapterID" value="0x3B"/>
     <property name="MapID" value="0x3B"/>
     <property name="MapChangesID" value="0"/> 

@@ -14,7 +14,7 @@
     #endif
 #endif
 
-#define SetChapterData(ChapterID,ObjectType1,ObjectType2,PaletteID,TileConfig,MapID,MapPointer,Anims1,Anims2,MapChanges) "PUSH; ORG ChapterDataTable+(ChapterID*ChapterDataTableEntSize)+4; BYTE ObjectType1 ObjectType2 PaletteID TileConfig MapID Anims1 Anims2 MapChanges; EventPointerTable(MapID,MapPointer); POP"
+#define SetChapterData(ChapterID,ObjectType1,ObjectType2,PaletteID,TileConfig,MapID,MapPointer,Anims1,Anims2,MapChanges) "PUSH; ORG ChapterDataTable+(ChapterID*ChapterDataTableEntSize)+4; BYTE ObjectType1 ObjectType2 PaletteID TileConfig MapID Anims1 Anims2 MapChanges; SetMapData(MapID,MapPointer); POP" 
 
 #endif // TMX2EA
 
@@ -26,7 +26,7 @@ ALIGN 4
 MapData:
   #incbin "Ch12_data.dmp"
 
-SetChapterData(11, 0x5F, 0, 0x60, 0x61, 0x4D, MapData, 0xd7, 0, 0x4E)
+SetChapterData(11, 0x7, 0, 0x13, 0x7, 0x4D, MapData, 0, 0, 0x4E)
 
 ALIGN 4
 ChestOpen1:
@@ -72,6 +72,6 @@ MapChangesData:
   TileMap(3, 22, 3, 1, 1, Chest4)
   TileMapEnd
 
-EventPointerTable(0x4E, MapChangesData)
+SetTileChanges(0x4E, MapChangesData)
 
 }

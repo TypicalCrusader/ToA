@@ -830,11 +830,10 @@ Chapter_Main_Text:
 //Typical Edit go below
 //r0 either holds GetBattleMapKind/GetROMChapterStruct, GetBattleMapKind is literally map type 0-???, 1,2 = go to here - that whole func is a fucking mess
 //we actually need struct to be always here soooo we 0 out r0, give it gPlaySt.chapterIndex and blh GetROMChapterStruct just so we dont end up with non-valid value
-//TODO: check if there is a way to only do 5 following lines if it doesnt have struct
 mov		r0, #0
 ldr 	r0, =gPlaySt
 add		r0, #0x0E //chapterIndex within Struct
-ldr 	r0, [r0]
+ldrb 	r0, [r0]
 blh 	GetROMChapterStruct
 mov 	r4, r0 //save struct to r4
 mov		r0,	#0

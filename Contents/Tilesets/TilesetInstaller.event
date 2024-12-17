@@ -4,7 +4,6 @@ CastleConfig:
 
 ALIGN 4
 Castle1_Pal:
-    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 1.png"
     #incbin "Castle/ImprovedCastleObject_Palette1_pal.dmp"
 
 ALIGN 4
@@ -12,19 +11,13 @@ Castle1_Obj:
     #incbin "Castle/ImprovedCastleObject_Palette1.dmp"
 ALIGN 4
 Castle2_Pal:
-    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 2.png"
     #incbin "Castle/ImprovedCastleObject_Palette2_pal.dmp"
-    //#incbin "Castle\Improved Castle Object_Palette 2.dmp"
 ALIGN 4
 Castle3_Pal:
-    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette 3.png"
     #incbin "Castle/ImprovedCastleObject_Palette3_pal.dmp"
-    //#incbin "Castle\Improved Castle Object_Palette 3.dmp"
 ALIGN 4
 Castle5_Pal:
-    //#incext Png2Dmp --palette-only "Castle\Improved Castle Object_Palette Snowy.png"    
     #incbin "Castle/ImprovedCastleObject_PaletteSnowy_pal.dmp"
-    //#incbin "Castle\Improved Castle Object_Palette Snowy.dmp"
 ALIGN 4
 CaveConfig:
     #incext compress "FE7Cave/FE7_Cave.mapchip_config"
@@ -37,14 +30,196 @@ ALIGN 4
 CavePal:
     #incbin "FE7Cave/FE7_Cave_Obj_pal.dmp"
 
+////pal
+//ALIGN 4
+//PUSH
+//ORG 0x1AEBF0
+//FieldsPal1:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AE5B0
+//FieldsPal2:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AE0B0
+//FieldsPal3:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1ADCF0
+//FieldsPal4:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1A3470
+//FortPal1:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1ADA70
+//FortPal2:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AD1B0
+//FortPal3:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1ADF70
+//LavaCavePal:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AD930
+//MountainPal1:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AD430
+//MountainPal2:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AE830
+//PlainsPal:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AD570
+//TemplePal:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1ADBB0
+//BlackTemplePal:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AEAB0
+//VillagePal1:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AD7F0
+//VillagePal2:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1ACF30
+//VillagePal3:
+//POP
+//ALIGN 4
+//PUSH
+//ORG 0x1AE330
+//DesertPal:
+//POP
+//ALIGN 4
 
+//obj
+PUSH
+ORG 0x1ADCF0
+FieldsObj:
+    #incbin "VanillaTilesets/Fields1.img.bin"
+POP
 ALIGN 4
-EventPointerTable(0x18, Castle1_Obj)
-EventPointerTable(0x19, Castle1_Pal)
-EventPointerTable(0x1A, CastleConfig)
-EventPointerTable(0x48, Castle3_Pal)
-EventPointerTable(0x57, Castle5_Pal)
-EventPointerTable(0xB9, Castle2_Pal)
-EventPointerTable(0x30, CaveConfig)
-EventPointerTable(0x2F, CavePal)
-EventPointerTable(0x2E, CaveObj)
+PUSH
+ORG 0x191B14
+VillageObj:
+    #incbin "VanillaTilesets/mountains1.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x185154//Plains
+PlainsObj:
+    #incbin "VanillaTilesets/mountains1.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x17A9F4//Desert
+DesertObj:
+    #incbin "VanillaTilesets/desert1.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x1756B4//Lava Cave
+LavaCaveObj:
+    #incbin "VanillaTilesets/LavaCave.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x170DA8//Black Temple
+BlackTempleObj:
+    #incbin "VanillaTilesets/BlackTemple.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x169D54//Mountainous
+MountainsObj:
+    #incbin "VanillaTilesets/mountains1.img.bin"
+POP
+ALIGN 4
+PUSH
+ORG 0x1609BC//Temple
+TempleObj:
+    #incbin "VanillaTilesets/temple.img.bin"
+POP
+ALIGN 4
+PUSH 
+ORG 0x1816B8
+FortObj:
+    #incbin "VanillaTilesets/Fort1.img.bin"
+POP
+ALIGN 4
+
+//config
+PUSH
+ORG 0x1AB96C //Fields
+FieldsConfig:
+    #incbin "VanillaTilesets/FE8_fields.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1AA140 //Village
+VillageConfig:
+    #incbin "VanillaTilesets/FE8_village.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A7674 //Plains
+PlainsConfig:
+    #incbin "VanillaTilesets/FE8_plains.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A6604 //Fort
+FortConfig:
+    #incbin "VanillaTilesets/FE8_fort.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A55B4 //Desert
+DesertConfig:
+    #incbin "VanillaTilesets/FE8_desert.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A3660 //Black Temple
+BlackTempleConfig:
+    #incbin "VanillaTilesets/FE8_blacktemple.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A1FC0 //Mountainous
+MountainsConfig:
+    #incbin "VanillaTilesets/FE8_mountains.mapchip_config.dmp"
+POP
+ALIGN 4
+PUSH
+ORG 0x1A0514 //Temple
+TempleConfig:
+    #incbin "VanillaTilesets/FE8_temple.mapchip_config.dmp"
+POP
+ALIGN 4

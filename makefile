@@ -81,6 +81,7 @@ LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
 PORTRAITFORMATTER := $(EA_DIR)/Tools/PortraitFormatter
 
+GBALZ77TOOL		  := $(EA_DIR)/Tools/gbalz77tool
 PORTRAIT_PROCESS  := python3 $(TOOL_DIR)/FE-PyTools/portrait-process.py
 C2EA              := python3 $(TOOL_DIR)/FE-PyTools/NMM2CSV/c2ea.py
 TMX1EA            := python3 $(TOOL_DIR)/FE-PyTools/tmx1ea.py
@@ -176,6 +177,11 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
+%.mapchip_config.dmp: %.mapchip_config 
+	@echo	"[TIL]	$@"
+	$(NOTIFY_PROCESS)
+	@$(GBALZ77TOOL) -o $<.dmp	$< compress 
+
 %.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
@@ -203,7 +209,7 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 %.event %_data.dmp: %.tmx
 	@echo "[TMX]	$@ "
 	$(NOTIFY_PROCESS)
-	@$(TMX1EA) $< --output-event $*.event --output-data $*_data.dmp
+	@$(TMX1EA) $< --output-event $*.event --output-data $*_data.dmp	
 
 
 
@@ -224,6 +230,9 @@ TABLE_EVENTS := $(NMMS:.nmm=.event)
 
 TMXS := $(shell find -type f -name '*.tmx')
 MAP_GENERATED := $(TMXS:.tmx=.event) $(TMXS:.tmx=_data.dmp)
+
+CHIPCONF := $(shell find -type f -name '*.mapchip_config')
+CHIPCONF_GENERATED := $(CHIPCONF:.mapchip_config=.dmp)
 
 # =========
 # = Texts =
